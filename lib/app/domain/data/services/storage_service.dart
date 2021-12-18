@@ -9,9 +9,9 @@ class StorageService {
 
   final SharedPreferences _preferences;
 
-  String? getToken() => _preferences.getString(Keys.token);
+  String? getCurrentUser() => _preferences.getString(Keys.currentUser);
 }
 
 class Keys {
-  static const String token = 'Token';
+  static const String currentUser = 'CurrentUser';
 }

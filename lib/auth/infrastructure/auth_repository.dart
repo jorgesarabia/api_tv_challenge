@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:api_tv_challenge/app/domain/data/services/storage_service.dart';
+import 'package:api_tv_challenge/app/domain/models/app_user.dart';
 import 'package:api_tv_challenge/app/domain/models/password.dart';
 import 'package:api_tv_challenge/app/domain/models/email_address.dart';
 import 'package:api_tv_challenge/auth/domain/i_auth_facade.dart';
@@ -6,6 +10,10 @@ import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IAuthFacade)
 class AuthRepository implements IAuthFacade {
+  const AuthRepository(this._storageService);
+
+  final StorageService _storageService;
+
   @override
   Future<void> createAccountWithEmailAndPassword({required SignUpForm signUpForm}) {
     // TODO: implement createAccountWithEmailAndPassword
@@ -13,9 +21,14 @@ class AuthRepository implements IAuthFacade {
   }
 
   @override
-  Future<bool> getSignedInUser() {
-    // TODO: implement getSignedInUser
-    throw UnimplementedError();
+  Future<AppUser?> getSignedInUser() async {
+    final jsonString = _storageService.getCurrentUser();
+
+    if (jsonString != null) {
+      return AppUser.fromJson(jsonDecode(jsonString));
+    }
+
+    return null;
   }
 
   @override

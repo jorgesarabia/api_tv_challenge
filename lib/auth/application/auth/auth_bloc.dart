@@ -19,7 +19,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   void _mapAppIsStartingToState(event, Emitter<AuthState> emit) async {
     final isLoggedIn = await authFacade.getSignedInUser();
 
-    if (isLoggedIn) {
+    if (isLoggedIn != null) {
       emit(const AuthState.isLoggedIn());
     } else {
       emit(const AuthState.userIsNotLoggedIn());
