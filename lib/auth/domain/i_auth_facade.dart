@@ -12,9 +12,7 @@ abstract class IAuthFacade {
     required Password password,
   });
 
-  Future<void> signOut();
+  Future<bool> signOut();
 
-  Future<AuthInteractionEvent> createAccountWithEmailAndPassword({
-    required SignUpForm signUpForm,
-  });
+  Future<AuthInteractionEvent> createAccountWithEmailAndPassword({required SignUpForm signUpForm});
 }

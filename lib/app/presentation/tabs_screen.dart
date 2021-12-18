@@ -1,4 +1,7 @@
+import 'package:api_tv_challenge/app/presentation/app_button.dart';
+import 'package:api_tv_challenge/auth/application/auth/auth_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({Key? key}) : super(key: key);
@@ -13,12 +16,17 @@ class _TabsPageState extends State<TabsScreen> {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        body: const TabBarView(
+        body: TabBarView(
           children: [
-            Icon(Icons.directions_car),
-            Icon(Icons.directions_bike),
-            Icon(Icons.directions_bike),
-            Icon(Icons.directions_bike),
+            const Icon(Icons.directions_car),
+            const Icon(Icons.directions_bike),
+            const Icon(Icons.directions_bike),
+            AppButton(
+              label: 'Logout',
+              onPressed: () {
+                BlocProvider.of<AuthBloc>(context).add(const AuthEvent.signOutPressed());
+              },
+            ),
           ],
         ),
         bottomNavigationBar: Container(

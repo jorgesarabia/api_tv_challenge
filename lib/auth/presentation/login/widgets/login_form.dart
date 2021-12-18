@@ -10,7 +10,10 @@ class _LoginForm extends StatelessWidget {
         state.authInteractionEvent.maybeWhen(
           none: () => null,
           loggedInSuccesfully: () => context.read<AuthBloc>().add(const AuthEvent.appIsStarting()),
-          orElse: () => AppSnackBar.of(context).showSnackBar(message: 'Invalid password/email combination'),
+          orElse: () => AppSnackBar.of(context).showSnackBar(
+            message: 'Invalid password/email combination',
+            color: Colors.red.withOpacity(0.5),
+          ),
         );
       },
       builder: (context, state) {

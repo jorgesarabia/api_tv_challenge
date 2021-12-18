@@ -99,7 +99,7 @@ class AuthRepository implements IAuthFacade {
   }
 
   @override
-  Future<void> signOut() {
-    throw UnimplementedError();
+  Future<bool> signOut() {
+    return _storageService.deleteCurrentUser();
   }
 }
