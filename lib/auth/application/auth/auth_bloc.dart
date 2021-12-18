@@ -9,27 +9,26 @@ part 'auth_bloc.freezed.dart';
 
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc(this.authFacade) : super(const AuthState.initial());
+  AuthBloc(this.authFacade) : super(const AuthState.initial()) {
+    on<_AppIsStarting>(_mapAppIsStartingToState);
+    on<_SignOutPressed>(_mapSignOutPressedToState);
+  }
 
   final IAuthFacade authFacade;
 
-  @override
-  Stream<AuthState> mapEventToState(AuthEvent event) async* {
-    yield* event.map(
-      appIsStarting: (e) async* {
-        final isLoggedIn = await authFacade.getSignedInUser();
+  void _mapAppIsStartingToState(event, Emitter<AuthState> emit) async {
+    final isLoggedIn = await authFacade.getSignedInUser();
 
-        if (isLoggedIn) {
-          yield const AuthState.isLoggedIn();
-        } else {
-          yield const AuthState.userIsNotLoggedIn();
-        }
-      },
-      signOutPressed: (e) async* {
-        await authFacade.signOut();
+    if (isLoggedIn) {
+      emit(const AuthState.isLoggedIn());
+    } else {
+      emit(const AuthState.userIsNotLoggedIn());
+    }
+  }
 
-        yield const AuthState.userIsNotLoggedIn();
-      },
-    );
+  void _mapSignOutPressedToState(event, Emitter<AuthState> emit) async {
+    await authFacade.signOut();
+
+    emit(const AuthState.userIsNotLoggedIn());
   }
 }

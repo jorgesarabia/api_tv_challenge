@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:api_tv_challenge/app/domain/models/email_address.dart';
 import 'package:api_tv_challenge/app/domain/models/password.dart';
 import 'package:api_tv_challenge/auth/domain/i_auth_facade.dart';
@@ -12,49 +14,36 @@ part 'login_bloc.freezed.dart';
 
 @injectable
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc(this.authFacade) : super(LoginState.initial());
+  LoginBloc(this.authFacade) : super(LoginState.initial()) {
+    on<_LoginBtnPressed>(_mapLoginBtnPressedEventToState);
+    on<_EmailChange>(_mapEmailChangeEventToState);
+    on<_PasswordChange>(_mapPasswordChangeEventToState);
+  }
 
   final IAuthFacade authFacade;
 
-  @override
-  Stream<LoginState> mapEventToState(LoginEvent event) async* {
-    yield* event.map(
-      emailChanged: (e) async* {
-        yield state.copyWith(
-          emailAddress: EmailAddress(e.email.trim()),
-        );
-      },
-      passwordChanged: (e) async* {
-        yield state.copyWith(
-          password: Password(e.password),
-        );
-      },
-      logInBtnPressed: (e) async* {
-        yield state.copyWith(
-          autovalidateMode: AutovalidateMode.always,
-        );
-
-        if (_formIsValid && !state.isSubmitting) {
-          yield* _loginWithEmailAndPassword();
-        }
-      },
-    );
-  }
-
-  Stream<LoginState> _loginWithEmailAndPassword() async* {
-    yield state.copyWith(
-      isSubmitting: true,
-    );
-
-    final isLoggedIn = await authFacade.signInWithEmailAndPassword(
-      emailAddress: state.emailAddress,
-      password: state.password,
-    );
-
-    yield state.copyWith(
-      isSubmitting: false,
-    );
-  }
-
   bool get _formIsValid => state.password.isValid && state.emailAddress.isValid;
+
+  void _mapLoginBtnPressedEventToState(_LoginBtnPressed event, Emitter<LoginState> emit) async {
+    emit(state.copyWith(autovalidateMode: AutovalidateMode.always));
+
+    if (_formIsValid && !state.isSubmitting) {
+      emit(state.copyWith(isSubmitting: true));
+
+      final isLoggedIn = await authFacade.signInWithEmailAndPassword(
+        emailAddress: state.emailAddress,
+        password: state.password,
+      );
+
+      emit(state.copyWith(isSubmitting: false));
+    }
+  }
+
+  FutureOr<void> _mapEmailChangeEventToState(_EmailChange event, Emitter<LoginState> emit) {
+    emit(state.copyWith(emailAddress: EmailAddress(event.email.trim())));
+  }
+
+  FutureOr<void> _mapPasswordChangeEventToState(_PasswordChange event, Emitter<LoginState> emit) {
+    emit(state.copyWith(password: Password(event.password)));
+  }
 }

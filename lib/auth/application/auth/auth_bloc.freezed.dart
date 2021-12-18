@@ -17,12 +17,12 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$AuthEventTearOff {
   const _$AuthEventTearOff();
 
-  AppIsStarting appIsStarting() {
-    return const AppIsStarting();
+  _AppIsStarting appIsStarting() {
+    return const _AppIsStarting();
   }
 
-  SignOutPressed signOutPressed() {
-    return const SignOutPressed();
+  _SignOutPressed signOutPressed() {
+    return const _SignOutPressed();
   }
 }
 
@@ -52,20 +52,20 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AppIsStarting value) appIsStarting,
-    required TResult Function(SignOutPressed value) signOutPressed,
+    required TResult Function(_AppIsStarting value) appIsStarting,
+    required TResult Function(_SignOutPressed value) signOutPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AppIsStarting value)? appIsStarting,
-    TResult Function(SignOutPressed value)? signOutPressed,
+    TResult Function(_AppIsStarting value)? appIsStarting,
+    TResult Function(_SignOutPressed value)? signOutPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AppIsStarting value)? appIsStarting,
-    TResult Function(SignOutPressed value)? signOutPressed,
+    TResult Function(_AppIsStarting value)? appIsStarting,
+    TResult Function(_SignOutPressed value)? signOutPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -87,27 +87,27 @@ class _$AuthEventCopyWithImpl<$Res> implements $AuthEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $AppIsStartingCopyWith<$Res> {
-  factory $AppIsStartingCopyWith(
-          AppIsStarting value, $Res Function(AppIsStarting) then) =
-      _$AppIsStartingCopyWithImpl<$Res>;
+abstract class _$AppIsStartingCopyWith<$Res> {
+  factory _$AppIsStartingCopyWith(
+          _AppIsStarting value, $Res Function(_AppIsStarting) then) =
+      __$AppIsStartingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AppIsStartingCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
-    implements $AppIsStartingCopyWith<$Res> {
-  _$AppIsStartingCopyWithImpl(
-      AppIsStarting _value, $Res Function(AppIsStarting) _then)
-      : super(_value, (v) => _then(v as AppIsStarting));
+class __$AppIsStartingCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+    implements _$AppIsStartingCopyWith<$Res> {
+  __$AppIsStartingCopyWithImpl(
+      _AppIsStarting _value, $Res Function(_AppIsStarting) _then)
+      : super(_value, (v) => _then(v as _AppIsStarting));
 
   @override
-  AppIsStarting get _value => super._value as AppIsStarting;
+  _AppIsStarting get _value => super._value as _AppIsStarting;
 }
 
 /// @nodoc
 
-class _$AppIsStarting implements AppIsStarting {
-  const _$AppIsStarting();
+class _$_AppIsStarting implements _AppIsStarting {
+  const _$_AppIsStarting();
 
   @override
   String toString() {
@@ -117,7 +117,7 @@ class _$AppIsStarting implements AppIsStarting {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is AppIsStarting);
+        (other.runtimeType == runtimeType && other is _AppIsStarting);
   }
 
   @override
@@ -157,8 +157,8 @@ class _$AppIsStarting implements AppIsStarting {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AppIsStarting value) appIsStarting,
-    required TResult Function(SignOutPressed value) signOutPressed,
+    required TResult Function(_AppIsStarting value) appIsStarting,
+    required TResult Function(_SignOutPressed value) signOutPressed,
   }) {
     return appIsStarting(this);
   }
@@ -166,8 +166,8 @@ class _$AppIsStarting implements AppIsStarting {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AppIsStarting value)? appIsStarting,
-    TResult Function(SignOutPressed value)? signOutPressed,
+    TResult Function(_AppIsStarting value)? appIsStarting,
+    TResult Function(_SignOutPressed value)? signOutPressed,
   }) {
     return appIsStarting?.call(this);
   }
@@ -175,8 +175,8 @@ class _$AppIsStarting implements AppIsStarting {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AppIsStarting value)? appIsStarting,
-    TResult Function(SignOutPressed value)? signOutPressed,
+    TResult Function(_AppIsStarting value)? appIsStarting,
+    TResult Function(_SignOutPressed value)? signOutPressed,
     required TResult orElse(),
   }) {
     if (appIsStarting != null) {
@@ -186,32 +186,32 @@ class _$AppIsStarting implements AppIsStarting {
   }
 }
 
-abstract class AppIsStarting implements AuthEvent {
-  const factory AppIsStarting() = _$AppIsStarting;
+abstract class _AppIsStarting implements AuthEvent {
+  const factory _AppIsStarting() = _$_AppIsStarting;
 }
 
 /// @nodoc
-abstract class $SignOutPressedCopyWith<$Res> {
-  factory $SignOutPressedCopyWith(
-          SignOutPressed value, $Res Function(SignOutPressed) then) =
-      _$SignOutPressedCopyWithImpl<$Res>;
+abstract class _$SignOutPressedCopyWith<$Res> {
+  factory _$SignOutPressedCopyWith(
+          _SignOutPressed value, $Res Function(_SignOutPressed) then) =
+      __$SignOutPressedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$SignOutPressedCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
-    implements $SignOutPressedCopyWith<$Res> {
-  _$SignOutPressedCopyWithImpl(
-      SignOutPressed _value, $Res Function(SignOutPressed) _then)
-      : super(_value, (v) => _then(v as SignOutPressed));
+class __$SignOutPressedCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+    implements _$SignOutPressedCopyWith<$Res> {
+  __$SignOutPressedCopyWithImpl(
+      _SignOutPressed _value, $Res Function(_SignOutPressed) _then)
+      : super(_value, (v) => _then(v as _SignOutPressed));
 
   @override
-  SignOutPressed get _value => super._value as SignOutPressed;
+  _SignOutPressed get _value => super._value as _SignOutPressed;
 }
 
 /// @nodoc
 
-class _$SignOutPressed implements SignOutPressed {
-  const _$SignOutPressed();
+class _$_SignOutPressed implements _SignOutPressed {
+  const _$_SignOutPressed();
 
   @override
   String toString() {
@@ -221,7 +221,7 @@ class _$SignOutPressed implements SignOutPressed {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is SignOutPressed);
+        (other.runtimeType == runtimeType && other is _SignOutPressed);
   }
 
   @override
@@ -261,8 +261,8 @@ class _$SignOutPressed implements SignOutPressed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AppIsStarting value) appIsStarting,
-    required TResult Function(SignOutPressed value) signOutPressed,
+    required TResult Function(_AppIsStarting value) appIsStarting,
+    required TResult Function(_SignOutPressed value) signOutPressed,
   }) {
     return signOutPressed(this);
   }
@@ -270,8 +270,8 @@ class _$SignOutPressed implements SignOutPressed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AppIsStarting value)? appIsStarting,
-    TResult Function(SignOutPressed value)? signOutPressed,
+    TResult Function(_AppIsStarting value)? appIsStarting,
+    TResult Function(_SignOutPressed value)? signOutPressed,
   }) {
     return signOutPressed?.call(this);
   }
@@ -279,8 +279,8 @@ class _$SignOutPressed implements SignOutPressed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AppIsStarting value)? appIsStarting,
-    TResult Function(SignOutPressed value)? signOutPressed,
+    TResult Function(_AppIsStarting value)? appIsStarting,
+    TResult Function(_SignOutPressed value)? signOutPressed,
     required TResult orElse(),
   }) {
     if (signOutPressed != null) {
@@ -290,8 +290,8 @@ class _$SignOutPressed implements SignOutPressed {
   }
 }
 
-abstract class SignOutPressed implements AuthEvent {
-  const factory SignOutPressed() = _$SignOutPressed;
+abstract class _SignOutPressed implements AuthEvent {
+  const factory _SignOutPressed() = _$_SignOutPressed;
 }
 
 /// @nodoc

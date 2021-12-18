@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:api_tv_challenge/app/domain/models/email_address.dart';
 import 'package:api_tv_challenge/app/domain/models/is_required.dart';
 import 'package:api_tv_challenge/app/domain/models/password.dart';
@@ -14,62 +16,63 @@ part 'signup_bloc.freezed.dart';
 
 @injectable
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
-  SignUpBloc(this.authFacade) : super(SignUpState.initial());
+  SignUpBloc(this.authFacade) : super(SignUpState.initial()) {
+    on<_SignupButtonPressed>(_mapSignupButtonPressedEventToState);
+    on<_EmailChange>(_mapEmailChangeEventToState);
+    on<_PasswordChange>(_mapPasswordChangeEventToState);
+    on<_FirstNameChange>(_mapFirstNameChangeEventToState);
+    on<_LastNameChange>(_mapLastNameChangeEventToState);
+  }
 
   final IAuthFacade authFacade;
 
-  @override
-  Stream<SignUpState> mapEventToState(SignUpEvent event) async* {
-    yield* event.map(
-      emailChanged: (e) async* {
-        yield state.copyWith(
-          signUpForm: state.signUpForm.copyWith(
-            emailAddress: EmailAddress(e.email.trim()),
-          ),
-        );
-      },
-      passwordChanged: (e) async* {
-        yield state.copyWith(
-          signUpForm: state.signUpForm.copyWith(
-            password: Password(e.password),
-          ),
-        );
-      },
-      signUpButtonPressed: (e) async* {
-        yield state.copyWith(
-          autovalidateMode: AutovalidateMode.always,
-        );
+  FutureOr<void> _mapSignupButtonPressedEventToState(_SignupButtonPressed event, Emitter<SignUpState> emit) async {
+    emit(state.copyWith(autovalidateMode: AutovalidateMode.always));
 
-        if (state.signUpForm.isValid && !state.isSubmitting) {
-          yield* _createAccountWithEmailAndPassword();
-        }
-      },
-      firstNameChanged: (e) async* {
-        yield state.copyWith(
-          signUpForm: state.signUpForm.copyWith(
-            firstName: IsRequired(e.firstName),
-          ),
-        );
-      },
-      lastNameChanged: (e) async* {
-        yield state.copyWith(
-          signUpForm: state.signUpForm.copyWith(
-            lastName: IsRequired(e.lastName),
-          ),
-        );
-      },
-    );
+    if (state.signUpForm.isValid && !state.isSubmitting) {
+      emit(state.copyWith(
+        isSubmitting: true,
+      ));
+
+      final isLoggedIn = await authFacade.createAccountWithEmailAndPassword(
+        signUpForm: state.signUpForm,
+      );
+
+      emit(state.copyWith(isSubmitting: false));
+    }
   }
 
-  Stream<SignUpState> _createAccountWithEmailAndPassword() async* {
-    yield state.copyWith(
-      isSubmitting: true,
-    );
+  FutureOr<void> _mapEmailChangeEventToState(_EmailChange event, Emitter<SignUpState> emit) {
+    emit(state.copyWith(
+      signUpForm: state.signUpForm.copyWith(
+        emailAddress: EmailAddress(
+          event.email.trim(),
+        ),
+      ),
+    ));
+  }
 
-    final isLoggedIn = await authFacade.createAccountWithEmailAndPassword(
-      signUpForm: state.signUpForm,
-    );
+  FutureOr<void> _mapPasswordChangeEventToState(_PasswordChange event, Emitter<SignUpState> emit) {
+    emit(state.copyWith(
+      signUpForm: state.signUpForm.copyWith(
+        password: Password(event.password),
+      ),
+    ));
+  }
 
-    yield state.copyWith(isSubmitting: false);
+  FutureOr<void> _mapFirstNameChangeEventToState(_FirstNameChange event, Emitter<SignUpState> emit) {
+    emit(state.copyWith(
+      signUpForm: state.signUpForm.copyWith(
+        firstName: IsRequired(event.firstName),
+      ),
+    ));
+  }
+
+  FutureOr<void> _mapLastNameChangeEventToState(_LastNameChange event, Emitter<SignUpState> emit) {
+    emit(state.copyWith(
+      signUpForm: state.signUpForm.copyWith(
+        lastName: IsRequired(event.lastName),
+      ),
+    ));
   }
 }
