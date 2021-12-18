@@ -33,7 +33,8 @@ class AuthRepository implements IAuthFacade {
     }
 
     Map<String, Object?> values = {
-      'nombre': signUpForm.firstName.value,
+      'firstName': signUpForm.firstName.value,
+      'lastName': signUpForm.lastName.value,
       'email': signUpForm.emailAddress.value,
       'password': signUpForm.password.value,
     };
@@ -86,13 +87,16 @@ class AuthRepository implements IAuthFacade {
       return const AuthInteractionEvent.invalidCombination();
     }
 
-    // final user = AppUser(
-    //   firstName: result[0],
-    //   lastName: lastName,
-    //   email: email,
-    // );
+    print(result);
+    print(result[0]);
 
-    // await _storageService.setUserJsonString(userJson);
+    final user = AppUser(
+      firstName: result[0]['firstName'] as String,
+      lastName: result[0]['lastName'] as String,
+      email: result[0]['email'] as String,
+    );
+
+    await _saveCurrentUser(user);
 
     return const AuthInteractionEvent.loggedInSuccesfully();
   }

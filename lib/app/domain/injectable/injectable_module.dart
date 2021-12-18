@@ -30,7 +30,8 @@ abstract class InjectableModule {
         const query = '''
         CREATE TABLE Users(
           id INTEGER PRIMARY KEY,
-          nombre TEXT,
+          firstName TEXT,
+          lastName TEXT,
           email TEXT,
           password TEXT
         )
