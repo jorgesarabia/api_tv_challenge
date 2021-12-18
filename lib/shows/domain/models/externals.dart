@@ -6,9 +6,9 @@ part 'externals.g.dart';
 @freezed
 class Externals with _$Externals {
   const factory Externals({
-    required int tvrage,
-    required int thetvdb,
-    required String imdb,
+    int? tvrage,
+    int? thetvdb,
+    String? imdb,
   }) = _Externals;
 
   factory Externals.fromJson(Map<String, dynamic> json) => _$ExternalsFromJson(json);

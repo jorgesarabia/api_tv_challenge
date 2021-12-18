@@ -21,7 +21,7 @@ Rating _$RatingFromJson(Map<String, dynamic> json) {
 class _$RatingTearOff {
   const _$RatingTearOff();
 
-  _Rating call({required double average}) {
+  _Rating call({double? average}) {
     return _Rating(
       average: average,
     );
@@ -37,7 +37,7 @@ const $Rating = _$RatingTearOff();
 
 /// @nodoc
 mixin _$Rating {
-  double get average => throw _privateConstructorUsedError;
+  double? get average => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +48,7 @@ mixin _$Rating {
 abstract class $RatingCopyWith<$Res> {
   factory $RatingCopyWith(Rating value, $Res Function(Rating) then) =
       _$RatingCopyWithImpl<$Res>;
-  $Res call({double average});
+  $Res call({double? average});
 }
 
 /// @nodoc
@@ -67,7 +67,7 @@ class _$RatingCopyWithImpl<$Res> implements $RatingCopyWith<$Res> {
       average: average == freezed
           ? _value.average
           : average // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
     ));
   }
 }
@@ -77,7 +77,7 @@ abstract class _$RatingCopyWith<$Res> implements $RatingCopyWith<$Res> {
   factory _$RatingCopyWith(_Rating value, $Res Function(_Rating) then) =
       __$RatingCopyWithImpl<$Res>;
   @override
-  $Res call({double average});
+  $Res call({double? average});
 }
 
 /// @nodoc
@@ -97,7 +97,7 @@ class __$RatingCopyWithImpl<$Res> extends _$RatingCopyWithImpl<$Res>
       average: average == freezed
           ? _value.average
           : average // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
     ));
   }
 }
@@ -105,13 +105,13 @@ class __$RatingCopyWithImpl<$Res> extends _$RatingCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Rating implements _Rating {
-  const _$_Rating({required this.average});
+  const _$_Rating({this.average});
 
   factory _$_Rating.fromJson(Map<String, dynamic> json) =>
       _$$_RatingFromJson(json);
 
   @override
-  final double average;
+  final double? average;
 
   @override
   String toString() {
@@ -142,12 +142,12 @@ class _$_Rating implements _Rating {
 }
 
 abstract class _Rating implements Rating {
-  const factory _Rating({required double average}) = _$_Rating;
+  const factory _Rating({double? average}) = _$_Rating;
 
   factory _Rating.fromJson(Map<String, dynamic> json) = _$_Rating.fromJson;
 
   @override
-  double get average;
+  double? get average;
   @override
   @JsonKey(ignore: true)
   _$RatingCopyWith<_Rating> get copyWith => throw _privateConstructorUsedError;

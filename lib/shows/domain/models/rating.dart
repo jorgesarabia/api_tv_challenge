@@ -6,7 +6,7 @@ part 'rating.g.dart';
 @freezed
 class Rating with _$Rating {
   const factory Rating({
-    required double average,
+    double? average,
   }) = _Rating;
 
   factory Rating.fromJson(Map<String, dynamic> json) => _$RatingFromJson(json);

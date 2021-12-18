@@ -21,8 +21,7 @@ Externals _$ExternalsFromJson(Map<String, dynamic> json) {
 class _$ExternalsTearOff {
   const _$ExternalsTearOff();
 
-  _Externals call(
-      {required int tvrage, required int thetvdb, required String imdb}) {
+  _Externals call({int? tvrage, int? thetvdb, String? imdb}) {
     return _Externals(
       tvrage: tvrage,
       thetvdb: thetvdb,
@@ -40,9 +39,9 @@ const $Externals = _$ExternalsTearOff();
 
 /// @nodoc
 mixin _$Externals {
-  int get tvrage => throw _privateConstructorUsedError;
-  int get thetvdb => throw _privateConstructorUsedError;
-  String get imdb => throw _privateConstructorUsedError;
+  int? get tvrage => throw _privateConstructorUsedError;
+  int? get thetvdb => throw _privateConstructorUsedError;
+  String? get imdb => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +53,7 @@ mixin _$Externals {
 abstract class $ExternalsCopyWith<$Res> {
   factory $ExternalsCopyWith(Externals value, $Res Function(Externals) then) =
       _$ExternalsCopyWithImpl<$Res>;
-  $Res call({int tvrage, int thetvdb, String imdb});
+  $Res call({int? tvrage, int? thetvdb, String? imdb});
 }
 
 /// @nodoc
@@ -75,15 +74,15 @@ class _$ExternalsCopyWithImpl<$Res> implements $ExternalsCopyWith<$Res> {
       tvrage: tvrage == freezed
           ? _value.tvrage
           : tvrage // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       thetvdb: thetvdb == freezed
           ? _value.thetvdb
           : thetvdb // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       imdb: imdb == freezed
           ? _value.imdb
           : imdb // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -94,7 +93,7 @@ abstract class _$ExternalsCopyWith<$Res> implements $ExternalsCopyWith<$Res> {
           _Externals value, $Res Function(_Externals) then) =
       __$ExternalsCopyWithImpl<$Res>;
   @override
-  $Res call({int tvrage, int thetvdb, String imdb});
+  $Res call({int? tvrage, int? thetvdb, String? imdb});
 }
 
 /// @nodoc
@@ -116,15 +115,15 @@ class __$ExternalsCopyWithImpl<$Res> extends _$ExternalsCopyWithImpl<$Res>
       tvrage: tvrage == freezed
           ? _value.tvrage
           : tvrage // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       thetvdb: thetvdb == freezed
           ? _value.thetvdb
           : thetvdb // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       imdb: imdb == freezed
           ? _value.imdb
           : imdb // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -132,18 +131,17 @@ class __$ExternalsCopyWithImpl<$Res> extends _$ExternalsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Externals implements _Externals {
-  const _$_Externals(
-      {required this.tvrage, required this.thetvdb, required this.imdb});
+  const _$_Externals({this.tvrage, this.thetvdb, this.imdb});
 
   factory _$_Externals.fromJson(Map<String, dynamic> json) =>
       _$$_ExternalsFromJson(json);
 
   @override
-  final int tvrage;
+  final int? tvrage;
   @override
-  final int thetvdb;
+  final int? thetvdb;
   @override
-  final String imdb;
+  final String? imdb;
 
   @override
   String toString() {
@@ -179,20 +177,18 @@ class _$_Externals implements _Externals {
 }
 
 abstract class _Externals implements Externals {
-  const factory _Externals(
-      {required int tvrage,
-      required int thetvdb,
-      required String imdb}) = _$_Externals;
+  const factory _Externals({int? tvrage, int? thetvdb, String? imdb}) =
+      _$_Externals;
 
   factory _Externals.fromJson(Map<String, dynamic> json) =
       _$_Externals.fromJson;
 
   @override
-  int get tvrage;
+  int? get tvrage;
   @override
-  int get thetvdb;
+  int? get thetvdb;
   @override
-  String get imdb;
+  String? get imdb;
   @override
   @JsonKey(ignore: true)
   _$ExternalsCopyWith<_Externals> get copyWith =>

@@ -29,22 +29,22 @@ class _$ShowTearOff {
       required String language,
       required List<String> genres,
       required String status,
-      required int runtime,
-      required int averageRuntime,
-      required DateTime premiered,
-      required DateTime ended,
-      required String officialSite,
+      int? runtime,
+      int? averageRuntime,
+      DateTime? premiered,
+      DateTime? ended,
+      String? officialSite,
       required Schedule schedule,
       required Rating rating,
       required int weight,
-      required Network network,
+      Network? network,
       required dynamic webChannel,
       required dynamic dvdCountry,
       required Externals externals,
-      required Image image,
+      Image? image,
       required String summary,
       required int updated,
-      required Links links}) {
+      Links? links}) {
     return _Show(
       id: id,
       url: url,
@@ -89,22 +89,22 @@ mixin _$Show {
   String get language => throw _privateConstructorUsedError;
   List<String> get genres => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
-  int get runtime => throw _privateConstructorUsedError;
-  int get averageRuntime => throw _privateConstructorUsedError;
-  DateTime get premiered => throw _privateConstructorUsedError;
-  DateTime get ended => throw _privateConstructorUsedError;
-  String get officialSite => throw _privateConstructorUsedError;
+  int? get runtime => throw _privateConstructorUsedError;
+  int? get averageRuntime => throw _privateConstructorUsedError;
+  DateTime? get premiered => throw _privateConstructorUsedError;
+  DateTime? get ended => throw _privateConstructorUsedError;
+  String? get officialSite => throw _privateConstructorUsedError;
   Schedule get schedule => throw _privateConstructorUsedError;
   Rating get rating => throw _privateConstructorUsedError;
   int get weight => throw _privateConstructorUsedError;
-  Network get network => throw _privateConstructorUsedError;
+  Network? get network => throw _privateConstructorUsedError;
   dynamic get webChannel => throw _privateConstructorUsedError;
   dynamic get dvdCountry => throw _privateConstructorUsedError;
   Externals get externals => throw _privateConstructorUsedError;
-  Image get image => throw _privateConstructorUsedError;
+  Image? get image => throw _privateConstructorUsedError;
   String get summary => throw _privateConstructorUsedError;
   int get updated => throw _privateConstructorUsedError;
-  Links get links => throw _privateConstructorUsedError;
+  Links? get links => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -123,29 +123,29 @@ abstract class $ShowCopyWith<$Res> {
       String language,
       List<String> genres,
       String status,
-      int runtime,
-      int averageRuntime,
-      DateTime premiered,
-      DateTime ended,
-      String officialSite,
+      int? runtime,
+      int? averageRuntime,
+      DateTime? premiered,
+      DateTime? ended,
+      String? officialSite,
       Schedule schedule,
       Rating rating,
       int weight,
-      Network network,
+      Network? network,
       dynamic webChannel,
       dynamic dvdCountry,
       Externals externals,
-      Image image,
+      Image? image,
       String summary,
       int updated,
-      Links links});
+      Links? links});
 
   $ScheduleCopyWith<$Res> get schedule;
   $RatingCopyWith<$Res> get rating;
-  $NetworkCopyWith<$Res> get network;
+  $NetworkCopyWith<$Res>? get network;
   $ExternalsCopyWith<$Res> get externals;
-  $ImageCopyWith<$Res> get image;
-  $LinksCopyWith<$Res> get links;
+  $ImageCopyWith<$Res>? get image;
+  $LinksCopyWith<$Res>? get links;
 }
 
 /// @nodoc
@@ -214,23 +214,23 @@ class _$ShowCopyWithImpl<$Res> implements $ShowCopyWith<$Res> {
       runtime: runtime == freezed
           ? _value.runtime
           : runtime // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       averageRuntime: averageRuntime == freezed
           ? _value.averageRuntime
           : averageRuntime // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       premiered: premiered == freezed
           ? _value.premiered
           : premiered // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       ended: ended == freezed
           ? _value.ended
           : ended // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       officialSite: officialSite == freezed
           ? _value.officialSite
           : officialSite // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       schedule: schedule == freezed
           ? _value.schedule
           : schedule // ignore: cast_nullable_to_non_nullable
@@ -246,7 +246,7 @@ class _$ShowCopyWithImpl<$Res> implements $ShowCopyWith<$Res> {
       network: network == freezed
           ? _value.network
           : network // ignore: cast_nullable_to_non_nullable
-              as Network,
+              as Network?,
       webChannel: webChannel == freezed
           ? _value.webChannel
           : webChannel // ignore: cast_nullable_to_non_nullable
@@ -262,7 +262,7 @@ class _$ShowCopyWithImpl<$Res> implements $ShowCopyWith<$Res> {
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as Image,
+              as Image?,
       summary: summary == freezed
           ? _value.summary
           : summary // ignore: cast_nullable_to_non_nullable
@@ -274,7 +274,7 @@ class _$ShowCopyWithImpl<$Res> implements $ShowCopyWith<$Res> {
       links: links == freezed
           ? _value.links
           : links // ignore: cast_nullable_to_non_nullable
-              as Links,
+              as Links?,
     ));
   }
 
@@ -293,8 +293,12 @@ class _$ShowCopyWithImpl<$Res> implements $ShowCopyWith<$Res> {
   }
 
   @override
-  $NetworkCopyWith<$Res> get network {
-    return $NetworkCopyWith<$Res>(_value.network, (value) {
+  $NetworkCopyWith<$Res>? get network {
+    if (_value.network == null) {
+      return null;
+    }
+
+    return $NetworkCopyWith<$Res>(_value.network!, (value) {
       return _then(_value.copyWith(network: value));
     });
   }
@@ -307,15 +311,23 @@ class _$ShowCopyWithImpl<$Res> implements $ShowCopyWith<$Res> {
   }
 
   @override
-  $ImageCopyWith<$Res> get image {
-    return $ImageCopyWith<$Res>(_value.image, (value) {
+  $ImageCopyWith<$Res>? get image {
+    if (_value.image == null) {
+      return null;
+    }
+
+    return $ImageCopyWith<$Res>(_value.image!, (value) {
       return _then(_value.copyWith(image: value));
     });
   }
 
   @override
-  $LinksCopyWith<$Res> get links {
-    return $LinksCopyWith<$Res>(_value.links, (value) {
+  $LinksCopyWith<$Res>? get links {
+    if (_value.links == null) {
+      return null;
+    }
+
+    return $LinksCopyWith<$Res>(_value.links!, (value) {
       return _then(_value.copyWith(links: value));
     });
   }
@@ -334,35 +346,35 @@ abstract class _$ShowCopyWith<$Res> implements $ShowCopyWith<$Res> {
       String language,
       List<String> genres,
       String status,
-      int runtime,
-      int averageRuntime,
-      DateTime premiered,
-      DateTime ended,
-      String officialSite,
+      int? runtime,
+      int? averageRuntime,
+      DateTime? premiered,
+      DateTime? ended,
+      String? officialSite,
       Schedule schedule,
       Rating rating,
       int weight,
-      Network network,
+      Network? network,
       dynamic webChannel,
       dynamic dvdCountry,
       Externals externals,
-      Image image,
+      Image? image,
       String summary,
       int updated,
-      Links links});
+      Links? links});
 
   @override
   $ScheduleCopyWith<$Res> get schedule;
   @override
   $RatingCopyWith<$Res> get rating;
   @override
-  $NetworkCopyWith<$Res> get network;
+  $NetworkCopyWith<$Res>? get network;
   @override
   $ExternalsCopyWith<$Res> get externals;
   @override
-  $ImageCopyWith<$Res> get image;
+  $ImageCopyWith<$Res>? get image;
   @override
-  $LinksCopyWith<$Res> get links;
+  $LinksCopyWith<$Res>? get links;
 }
 
 /// @nodoc
@@ -432,23 +444,23 @@ class __$ShowCopyWithImpl<$Res> extends _$ShowCopyWithImpl<$Res>
       runtime: runtime == freezed
           ? _value.runtime
           : runtime // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       averageRuntime: averageRuntime == freezed
           ? _value.averageRuntime
           : averageRuntime // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       premiered: premiered == freezed
           ? _value.premiered
           : premiered // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       ended: ended == freezed
           ? _value.ended
           : ended // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       officialSite: officialSite == freezed
           ? _value.officialSite
           : officialSite // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       schedule: schedule == freezed
           ? _value.schedule
           : schedule // ignore: cast_nullable_to_non_nullable
@@ -464,7 +476,7 @@ class __$ShowCopyWithImpl<$Res> extends _$ShowCopyWithImpl<$Res>
       network: network == freezed
           ? _value.network
           : network // ignore: cast_nullable_to_non_nullable
-              as Network,
+              as Network?,
       webChannel: webChannel == freezed
           ? _value.webChannel
           : webChannel // ignore: cast_nullable_to_non_nullable
@@ -480,7 +492,7 @@ class __$ShowCopyWithImpl<$Res> extends _$ShowCopyWithImpl<$Res>
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as Image,
+              as Image?,
       summary: summary == freezed
           ? _value.summary
           : summary // ignore: cast_nullable_to_non_nullable
@@ -492,7 +504,7 @@ class __$ShowCopyWithImpl<$Res> extends _$ShowCopyWithImpl<$Res>
       links: links == freezed
           ? _value.links
           : links // ignore: cast_nullable_to_non_nullable
-              as Links,
+              as Links?,
     ));
   }
 }
@@ -508,22 +520,22 @@ class _$_Show implements _Show {
       required this.language,
       required this.genres,
       required this.status,
-      required this.runtime,
-      required this.averageRuntime,
-      required this.premiered,
-      required this.ended,
-      required this.officialSite,
+      this.runtime,
+      this.averageRuntime,
+      this.premiered,
+      this.ended,
+      this.officialSite,
       required this.schedule,
       required this.rating,
       required this.weight,
-      required this.network,
+      this.network,
       required this.webChannel,
       required this.dvdCountry,
       required this.externals,
-      required this.image,
+      this.image,
       required this.summary,
       required this.updated,
-      required this.links});
+      this.links});
 
   factory _$_Show.fromJson(Map<String, dynamic> json) => _$$_ShowFromJson(json);
 
@@ -542,15 +554,15 @@ class _$_Show implements _Show {
   @override
   final String status;
   @override
-  final int runtime;
+  final int? runtime;
   @override
-  final int averageRuntime;
+  final int? averageRuntime;
   @override
-  final DateTime premiered;
+  final DateTime? premiered;
   @override
-  final DateTime ended;
+  final DateTime? ended;
   @override
-  final String officialSite;
+  final String? officialSite;
   @override
   final Schedule schedule;
   @override
@@ -558,7 +570,7 @@ class _$_Show implements _Show {
   @override
   final int weight;
   @override
-  final Network network;
+  final Network? network;
   @override
   final dynamic webChannel;
   @override
@@ -566,13 +578,13 @@ class _$_Show implements _Show {
   @override
   final Externals externals;
   @override
-  final Image image;
+  final Image? image;
   @override
   final String summary;
   @override
   final int updated;
   @override
-  final Links links;
+  final Links? links;
 
   @override
   String toString() {
@@ -661,22 +673,22 @@ abstract class _Show implements Show {
       required String language,
       required List<String> genres,
       required String status,
-      required int runtime,
-      required int averageRuntime,
-      required DateTime premiered,
-      required DateTime ended,
-      required String officialSite,
+      int? runtime,
+      int? averageRuntime,
+      DateTime? premiered,
+      DateTime? ended,
+      String? officialSite,
       required Schedule schedule,
       required Rating rating,
       required int weight,
-      required Network network,
+      Network? network,
       required dynamic webChannel,
       required dynamic dvdCountry,
       required Externals externals,
-      required Image image,
+      Image? image,
       required String summary,
       required int updated,
-      required Links links}) = _$_Show;
+      Links? links}) = _$_Show;
 
   factory _Show.fromJson(Map<String, dynamic> json) = _$_Show.fromJson;
 
@@ -695,15 +707,15 @@ abstract class _Show implements Show {
   @override
   String get status;
   @override
-  int get runtime;
+  int? get runtime;
   @override
-  int get averageRuntime;
+  int? get averageRuntime;
   @override
-  DateTime get premiered;
+  DateTime? get premiered;
   @override
-  DateTime get ended;
+  DateTime? get ended;
   @override
-  String get officialSite;
+  String? get officialSite;
   @override
   Schedule get schedule;
   @override
@@ -711,7 +723,7 @@ abstract class _Show implements Show {
   @override
   int get weight;
   @override
-  Network get network;
+  Network? get network;
   @override
   dynamic get webChannel;
   @override
@@ -719,13 +731,13 @@ abstract class _Show implements Show {
   @override
   Externals get externals;
   @override
-  Image get image;
+  Image? get image;
   @override
   String get summary;
   @override
   int get updated;
   @override
-  Links get links;
+  Links? get links;
   @override
   @JsonKey(ignore: true)
   _$ShowCopyWith<_Show> get copyWith => throw _privateConstructorUsedError;
