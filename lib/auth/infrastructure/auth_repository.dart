@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:api_tv_challenge/app/domain/data/services/storage_service.dart';
 import 'package:api_tv_challenge/app/domain/models/app_user.dart';
 import 'package:api_tv_challenge/app/domain/models/password.dart';
 import 'package:api_tv_challenge/app/domain/models/email_address.dart';
+import 'package:api_tv_challenge/app/domain/services/storage_service.dart';
 import 'package:api_tv_challenge/auth/domain/auth_interaction_event.dart';
 import 'package:api_tv_challenge/auth/domain/i_auth_facade.dart';
 import 'package:api_tv_challenge/auth/domain/signup_form.dart';
