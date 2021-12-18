@@ -12,7 +12,7 @@ abstract class InjectableModule {
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 
   ClientApi api(Config config) {
-    return TVApi(
+    return TvApi(
       config.baseUrl,
       enableLogging: true,
     );
