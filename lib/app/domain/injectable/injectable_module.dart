@@ -1,6 +1,3 @@
-import 'package:api_tv_challenge/app/domain/api/config/config.dart';
-import 'package:api_tv_challenge/app/domain/api/domain/client_api.dart';
-import 'package:api_tv_challenge/app/infrastructure/tv_api.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -10,13 +7,6 @@ import 'package:sqflite/sqflite.dart';
 abstract class InjectableModule {
   @preResolve
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
-
-  ClientApi api(Config config) {
-    return TvApi(
-      config.baseUrl,
-      enableLogging: true,
-    );
-  }
 
   @preResolve
   Future<Database> get database async {

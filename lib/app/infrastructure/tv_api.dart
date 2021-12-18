@@ -1,3 +1,5 @@
+import 'package:api_tv_challenge/app/domain/api/data/main_show_api.dart';
+import 'package:api_tv_challenge/app/domain/api/domain/main_show_api_facade.dart';
 import 'package:api_tv_challenge/app/infrastructure/client.dart';
 import 'package:api_tv_challenge/app/domain/api/domain/client_api.dart';
 
@@ -9,7 +11,7 @@ class TvApi implements ClientApi {
   @override
   void init({
     required String baseUrl,
-    bool enableLogging = false,
+    bool enableLogging = true,
   }) {
     Client.instance.init(
       baseUrl: baseUrl,
@@ -17,4 +19,7 @@ class TvApi implements ClientApi {
       enableLogging: enableLogging,
     );
   }
+
+  @override
+  MainShowApiFacade get mainShow => MainShowApi();
 }

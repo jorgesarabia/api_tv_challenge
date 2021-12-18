@@ -16,7 +16,7 @@ class ShowMainScreen extends StatefulWidget {
 class _ShowMainScreenState extends State<ShowMainScreen> {
   @override
   void initState() {
-    BlocProvider.of<ShowBloc>(context).add(const ShowEvent.onEnterToFavorite());
+    BlocProvider.of<ShowBloc>(context).add(const ShowEvent.onEnterToMain());
     super.initState();
   }
 
