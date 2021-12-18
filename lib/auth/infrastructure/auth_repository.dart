@@ -21,7 +21,17 @@ class AuthRepository implements IAuthFacade {
   final Database _database;
 
   @override
-  Future<void> createAccountWithEmailAndPassword({required SignUpForm signUpForm}) async {
+  Future<AuthInteractionEvent> createAccountWithEmailAndPassword({required SignUpForm signUpForm}) async {
+    final checkIfExist = await _database.query(
+      'Users',
+      where: 'email = ?',
+      whereArgs: [signUpForm.emailAddress.value],
+    );
+
+    if (checkIfExist.isNotEmpty) {
+      return const AuthInteractionEvent.emailAlreadyInUse();
+    }
+
     Map<String, Object?> values = {
       'nombre': signUpForm.firstName.value,
       'email': signUpForm.emailAddress.value,
@@ -39,11 +49,15 @@ class AuthRepository implements IAuthFacade {
         lastName: signUpForm.lastName.value,
         email: signUpForm.emailAddress.value,
       ));
+
+      return const AuthInteractionEvent.loggedInSuccesfully();
     }
+
+    return const AuthInteractionEvent.serverError();
   }
 
   Future<void> _saveCurrentUser(AppUser user) async {
-    await _storageService.setUserJsonString(jsonEncode(user));
+    // await _storageService.setUserJsonString(jsonEncode(user));
   }
 
   @override

@@ -31,12 +31,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (_formIsValid && !state.isSubmitting) {
       emit(state.copyWith(isSubmitting: true));
 
-      final isLoggedIn = await _authFacade.signInWithEmailAndPassword(
+      final restult = await _authFacade.signInWithEmailAndPassword(
         emailAddress: state.emailAddress,
         password: state.password,
       );
 
-      emit(state.copyWith(isSubmitting: false));
+      emit(state.copyWith(
+        isSubmitting: false,
+        authInteractionEvent: restult,
+      ));
     }
   }
 

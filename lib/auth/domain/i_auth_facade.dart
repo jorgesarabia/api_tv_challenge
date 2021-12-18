@@ -14,7 +14,7 @@ abstract class IAuthFacade {
 
   Future<void> signOut();
 
-  Future<void> createAccountWithEmailAndPassword({
+  Future<AuthInteractionEvent> createAccountWithEmailAndPassword({
     required SignUpForm signUpForm,
   });
 }
