@@ -9,15 +9,15 @@ part 'auth_bloc.freezed.dart';
 
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc(this.authFacade) : super(const AuthState.initial()) {
+  AuthBloc(this._authFacade) : super(const AuthState.initial()) {
     on<_AppIsStarting>(_mapAppIsStartingToState);
     on<_SignOutPressed>(_mapSignOutPressedToState);
   }
 
-  final IAuthFacade authFacade;
+  final IAuthFacade _authFacade;
 
   void _mapAppIsStartingToState(event, Emitter<AuthState> emit) async {
-    final isLoggedIn = await authFacade.getSignedInUser();
+    final isLoggedIn = await _authFacade.getSignedInUser();
 
     if (isLoggedIn != null) {
       emit(const AuthState.isLoggedIn());
@@ -27,7 +27,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   void _mapSignOutPressedToState(event, Emitter<AuthState> emit) async {
-    await authFacade.signOut();
+    await _authFacade.signOut();
 
     emit(const AuthState.userIsNotLoggedIn());
   }

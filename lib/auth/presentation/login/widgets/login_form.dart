@@ -7,20 +7,11 @@ class _LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<LoginBloc, LoginState>(
       listener: (context, state) {
-        // state.logginWasSuccessOption.fold(
-        //   () => null,
-        //   (ifSome) {
-        //     ifSome.fold(
-        //       (l) => AppSnackBar.of(context).showSnackBar(
-        //         message: l.maybeMap(
-        //           invalidCombination: (_) => 'Combinación password/usuario inválida',
-        //           orElse: () => 'Error desconocido en el servidor',
-        //         ),
-        //       ),
-        //       (r) => context.read<AuthBloc>().add(const AuthEvent.appIsStarting()),
-        //     );
-        //   },
-        // );
+        state.authInteractionEvent.maybeWhen(
+          none: () => null,
+          loggedInSuccesfully: () => context.read<AuthBloc>().add(const AuthEvent.appIsStarting()),
+          orElse: () => AppSnackBar.of(context).showSnackBar(message: 'Invalid password/email combination'),
+        );
       },
       builder: (context, state) {
         return Form(
@@ -36,7 +27,7 @@ class _LoginForm extends StatelessWidget {
               ),
               const SizedBox(height: 10.0),
               AppTextForm(
-                hintText: 'Contraseña',
+                hintText: 'Password',
                 obscureText: true,
                 maxLines: 1,
                 onChanged: (input) {

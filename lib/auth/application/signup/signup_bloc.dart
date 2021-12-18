@@ -16,7 +16,7 @@ part 'signup_bloc.freezed.dart';
 
 @injectable
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
-  SignUpBloc(this.authFacade) : super(SignUpState.initial()) {
+  SignUpBloc(this._authFacade) : super(SignUpState.initial()) {
     on<_SignupButtonPressed>(_mapSignupButtonPressedEventToState);
     on<_EmailChange>(_mapEmailChangeEventToState);
     on<_PasswordChange>(_mapPasswordChangeEventToState);
@@ -24,7 +24,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     on<_LastNameChange>(_mapLastNameChangeEventToState);
   }
 
-  final IAuthFacade authFacade;
+  final IAuthFacade _authFacade;
 
   FutureOr<void> _mapSignupButtonPressedEventToState(_SignupButtonPressed event, Emitter<SignUpState> emit) async {
     emit(state.copyWith(autovalidateMode: AutovalidateMode.always));
@@ -34,7 +34,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         isSubmitting: true,
       ));
 
-      final isLoggedIn = await authFacade.createAccountWithEmailAndPassword(
+      final isLoggedIn = await _authFacade.createAccountWithEmailAndPassword(
         signUpForm: state.signUpForm,
       );
 

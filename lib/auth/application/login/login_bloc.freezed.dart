@@ -498,11 +498,13 @@ class _$LoginStateTearOff {
       {required EmailAddress emailAddress,
       required Password password,
       required bool isSubmitting,
+      required AuthInteractionEvent authInteractionEvent,
       required AutovalidateMode autovalidateMode}) {
     return _LoginUserState(
       emailAddress: emailAddress,
       password: password,
       isSubmitting: isSubmitting,
+      authInteractionEvent: authInteractionEvent,
       autovalidateMode: autovalidateMode,
     );
   }
@@ -516,6 +518,8 @@ mixin _$LoginState {
   EmailAddress get emailAddress => throw _privateConstructorUsedError;
   Password get password => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
+  AuthInteractionEvent get authInteractionEvent =>
+      throw _privateConstructorUsedError;
   AutovalidateMode get autovalidateMode => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -532,7 +536,10 @@ abstract class $LoginStateCopyWith<$Res> {
       {EmailAddress emailAddress,
       Password password,
       bool isSubmitting,
+      AuthInteractionEvent authInteractionEvent,
       AutovalidateMode autovalidateMode});
+
+  $AuthInteractionEventCopyWith<$Res> get authInteractionEvent;
 }
 
 /// @nodoc
@@ -548,6 +555,7 @@ class _$LoginStateCopyWithImpl<$Res> implements $LoginStateCopyWith<$Res> {
     Object? emailAddress = freezed,
     Object? password = freezed,
     Object? isSubmitting = freezed,
+    Object? authInteractionEvent = freezed,
     Object? autovalidateMode = freezed,
   }) {
     return _then(_value.copyWith(
@@ -563,11 +571,23 @@ class _$LoginStateCopyWithImpl<$Res> implements $LoginStateCopyWith<$Res> {
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
+      authInteractionEvent: authInteractionEvent == freezed
+          ? _value.authInteractionEvent
+          : authInteractionEvent // ignore: cast_nullable_to_non_nullable
+              as AuthInteractionEvent,
       autovalidateMode: autovalidateMode == freezed
           ? _value.autovalidateMode
           : autovalidateMode // ignore: cast_nullable_to_non_nullable
               as AutovalidateMode,
     ));
+  }
+
+  @override
+  $AuthInteractionEventCopyWith<$Res> get authInteractionEvent {
+    return $AuthInteractionEventCopyWith<$Res>(_value.authInteractionEvent,
+        (value) {
+      return _then(_value.copyWith(authInteractionEvent: value));
+    });
   }
 }
 
@@ -582,7 +602,11 @@ abstract class _$LoginUserStateCopyWith<$Res>
       {EmailAddress emailAddress,
       Password password,
       bool isSubmitting,
+      AuthInteractionEvent authInteractionEvent,
       AutovalidateMode autovalidateMode});
+
+  @override
+  $AuthInteractionEventCopyWith<$Res> get authInteractionEvent;
 }
 
 /// @nodoc
@@ -600,6 +624,7 @@ class __$LoginUserStateCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
     Object? emailAddress = freezed,
     Object? password = freezed,
     Object? isSubmitting = freezed,
+    Object? authInteractionEvent = freezed,
     Object? autovalidateMode = freezed,
   }) {
     return _then(_LoginUserState(
@@ -615,6 +640,10 @@ class __$LoginUserStateCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
+      authInteractionEvent: authInteractionEvent == freezed
+          ? _value.authInteractionEvent
+          : authInteractionEvent // ignore: cast_nullable_to_non_nullable
+              as AuthInteractionEvent,
       autovalidateMode: autovalidateMode == freezed
           ? _value.autovalidateMode
           : autovalidateMode // ignore: cast_nullable_to_non_nullable
@@ -630,6 +659,7 @@ class _$_LoginUserState implements _LoginUserState {
       {required this.emailAddress,
       required this.password,
       required this.isSubmitting,
+      required this.authInteractionEvent,
       required this.autovalidateMode});
 
   @override
@@ -639,11 +669,13 @@ class _$_LoginUserState implements _LoginUserState {
   @override
   final bool isSubmitting;
   @override
+  final AuthInteractionEvent authInteractionEvent;
+  @override
   final AutovalidateMode autovalidateMode;
 
   @override
   String toString() {
-    return 'LoginState(emailAddress: $emailAddress, password: $password, isSubmitting: $isSubmitting, autovalidateMode: $autovalidateMode)';
+    return 'LoginState(emailAddress: $emailAddress, password: $password, isSubmitting: $isSubmitting, authInteractionEvent: $authInteractionEvent, autovalidateMode: $autovalidateMode)';
   }
 
   @override
@@ -657,6 +689,8 @@ class _$_LoginUserState implements _LoginUserState {
             const DeepCollectionEquality()
                 .equals(other.isSubmitting, isSubmitting) &&
             const DeepCollectionEquality()
+                .equals(other.authInteractionEvent, authInteractionEvent) &&
+            const DeepCollectionEquality()
                 .equals(other.autovalidateMode, autovalidateMode));
   }
 
@@ -666,6 +700,7 @@ class _$_LoginUserState implements _LoginUserState {
       const DeepCollectionEquality().hash(emailAddress),
       const DeepCollectionEquality().hash(password),
       const DeepCollectionEquality().hash(isSubmitting),
+      const DeepCollectionEquality().hash(authInteractionEvent),
       const DeepCollectionEquality().hash(autovalidateMode));
 
   @JsonKey(ignore: true)
@@ -679,6 +714,7 @@ abstract class _LoginUserState implements LoginState {
       {required EmailAddress emailAddress,
       required Password password,
       required bool isSubmitting,
+      required AuthInteractionEvent authInteractionEvent,
       required AutovalidateMode autovalidateMode}) = _$_LoginUserState;
 
   @override
@@ -687,6 +723,8 @@ abstract class _LoginUserState implements LoginState {
   Password get password;
   @override
   bool get isSubmitting;
+  @override
+  AuthInteractionEvent get authInteractionEvent;
   @override
   AutovalidateMode get autovalidateMode;
   @override

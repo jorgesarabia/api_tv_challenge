@@ -9,7 +9,7 @@ class _LoginToCreate extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text(
-          '¿Nuevo en la app?',
+          "Don't have an account?",
           style: TextStyle(),
         ),
         const SizedBox(width: 5.0),
@@ -24,7 +24,7 @@ class _LoginToCreate extends StatelessWidget {
             );
           },
           child: const Text(
-            'Crear cuenta',
+            'Create account',
             style: TextStyle(
               color: Colors.red,
               fontWeight: FontWeight.bold,

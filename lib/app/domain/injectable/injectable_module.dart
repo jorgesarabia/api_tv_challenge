@@ -2,7 +2,9 @@ import 'package:api_tv_challenge/app/domain/api/config/config.dart';
 import 'package:api_tv_challenge/app/domain/data/services/client_api.dart';
 import 'package:api_tv_challenge/app/domain/data/services/tft_api.dart';
 import 'package:injectable/injectable.dart';
+import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sqflite/sqflite.dart';
 
 @module
 abstract class InjectableModule {
@@ -16,24 +18,25 @@ abstract class InjectableModule {
     );
   }
 
-  // @preResolve
-  // Future<Database> get database async {
-  //   final databasesPath = await getDatabasesPath();
-  //   final path = join(databasesPath, 'app.db');
+  @preResolve
+  Future<Database> get database async {
+    final databasesPath = await getDatabasesPath();
+    final path = join(databasesPath, 'app.db');
 
-  //   return openDatabase(
-  //     path,
-  //     version: 1,
-  //     onCreate: (Database db, int version) async {
-  //       const query = '''
-  //       CREATE TABLE Users(
-  //         id INTEGER PRIMARY KEY,
-  //         nombre TEXT,
-  //         email TEXT,
-  //       )
-  //       ''';
-  //       await db.execute(query);
-  //     },
-  //   );
-  // }
+    return openDatabase(
+      path,
+      version: 1,
+      onCreate: (Database db, int version) async {
+        const query = '''
+        CREATE TABLE Users(
+          id INTEGER PRIMARY KEY,
+          nombre TEXT,
+          email TEXT,
+          password TEXT
+        )
+        ''';
+        await db.execute(query);
+      },
+    );
+  }
 }

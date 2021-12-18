@@ -10,6 +10,7 @@ class StorageService {
   final SharedPreferences _preferences;
 
   String? getCurrentUser() => _preferences.getString(Keys.currentUser);
+  Future<bool> setUserJsonString(String userJson) => _preferences.setString(Keys.currentUser, userJson);
 }
 
 class Keys {

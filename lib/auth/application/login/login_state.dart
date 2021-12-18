@@ -6,6 +6,7 @@ class LoginState with _$LoginState {
     required EmailAddress emailAddress,
     required Password password,
     required bool isSubmitting,
+    required AuthInteractionEvent authInteractionEvent,
     required AutovalidateMode autovalidateMode,
   }) = _LoginUserState;
 
@@ -14,6 +15,7 @@ class LoginState with _$LoginState {
       emailAddress: EmailAddress(''),
       password: Password(''),
       isSubmitting: false,
+      authInteractionEvent: const AuthInteractionEvent.none(),
       autovalidateMode: AutovalidateMode.disabled,
     );
   }

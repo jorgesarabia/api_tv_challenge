@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:api_tv_challenge/app/domain/models/email_address.dart';
 import 'package:api_tv_challenge/app/domain/models/password.dart';
+import 'package:api_tv_challenge/auth/domain/auth_interaction_event.dart';
 import 'package:api_tv_challenge/auth/domain/i_auth_facade.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,13 +15,13 @@ part 'login_bloc.freezed.dart';
 
 @injectable
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc(this.authFacade) : super(LoginState.initial()) {
+  LoginBloc(this._authFacade) : super(LoginState.initial()) {
     on<_LoginBtnPressed>(_mapLoginBtnPressedEventToState);
     on<_EmailChange>(_mapEmailChangeEventToState);
     on<_PasswordChange>(_mapPasswordChangeEventToState);
   }
 
-  final IAuthFacade authFacade;
+  final IAuthFacade _authFacade;
 
   bool get _formIsValid => state.password.isValid && state.emailAddress.isValid;
 
@@ -30,7 +31,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (_formIsValid && !state.isSubmitting) {
       emit(state.copyWith(isSubmitting: true));
 
-      final isLoggedIn = await authFacade.signInWithEmailAndPassword(
+      final isLoggedIn = await _authFacade.signInWithEmailAndPassword(
         emailAddress: state.emailAddress,
         password: state.password,
       );
