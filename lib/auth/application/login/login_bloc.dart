@@ -43,14 +43,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     }
   }
 
-  FutureOr<void> _mapEmailChangeEventToState(_EmailChange event, Emitter<LoginState> emit) {
+  void _mapEmailChangeEventToState(_EmailChange event, Emitter<LoginState> emit) {
     emit(state.copyWith(
       emailAddress: EmailAddress(event.email.trim()),
       authInteractionEvent: const AuthInteractionEvent.none(),
     ));
   }
 
-  FutureOr<void> _mapPasswordChangeEventToState(_PasswordChange event, Emitter<LoginState> emit) {
+  void _mapPasswordChangeEventToState(_PasswordChange event, Emitter<LoginState> emit) {
     emit(state.copyWith(
       password: Password(event.password),
       authInteractionEvent: const AuthInteractionEvent.none(),

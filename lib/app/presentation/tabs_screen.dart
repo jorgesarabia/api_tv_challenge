@@ -1,5 +1,6 @@
 import 'package:api_tv_challenge/app/presentation/app_button.dart';
 import 'package:api_tv_challenge/auth/application/auth/auth_bloc.dart';
+import 'package:api_tv_challenge/shows/presentation/show_main/show_main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,7 +19,7 @@ class _TabsPageState extends State<TabsScreen> {
       child: Scaffold(
         body: TabBarView(
           children: [
-            const Icon(Icons.directions_car),
+            const ShowMainScreen(),
             const Icon(Icons.directions_bike),
             const Icon(Icons.directions_bike),
             AppButton(
