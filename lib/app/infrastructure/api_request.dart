@@ -1,6 +1,6 @@
-import 'package:api_tv_challenge/app/domain/api/client.dart';
+import 'package:api_tv_challenge/app/infrastructure/client.dart';
+import 'package:api_tv_challenge/app/infrastructure/request.dart';
 import 'package:api_tv_challenge/app/domain/api/models/api_result.dart';
-import 'package:api_tv_challenge/app/domain/api/request.dart';
 
 Future<ApiResult<T>> request<T>(
   ApiRequest request,

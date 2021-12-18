@@ -1,5 +1,6 @@
 import 'package:api_tv_challenge/app/presentation/app_search_input.dart';
 import 'package:api_tv_challenge/shows/application/show/show_bloc.dart';
+import 'package:api_tv_challenge/shows/presentation/common/show_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

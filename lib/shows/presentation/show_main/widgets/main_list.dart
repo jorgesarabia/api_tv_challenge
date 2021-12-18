@@ -10,7 +10,7 @@ class _MainList extends StatelessWidget {
         return ListView.builder(
           itemCount: state.shows.length,
           itemBuilder: (context, index) {
-            return Text('');
+            return ShowCard(show: state.shows[index]);
           },
         );
       },

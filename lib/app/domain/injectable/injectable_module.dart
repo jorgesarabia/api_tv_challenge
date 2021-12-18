@@ -1,5 +1,5 @@
 import 'package:api_tv_challenge/app/domain/api/config/config.dart';
-import 'package:api_tv_challenge/app/domain/api/models/client_api.dart';
+import 'package:api_tv_challenge/app/domain/api/domain/client_api.dart';
 import 'package:api_tv_challenge/app/infrastructure/tv_api.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path/path.dart';

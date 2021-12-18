@@ -1,14 +1,12 @@
-library api;
-
 import 'dart:developer';
 
-import 'package:api_tv_challenge/app/domain/api/request.dart';
+import 'package:api_tv_challenge/app/infrastructure/request.dart';
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class Client {
-  Client._privateConstructor();
-  static final Client _instance = Client._privateConstructor();
+  Client._();
+  static final Client _instance = Client._();
   static Client get instance => _instance;
 
   late Dio dio;

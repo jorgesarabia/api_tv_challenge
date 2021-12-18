@@ -1,4 +1,4 @@
-import 'package:api_tv_challenge/app/domain/api/http_method.dart';
+import 'package:api_tv_challenge/app/domain/api/utils/http_method.dart';
 
 class ApiRequest {
   ApiRequest._({

@@ -1,5 +1,5 @@
-import 'package:api_tv_challenge/app/domain/api/client.dart';
-import 'package:api_tv_challenge/app/domain/api/models/client_api.dart';
+import 'package:api_tv_challenge/app/infrastructure/client.dart';
+import 'package:api_tv_challenge/app/domain/api/domain/client_api.dart';
 
 class TvApi implements ClientApi {
   TvApi(String baseUrl, {bool enableLogging = false}) {
