@@ -1,6 +1,8 @@
 import 'package:api_tv_challenge/app/domain/injectable/injection.dart';
 import 'package:api_tv_challenge/app/presentation/app_button.dart';
+import 'package:api_tv_challenge/app/presentation/app_snack_bar.dart';
 import 'package:api_tv_challenge/app/presentation/app_text_form.dart';
+import 'package:api_tv_challenge/auth/application/auth/auth_bloc.dart';
 import 'package:api_tv_challenge/auth/application/signup/signup_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

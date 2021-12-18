@@ -45,7 +45,7 @@ class AuthRepository implements IAuthFacade {
     );
 
     if (result != 0) {
-      _saveCurrentUser(AppUser(
+      await _saveCurrentUser(AppUser(
         firstName: signUpForm.firstName.value,
         lastName: signUpForm.lastName.value,
         email: signUpForm.emailAddress.value,

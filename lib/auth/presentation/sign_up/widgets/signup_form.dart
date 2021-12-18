@@ -7,23 +7,17 @@ class _SignUpForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<SignUpBloc, SignUpState>(
       listener: (context, state) {
-        // state.logginWasSuccessOption.fold(
-        //   () => null,
-        //   (ifSome) {
-        //     ifSome.fold(
-        //       (l) => AppSnackBar.of(context).showSnackBar(
-        //         message: l.maybeMap(
-        //           emailAlreadyInUse: (e) => 'Usuario ya existe',
-        //           orElse: () => 'Error desconocido en el servidor',
-        //         ),
-        //       ),
-        //       (r) {
-        //         context.read<AuthBloc>().add(const AuthEvent.appIsStarting());
-        //         Navigator.of(context).pop();
-        //       },
-        //     );
-        //   },
-        // );
+        state.authInteractionEvent.maybeWhen(
+          none: () => null,
+          loggedInSuccesfully: () {
+            context.read<AuthBloc>().add(const AuthEvent.appIsStarting());
+            Navigator.of(context).pop();
+          },
+          orElse: () => AppSnackBar.of(context).showSnackBar(
+            message: 'This user already exist',
+            color: Colors.red.withOpacity(0.5),
+          ),
+        );
       },
       builder: (context, state) {
         return Form(
@@ -34,7 +28,7 @@ class _SignUpForm extends StatelessWidget {
                 children: [
                   Expanded(
                     child: AppTextForm(
-                      hintText: 'Nombre',
+                      hintText: 'First name',
                       onChanged: (input) {
                         context.read<SignUpBloc>().add(SignUpEvent.firstNameChanged(input));
                       },
@@ -46,7 +40,7 @@ class _SignUpForm extends StatelessWidget {
                   const SizedBox(width: 5.0),
                   Expanded(
                     child: AppTextForm(
-                      hintText: 'Apellido',
+                      hintText: 'Last name',
                       onChanged: (input) {
                         context.read<SignUpBloc>().add(SignUpEvent.lastNameChanged(input));
                       },
@@ -65,7 +59,7 @@ class _SignUpForm extends StatelessWidget {
               ),
               const SizedBox(height: 10.0),
               AppTextForm(
-                hintText: 'Contraseña',
+                hintText: 'Password',
                 obscureText: true,
                 maxLines: 1,
                 onChanged: (input) {

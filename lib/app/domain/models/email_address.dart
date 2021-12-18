@@ -10,7 +10,7 @@ class EmailAddress extends Validator {
   @override
   String? get message {
     if (!isValid) {
-      return 'Ingrese un correo electrónico válido';
+      return 'Enter a valid email address';
     }
 
     return null;

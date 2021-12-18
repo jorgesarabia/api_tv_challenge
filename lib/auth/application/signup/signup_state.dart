@@ -6,6 +6,7 @@ class SignUpState with _$SignUpState {
     required SignUpForm signUpForm,
     required bool isSubmitting,
     required AutovalidateMode autovalidateMode,
+    required AuthInteractionEvent authInteractionEvent,
   }) = _SignUpState;
 
   factory SignUpState.initial() {
@@ -13,6 +14,7 @@ class SignUpState with _$SignUpState {
       signUpForm: SignUpForm.empty(),
       isSubmitting: false,
       autovalidateMode: AutovalidateMode.disabled,
+      authInteractionEvent: const AuthInteractionEvent.none(),
     );
   }
 }

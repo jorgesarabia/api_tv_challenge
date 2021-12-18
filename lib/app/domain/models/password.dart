@@ -20,7 +20,7 @@ class Password extends Validator {
   @override
   String? get message {
     if (!isValid) {
-      return 'Debe contener, al menos una minúscula, \nuna mayúscula, un número y más de 6 caracteres';
+      return 'Must contain at least one lower case, \none upper case, one number and more than 6 characters';
     }
 
     return null;

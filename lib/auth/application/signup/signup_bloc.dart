@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:api_tv_challenge/app/domain/models/email_address.dart';
 import 'package:api_tv_challenge/app/domain/models/is_required.dart';
 import 'package:api_tv_challenge/app/domain/models/password.dart';
+import 'package:api_tv_challenge/auth/domain/auth_interaction_event.dart';
 import 'package:api_tv_challenge/auth/domain/i_auth_facade.dart';
 import 'package:api_tv_challenge/auth/domain/signup_form.dart';
 import 'package:flutter/material.dart';
@@ -34,11 +35,14 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         isSubmitting: true,
       ));
 
-      final isLoggedIn = await _authFacade.createAccountWithEmailAndPassword(
+      final result = await _authFacade.createAccountWithEmailAndPassword(
         signUpForm: state.signUpForm,
       );
 
-      emit(state.copyWith(isSubmitting: false));
+      emit(state.copyWith(
+        isSubmitting: false,
+        authInteractionEvent: result,
+      ));
     }
   }
 
@@ -49,6 +53,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
           event.email.trim(),
         ),
       ),
+      authInteractionEvent: const AuthInteractionEvent.none(),
     ));
   }
 
@@ -57,6 +62,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       signUpForm: state.signUpForm.copyWith(
         password: Password(event.password),
       ),
+      authInteractionEvent: const AuthInteractionEvent.none(),
     ));
   }
 
@@ -65,6 +71,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       signUpForm: state.signUpForm.copyWith(
         firstName: IsRequired(event.firstName),
       ),
+      authInteractionEvent: const AuthInteractionEvent.none(),
     ));
   }
 
@@ -73,6 +80,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       signUpForm: state.signUpForm.copyWith(
         lastName: IsRequired(event.lastName),
       ),
+      authInteractionEvent: const AuthInteractionEvent.none(),
     ));
   }
 }

@@ -862,11 +862,13 @@ class _$SignUpStateTearOff {
   _SignUpState call(
       {required SignUpForm signUpForm,
       required bool isSubmitting,
-      required AutovalidateMode autovalidateMode}) {
+      required AutovalidateMode autovalidateMode,
+      required AuthInteractionEvent authInteractionEvent}) {
     return _SignUpState(
       signUpForm: signUpForm,
       isSubmitting: isSubmitting,
       autovalidateMode: autovalidateMode,
+      authInteractionEvent: authInteractionEvent,
     );
   }
 }
@@ -879,6 +881,8 @@ mixin _$SignUpState {
   SignUpForm get signUpForm => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   AutovalidateMode get autovalidateMode => throw _privateConstructorUsedError;
+  AuthInteractionEvent get authInteractionEvent =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SignUpStateCopyWith<SignUpState> get copyWith =>
@@ -893,7 +897,10 @@ abstract class $SignUpStateCopyWith<$Res> {
   $Res call(
       {SignUpForm signUpForm,
       bool isSubmitting,
-      AutovalidateMode autovalidateMode});
+      AutovalidateMode autovalidateMode,
+      AuthInteractionEvent authInteractionEvent});
+
+  $AuthInteractionEventCopyWith<$Res> get authInteractionEvent;
 }
 
 /// @nodoc
@@ -909,6 +916,7 @@ class _$SignUpStateCopyWithImpl<$Res> implements $SignUpStateCopyWith<$Res> {
     Object? signUpForm = freezed,
     Object? isSubmitting = freezed,
     Object? autovalidateMode = freezed,
+    Object? authInteractionEvent = freezed,
   }) {
     return _then(_value.copyWith(
       signUpForm: signUpForm == freezed
@@ -923,7 +931,19 @@ class _$SignUpStateCopyWithImpl<$Res> implements $SignUpStateCopyWith<$Res> {
           ? _value.autovalidateMode
           : autovalidateMode // ignore: cast_nullable_to_non_nullable
               as AutovalidateMode,
+      authInteractionEvent: authInteractionEvent == freezed
+          ? _value.authInteractionEvent
+          : authInteractionEvent // ignore: cast_nullable_to_non_nullable
+              as AuthInteractionEvent,
     ));
+  }
+
+  @override
+  $AuthInteractionEventCopyWith<$Res> get authInteractionEvent {
+    return $AuthInteractionEventCopyWith<$Res>(_value.authInteractionEvent,
+        (value) {
+      return _then(_value.copyWith(authInteractionEvent: value));
+    });
   }
 }
 
@@ -937,7 +957,11 @@ abstract class _$SignUpStateCopyWith<$Res>
   $Res call(
       {SignUpForm signUpForm,
       bool isSubmitting,
-      AutovalidateMode autovalidateMode});
+      AutovalidateMode autovalidateMode,
+      AuthInteractionEvent authInteractionEvent});
+
+  @override
+  $AuthInteractionEventCopyWith<$Res> get authInteractionEvent;
 }
 
 /// @nodoc
@@ -955,6 +979,7 @@ class __$SignUpStateCopyWithImpl<$Res> extends _$SignUpStateCopyWithImpl<$Res>
     Object? signUpForm = freezed,
     Object? isSubmitting = freezed,
     Object? autovalidateMode = freezed,
+    Object? authInteractionEvent = freezed,
   }) {
     return _then(_SignUpState(
       signUpForm: signUpForm == freezed
@@ -969,6 +994,10 @@ class __$SignUpStateCopyWithImpl<$Res> extends _$SignUpStateCopyWithImpl<$Res>
           ? _value.autovalidateMode
           : autovalidateMode // ignore: cast_nullable_to_non_nullable
               as AutovalidateMode,
+      authInteractionEvent: authInteractionEvent == freezed
+          ? _value.authInteractionEvent
+          : authInteractionEvent // ignore: cast_nullable_to_non_nullable
+              as AuthInteractionEvent,
     ));
   }
 }
@@ -979,7 +1008,8 @@ class _$_SignUpState implements _SignUpState {
   const _$_SignUpState(
       {required this.signUpForm,
       required this.isSubmitting,
-      required this.autovalidateMode});
+      required this.autovalidateMode,
+      required this.authInteractionEvent});
 
   @override
   final SignUpForm signUpForm;
@@ -987,10 +1017,12 @@ class _$_SignUpState implements _SignUpState {
   final bool isSubmitting;
   @override
   final AutovalidateMode autovalidateMode;
+  @override
+  final AuthInteractionEvent authInteractionEvent;
 
   @override
   String toString() {
-    return 'SignUpState(signUpForm: $signUpForm, isSubmitting: $isSubmitting, autovalidateMode: $autovalidateMode)';
+    return 'SignUpState(signUpForm: $signUpForm, isSubmitting: $isSubmitting, autovalidateMode: $autovalidateMode, authInteractionEvent: $authInteractionEvent)';
   }
 
   @override
@@ -1003,7 +1035,9 @@ class _$_SignUpState implements _SignUpState {
             const DeepCollectionEquality()
                 .equals(other.isSubmitting, isSubmitting) &&
             const DeepCollectionEquality()
-                .equals(other.autovalidateMode, autovalidateMode));
+                .equals(other.autovalidateMode, autovalidateMode) &&
+            const DeepCollectionEquality()
+                .equals(other.authInteractionEvent, authInteractionEvent));
   }
 
   @override
@@ -1011,7 +1045,8 @@ class _$_SignUpState implements _SignUpState {
       runtimeType,
       const DeepCollectionEquality().hash(signUpForm),
       const DeepCollectionEquality().hash(isSubmitting),
-      const DeepCollectionEquality().hash(autovalidateMode));
+      const DeepCollectionEquality().hash(autovalidateMode),
+      const DeepCollectionEquality().hash(authInteractionEvent));
 
   @JsonKey(ignore: true)
   @override
@@ -1023,7 +1058,8 @@ abstract class _SignUpState implements SignUpState {
   const factory _SignUpState(
       {required SignUpForm signUpForm,
       required bool isSubmitting,
-      required AutovalidateMode autovalidateMode}) = _$_SignUpState;
+      required AutovalidateMode autovalidateMode,
+      required AuthInteractionEvent authInteractionEvent}) = _$_SignUpState;
 
   @override
   SignUpForm get signUpForm;
@@ -1031,6 +1067,8 @@ abstract class _SignUpState implements SignUpState {
   bool get isSubmitting;
   @override
   AutovalidateMode get autovalidateMode;
+  @override
+  AuthInteractionEvent get authInteractionEvent;
   @override
   @JsonKey(ignore: true)
   _$SignUpStateCopyWith<_SignUpState> get copyWith =>
