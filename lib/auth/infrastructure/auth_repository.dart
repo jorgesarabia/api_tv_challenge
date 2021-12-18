@@ -58,7 +58,7 @@ class AuthRepository implements IAuthFacade {
   }
 
   Future<void> _saveCurrentUser(AppUser user) async {
-    // await _storageService.setUserJsonString(jsonEncode(user));
+    await _storageService.setUserJsonString(jsonEncode(user));
   }
 
   @override
@@ -86,9 +86,6 @@ class AuthRepository implements IAuthFacade {
     if (result.isEmpty) {
       return const AuthInteractionEvent.invalidCombination();
     }
-
-    print(result);
-    print(result[0]);
 
     final user = AppUser(
       firstName: result[0]['firstName'] as String,

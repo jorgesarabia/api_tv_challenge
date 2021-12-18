@@ -13,7 +13,7 @@ class LandingScreen extends StatelessWidget {
       body: BlocBuilder<AuthBloc, AuthState>(
         builder: (context, state) {
           return state.map(
-            initial: (_) => Container(),
+            initial: (_) => const Center(child: CircularProgressIndicator()),
             isLoggedIn: (_) => const TabsScreen(),
             userIsNotLoggedIn: (_) => const LoginScreen(),
           );

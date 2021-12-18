@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
       create: (_) => getIt<LoginBloc>(),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Login Page'),
+          title: const Text('Login Screen'),
         ),
         body: SingleChildScrollView(
           child: Padding(
