@@ -18,7 +18,7 @@ import '../../../auth/infrastructure/auth_repository.dart' as _i11;
 import '../api/config/config.dart' as _i3;
 import '../api/config/dev_config.dart' as _i5;
 import '../api/config/prod_config.dart' as _i4;
-import '../services/client_api.dart' as _i9;
+import '../api/models/client_api.dart' as _i9;
 import '../services/storage_service.dart' as _i8;
 import 'injectable_module.dart' as _i16;
 

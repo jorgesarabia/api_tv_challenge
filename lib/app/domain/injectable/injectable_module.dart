@@ -1,6 +1,6 @@
 import 'package:api_tv_challenge/app/domain/api/config/config.dart';
-import 'package:api_tv_challenge/app/domain/services/client_api.dart';
-import 'package:api_tv_challenge/app/domain/services/tv_api.dart';
+import 'package:api_tv_challenge/app/domain/api/models/client_api.dart';
+import 'package:api_tv_challenge/app/infrastructure/tv_api.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
