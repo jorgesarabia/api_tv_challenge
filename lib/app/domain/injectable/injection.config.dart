@@ -15,6 +15,7 @@ import '../../../auth/application/login/login_bloc.dart' as _i14;
 import '../../../auth/application/signup/signup_bloc.dart' as _i18;
 import '../../../auth/domain/i_auth_facade.dart' as _i11;
 import '../../../auth/infrastructure/auth_repository.dart' as _i12;
+import '../../../shows/application/episodes_bloc/episodes_bloc.dart' as _i20;
 import '../../../shows/application/show/show_bloc.dart' as _i17;
 import '../../../shows/domain/repositories/main_repository_facade.dart' as _i15;
 import '../../../shows/infrastructure/main_repository.dart' as _i16;
@@ -24,8 +25,8 @@ import '../api/config/prod_config.dart' as _i4;
 import '../api/domain/client_api.dart' as _i10;
 import '../api/domain/main_show_api_facade.dart' as _i7;
 import '../services/storage_service.dart' as _i9;
-import 'injectable_api.dart' as _i21;
-import 'injectable_module.dart' as _i20;
+import 'injectable_api.dart' as _i22;
+import 'injectable_module.dart' as _i21;
 
 const String _prod = 'prod';
 const String _dev = 'dev';
@@ -56,9 +57,11 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       () => _i17.ShowBloc(get<_i15.MainRepositoryFacade>()));
   gh.factory<_i18.SignUpBloc>(() => _i18.SignUpBloc(get<_i11.IAuthFacade>()));
   gh.factory<_i19.AuthBloc>(() => _i19.AuthBloc(get<_i11.IAuthFacade>()));
+  gh.factory<_i20.EpisodesBloc>(
+      () => _i20.EpisodesBloc(get<_i15.MainRepositoryFacade>()));
   return get;
 }
 
-class _$InjectableModule extends _i20.InjectableModule {}
+class _$InjectableModule extends _i21.InjectableModule {}
 
-class _$InjectableApi extends _i21.InjectableApi {}
+class _$InjectableApi extends _i22.InjectableApi {}

@@ -20,7 +20,9 @@ _$_Episodes _$$_EpisodesFromJson(Map<String, dynamic> json) => _$_Episodes(
       rating: Rating.fromJson(json['rating'] as Map<String, dynamic>),
       image: Image.fromJson(json['image'] as Map<String, dynamic>),
       summary: json['summary'] as String,
-      links: Links.fromJson(json['links'] as Map<String, dynamic>),
+      links: json['links'] == null
+          ? null
+          : Links.fromJson(json['links'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_EpisodesToJson(_$_Episodes instance) =>

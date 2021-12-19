@@ -35,7 +35,7 @@ class _$EpisodesTearOff {
       required Rating rating,
       required Image image,
       required String summary,
-      required Links links}) {
+      Links? links}) {
     return _Episodes(
       id: id,
       url: url,
@@ -77,7 +77,7 @@ mixin _$Episodes {
   Rating get rating => throw _privateConstructorUsedError;
   Image get image => throw _privateConstructorUsedError;
   String get summary => throw _privateConstructorUsedError;
-  Links get links => throw _privateConstructorUsedError;
+  Links? get links => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -103,11 +103,11 @@ abstract class $EpisodesCopyWith<$Res> {
       Rating rating,
       Image image,
       String summary,
-      Links links});
+      Links? links});
 
   $RatingCopyWith<$Res> get rating;
   $ImageCopyWith<$Res> get image;
-  $LinksCopyWith<$Res> get links;
+  $LinksCopyWith<$Res>? get links;
 }
 
 /// @nodoc
@@ -191,7 +191,7 @@ class _$EpisodesCopyWithImpl<$Res> implements $EpisodesCopyWith<$Res> {
       links: links == freezed
           ? _value.links
           : links // ignore: cast_nullable_to_non_nullable
-              as Links,
+              as Links?,
     ));
   }
 
@@ -210,8 +210,12 @@ class _$EpisodesCopyWithImpl<$Res> implements $EpisodesCopyWith<$Res> {
   }
 
   @override
-  $LinksCopyWith<$Res> get links {
-    return $LinksCopyWith<$Res>(_value.links, (value) {
+  $LinksCopyWith<$Res>? get links {
+    if (_value.links == null) {
+      return null;
+    }
+
+    return $LinksCopyWith<$Res>(_value.links!, (value) {
       return _then(_value.copyWith(links: value));
     });
   }
@@ -236,14 +240,14 @@ abstract class _$EpisodesCopyWith<$Res> implements $EpisodesCopyWith<$Res> {
       Rating rating,
       Image image,
       String summary,
-      Links links});
+      Links? links});
 
   @override
   $RatingCopyWith<$Res> get rating;
   @override
   $ImageCopyWith<$Res> get image;
   @override
-  $LinksCopyWith<$Res> get links;
+  $LinksCopyWith<$Res>? get links;
 }
 
 /// @nodoc
@@ -328,7 +332,7 @@ class __$EpisodesCopyWithImpl<$Res> extends _$EpisodesCopyWithImpl<$Res>
       links: links == freezed
           ? _value.links
           : links // ignore: cast_nullable_to_non_nullable
-              as Links,
+              as Links?,
     ));
   }
 }
@@ -350,7 +354,7 @@ class _$_Episodes implements _Episodes {
       required this.rating,
       required this.image,
       required this.summary,
-      required this.links});
+      this.links});
 
   factory _$_Episodes.fromJson(Map<String, dynamic> json) =>
       _$$_EpisodesFromJson(json);
@@ -382,7 +386,7 @@ class _$_Episodes implements _Episodes {
   @override
   final String summary;
   @override
-  final Links links;
+  final Links? links;
 
   @override
   String toString() {
@@ -454,7 +458,7 @@ abstract class _Episodes implements Episodes {
       required Rating rating,
       required Image image,
       required String summary,
-      required Links links}) = _$_Episodes;
+      Links? links}) = _$_Episodes;
 
   factory _Episodes.fromJson(Map<String, dynamic> json) = _$_Episodes.fromJson;
 
@@ -485,7 +489,7 @@ abstract class _Episodes implements Episodes {
   @override
   String get summary;
   @override
-  Links get links;
+  Links? get links;
   @override
   @JsonKey(ignore: true)
   _$EpisodesCopyWith<_Episodes> get copyWith =>

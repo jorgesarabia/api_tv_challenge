@@ -22,7 +22,7 @@ class Episodes with _$Episodes {
     required Rating rating,
     required Image image,
     required String summary,
-    required Links links,
+    Links? links,
   }) = _Episodes;
 
   factory Episodes.fromJson(Map<String, dynamic> json) => _$EpisodesFromJson(json);
