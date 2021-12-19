@@ -10,15 +10,12 @@ class _ListOfEpisodies extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<EpisodesBloc, EpisodesState>(
-      builder: (context, state) {
-        return Card(
-          elevation: 1.5,
-          child: ListTile(
-            title: Text(episode.name),
-          ),
-        );
-      },
+    return Card(
+      elevation: 1.5,
+      child: ListTile(
+        title: Text('${episode.number} - ${episode.name}'),
+        subtitle: Text(episode.summary.substring(0, 50)),
+      ),
     );
   }
 }
