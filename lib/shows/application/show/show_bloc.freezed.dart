@@ -17,7 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ShowStateTearOff {
   const _$ShowStateTearOff();
 
-  _ShowState call({required bool isSubmitting, required List<Show> shows}) {
+  _ShowState call(
+      {required bool isSubmitting, required List<SearchShowResponse> shows}) {
     return _ShowState(
       isSubmitting: isSubmitting,
       shows: shows,
@@ -31,7 +32,7 @@ const $ShowState = _$ShowStateTearOff();
 /// @nodoc
 mixin _$ShowState {
   bool get isSubmitting => throw _privateConstructorUsedError;
-  List<Show> get shows => throw _privateConstructorUsedError;
+  List<SearchShowResponse> get shows => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ShowStateCopyWith<ShowState> get copyWith =>
@@ -42,7 +43,7 @@ mixin _$ShowState {
 abstract class $ShowStateCopyWith<$Res> {
   factory $ShowStateCopyWith(ShowState value, $Res Function(ShowState) then) =
       _$ShowStateCopyWithImpl<$Res>;
-  $Res call({bool isSubmitting, List<Show> shows});
+  $Res call({bool isSubmitting, List<SearchShowResponse> shows});
 }
 
 /// @nodoc
@@ -66,7 +67,7 @@ class _$ShowStateCopyWithImpl<$Res> implements $ShowStateCopyWith<$Res> {
       shows: shows == freezed
           ? _value.shows
           : shows // ignore: cast_nullable_to_non_nullable
-              as List<Show>,
+              as List<SearchShowResponse>,
     ));
   }
 }
@@ -77,7 +78,7 @@ abstract class _$ShowStateCopyWith<$Res> implements $ShowStateCopyWith<$Res> {
           _ShowState value, $Res Function(_ShowState) then) =
       __$ShowStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isSubmitting, List<Show> shows});
+  $Res call({bool isSubmitting, List<SearchShowResponse> shows});
 }
 
 /// @nodoc
@@ -102,7 +103,7 @@ class __$ShowStateCopyWithImpl<$Res> extends _$ShowStateCopyWithImpl<$Res>
       shows: shows == freezed
           ? _value.shows
           : shows // ignore: cast_nullable_to_non_nullable
-              as List<Show>,
+              as List<SearchShowResponse>,
     ));
   }
 }
@@ -115,7 +116,7 @@ class _$_ShowState implements _ShowState {
   @override
   final bool isSubmitting;
   @override
-  final List<Show> shows;
+  final List<SearchShowResponse> shows;
 
   @override
   String toString() {
@@ -146,12 +147,13 @@ class _$_ShowState implements _ShowState {
 
 abstract class _ShowState implements ShowState {
   const factory _ShowState(
-      {required bool isSubmitting, required List<Show> shows}) = _$_ShowState;
+      {required bool isSubmitting,
+      required List<SearchShowResponse> shows}) = _$_ShowState;
 
   @override
   bool get isSubmitting;
   @override
-  List<Show> get shows;
+  List<SearchShowResponse> get shows;
   @override
   @JsonKey(ignore: true)
   _$ShowStateCopyWith<_ShowState> get copyWith =>

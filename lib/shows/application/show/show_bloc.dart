@@ -1,3 +1,4 @@
+import 'package:api_tv_challenge/shows/domain/models/search_show_response.dart';
 import 'package:api_tv_challenge/shows/domain/models/show.dart';
 import 'package:api_tv_challenge/shows/domain/repositories/main_repository_facade.dart';
 import 'package:api_tv_challenge/shows/infrastructure/main_repository.dart';
@@ -23,7 +24,7 @@ class ShowBloc extends Bloc<ShowEvent, ShowState> {
   void _mapOnEnterToMainToState(_OnEnterToMain event, Emitter<ShowState> emit) async {
     final result = await _mainRepositoryFacade.searchShow('girl');
 
-    print(result);
+    emit(state.copyWith(shows: result));
   }
 
   void _mapMainSearchChangedToState(_MainSearchChanged event, Emitter<ShowState> emit) {}

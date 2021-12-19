@@ -4,7 +4,7 @@ part of 'show_bloc.dart';
 class ShowState with _$ShowState {
   const factory ShowState({
     required bool isSubmitting,
-    required List<Show> shows,
+    required List<SearchShowResponse> shows,
   }) = _ShowState;
 
   factory ShowState.initial() {

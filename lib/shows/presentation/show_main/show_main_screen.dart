@@ -24,6 +24,7 @@ class _ShowMainScreenState extends State<ShowMainScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.black.withOpacity(.9),
         body: Column(
           children: const [
             AppSearchInput(),
