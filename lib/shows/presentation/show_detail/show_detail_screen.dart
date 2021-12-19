@@ -1,5 +1,8 @@
+import 'package:api_tv_challenge/app/domain/injectable/injection.dart';
 import 'package:api_tv_challenge/app/utils/constants.dart';
+import 'package:api_tv_challenge/shows/application/episodes_bloc/episodes_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'widgets/detail_info.dart';
 part 'widgets/generes.dart';
@@ -8,7 +11,12 @@ part 'widgets/summary.dart';
 part 'widgets/time_during_air.dart';
 
 class ShowDetailScreen extends StatelessWidget {
-  const ShowDetailScreen({Key? key}) : super(key: key);
+  const ShowDetailScreen({
+    Key? key,
+    required this.showId,
+  }) : super(key: key);
+
+  final String showId;
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +84,10 @@ class ShowDetailScreen extends StatelessWidget {
                   if (index == 0) {
                     return const _DetailInfo();
                   }
-                  return _ListOfEpisodies();
+                  return BlocProvider<EpisodesBloc>(
+                    create: (_) => getIt<EpisodesBloc>()..add(EpisodesEvent.getEpisodes(showId)),
+                    child: const _ListOfEpisodies(),
+                  );
                 },
                 childCount: 100,
               ),

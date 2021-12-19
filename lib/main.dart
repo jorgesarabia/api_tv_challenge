@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         ),
         // home: const LandingScreen(),
 
-        home: const ShowDetailScreen(),
+        home: const ShowDetailScreen(showId: '1'),
       ),
     );
   }
