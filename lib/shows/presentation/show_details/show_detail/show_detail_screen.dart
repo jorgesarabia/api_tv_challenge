@@ -2,6 +2,7 @@ import 'package:api_tv_challenge/app/domain/injectable/injection.dart';
 import 'package:api_tv_challenge/app/utils/constants.dart';
 import 'package:api_tv_challenge/shows/application/episodes_bloc/episodes_bloc.dart';
 import 'package:api_tv_challenge/shows/domain/models/episodes.dart';
+import 'package:api_tv_challenge/shows/domain/models/show.dart';
 import 'package:api_tv_challenge/shows/presentation/show_details/episode_detail/episode_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,15 +16,15 @@ part 'widgets/time_during_air.dart';
 class ShowDetailScreen extends StatelessWidget {
   const ShowDetailScreen({
     Key? key,
-    required this.showId,
+    required this.show,
   }) : super(key: key);
 
-  final String showId;
+  final Show show;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => getIt<EpisodesBloc>()..add(EpisodesEvent.getEpisodes(showId)),
+      create: (_) => getIt<EpisodesBloc>()..add(EpisodesEvent.getEpisodes(show.id.toString())),
       child: BlocBuilder<EpisodesBloc, EpisodesState>(
         builder: (context, state) {
           return SafeArea(
@@ -49,11 +50,11 @@ class ShowDetailScreen extends StatelessWidget {
                     flexibleSpace: FlexibleSpaceBar(
                       centerTitle: true,
                       background: Image.network(
-                        Constants.defaultImage,
-                        fit: BoxFit.fill,
+                        show.image?.original ?? Constants.defaultImage,
+                        fit: BoxFit.cover,
                       ),
                       title: Text(
-                        'Show name',
+                        show.name,
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -88,7 +89,7 @@ class ShowDetailScreen extends StatelessWidget {
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
                         if (index == 0) {
-                          return const _DetailInfo();
+                          return _DetailInfo(show: show);
                         }
 
                         final season = state.episodes[index - 1];

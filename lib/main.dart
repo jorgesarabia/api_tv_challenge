@@ -31,9 +31,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        // home: const LandingScreen(),
+        home: const LandingScreen(),
 
-        home: const ShowDetailScreen(showId: '1'),
+        // home: const ShowDetailScreen(showId: '1'),
       ),
     );
   }

@@ -6,13 +6,27 @@ class _Generes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [
-        Text('Drama'),
-        Text('Drama'),
-        Text('Drama'),
-        Text('Drama'),
-        Text('Drama'),
-      ],
+      children: [],
+    );
+  }
+}
+
+class _GenereContainer extends StatelessWidget {
+  const _GenereContainer({
+    Key? key,
+    required this.genere,
+  }) : super(key: key);
+
+  final String genere;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(12.0)),
+      ),
+      child: Text(genere),
     );
   }
 }

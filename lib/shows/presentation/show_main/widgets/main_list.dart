@@ -10,7 +10,18 @@ class _MainList extends StatelessWidget {
         return ListView.builder(
           itemCount: state.shows.length,
           itemBuilder: (context, index) {
-            return ShowCard(show: state.shows[index].show);
+            return GestureDetector(
+              onTap: () {
+                Navigator.of(context).push<dynamic>(
+                  MaterialPageRoute<dynamic>(
+                    builder: (BuildContext context) {
+                      return ShowDetailScreen(show: state.shows[index].show);
+                    },
+                  ),
+                );
+              },
+              child: ShowCard(show: state.shows[index].show),
+            );
           },
         );
       },
