@@ -14,7 +14,10 @@ class _TimeDuringAir extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('Status: ${show.status}'),
-        Text('Starting: ${_date(show.premiered)}'),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Text('Starting: ${_date(show.premiered)}'),
+        ),
         Text('Finishing:  ${_date(show.ended)}'),
       ],
     );
@@ -25,6 +28,6 @@ class _TimeDuringAir extends StatelessWidget {
       return 'Not available';
     }
 
-    return time.toIso8601String();
+    return time.toIso8601String().split('T')[0];
   }
 }
