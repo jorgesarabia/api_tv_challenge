@@ -10,17 +10,20 @@ class _DetailInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 20),
-        _Summary(summary: show.summary),
-        const SizedBox(height: 20),
-        _Generes(),
-        const SizedBox(height: 20),
-        _TimeDuringAir(),
-        const SizedBox(height: 20),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 20),
+          _Summary(summary: show.summary),
+          const SizedBox(height: 20),
+          _Generes(generes: show.genres),
+          const SizedBox(height: 20),
+          _TimeDuringAir(),
+          const SizedBox(height: 20),
+        ],
+      ),
     );
   }
 }
