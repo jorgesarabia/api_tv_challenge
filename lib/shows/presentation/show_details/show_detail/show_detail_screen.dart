@@ -40,7 +40,7 @@ class ShowDetailScreen extends StatelessWidget {
                       },
                       child: const Icon(
                         Icons.chevron_left,
-                        size: 30,
+                        size: 50,
                       ),
                     ),
                     expandedHeight: 200,
