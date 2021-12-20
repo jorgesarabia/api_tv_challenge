@@ -89,7 +89,14 @@ class ShowDetailScreen extends StatelessWidget {
                         if (index == 0) {
                           return const _DetailInfo();
                         }
-                        return _ListOfEpisodies(episode: state.episodes[index - 1]);
+                        final season = state.episodes[index - 1];
+                        return ExpansionTile(
+                          title: Text('Season ${season.season}'),
+                          children: List.generate(
+                            season.episodes.length,
+                            (index) => _ListOfEpisodies(episode: season.episodes[index]),
+                          ),
+                        );
                       },
                       childCount: state.episodes.length + 1,
                     ),

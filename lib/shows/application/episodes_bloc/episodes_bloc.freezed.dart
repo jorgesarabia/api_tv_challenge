@@ -18,7 +18,7 @@ class _$EpisodesStateTearOff {
   const _$EpisodesStateTearOff();
 
   _EpisodesState call(
-      {required bool isSubmitting, required List<Episodes> episodes}) {
+      {required bool isSubmitting, required List<SeasonEpisodes> episodes}) {
     return _EpisodesState(
       isSubmitting: isSubmitting,
       episodes: episodes,
@@ -32,7 +32,7 @@ const $EpisodesState = _$EpisodesStateTearOff();
 /// @nodoc
 mixin _$EpisodesState {
   bool get isSubmitting => throw _privateConstructorUsedError;
-  List<Episodes> get episodes => throw _privateConstructorUsedError;
+  List<SeasonEpisodes> get episodes => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EpisodesStateCopyWith<EpisodesState> get copyWith =>
@@ -44,7 +44,7 @@ abstract class $EpisodesStateCopyWith<$Res> {
   factory $EpisodesStateCopyWith(
           EpisodesState value, $Res Function(EpisodesState) then) =
       _$EpisodesStateCopyWithImpl<$Res>;
-  $Res call({bool isSubmitting, List<Episodes> episodes});
+  $Res call({bool isSubmitting, List<SeasonEpisodes> episodes});
 }
 
 /// @nodoc
@@ -69,7 +69,7 @@ class _$EpisodesStateCopyWithImpl<$Res>
       episodes: episodes == freezed
           ? _value.episodes
           : episodes // ignore: cast_nullable_to_non_nullable
-              as List<Episodes>,
+              as List<SeasonEpisodes>,
     ));
   }
 }
@@ -81,7 +81,7 @@ abstract class _$EpisodesStateCopyWith<$Res>
           _EpisodesState value, $Res Function(_EpisodesState) then) =
       __$EpisodesStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isSubmitting, List<Episodes> episodes});
+  $Res call({bool isSubmitting, List<SeasonEpisodes> episodes});
 }
 
 /// @nodoc
@@ -108,7 +108,7 @@ class __$EpisodesStateCopyWithImpl<$Res>
       episodes: episodes == freezed
           ? _value.episodes
           : episodes // ignore: cast_nullable_to_non_nullable
-              as List<Episodes>,
+              as List<SeasonEpisodes>,
     ));
   }
 }
@@ -121,7 +121,7 @@ class _$_EpisodesState implements _EpisodesState {
   @override
   final bool isSubmitting;
   @override
-  final List<Episodes> episodes;
+  final List<SeasonEpisodes> episodes;
 
   @override
   String toString() {
@@ -153,12 +153,12 @@ class _$_EpisodesState implements _EpisodesState {
 abstract class _EpisodesState implements EpisodesState {
   const factory _EpisodesState(
       {required bool isSubmitting,
-      required List<Episodes> episodes}) = _$_EpisodesState;
+      required List<SeasonEpisodes> episodes}) = _$_EpisodesState;
 
   @override
   bool get isSubmitting;
   @override
-  List<Episodes> get episodes;
+  List<SeasonEpisodes> get episodes;
   @override
   @JsonKey(ignore: true)
   _$EpisodesStateCopyWith<_EpisodesState> get copyWith =>
