@@ -20,7 +20,7 @@ class _DetailInfo extends StatelessWidget {
           const SizedBox(height: 20),
           _Generes(generes: show.genres),
           const SizedBox(height: 20),
-          _TimeDuringAir(),
+          _TimeDuringAir(show: show),
           const SizedBox(height: 20),
         ],
       ),
