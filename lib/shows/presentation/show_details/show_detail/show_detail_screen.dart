@@ -2,6 +2,7 @@ import 'package:api_tv_challenge/app/domain/injectable/injection.dart';
 import 'package:api_tv_challenge/app/utils/constants.dart';
 import 'package:api_tv_challenge/shows/application/episodes_bloc/episodes_bloc.dart';
 import 'package:api_tv_challenge/shows/domain/models/episodes.dart';
+import 'package:api_tv_challenge/shows/presentation/show_details/episode_detail/episode_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -89,12 +90,25 @@ class ShowDetailScreen extends StatelessWidget {
                         if (index == 0) {
                           return const _DetailInfo();
                         }
+
                         final season = state.episodes[index - 1];
+
                         return ExpansionTile(
                           title: Text('Season ${season.season}'),
                           children: List.generate(
                             season.episodes.length,
-                            (index) => _ListOfEpisodies(episode: season.episodes[index]),
+                            (index) => GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push<dynamic>(
+                                  MaterialPageRoute<dynamic>(
+                                    builder: (BuildContext context) {
+                                      return EpisodeDetailScreen(episode: season.episodes[index]);
+                                    },
+                                  ),
+                                );
+                              },
+                              child: _ListOfEpisodies(episode: season.episodes[index]),
+                            ),
                           ),
                         );
                       },
