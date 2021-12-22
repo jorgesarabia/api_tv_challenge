@@ -8,7 +8,6 @@ import 'package:get_it/get_it.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 part 'widgets/list_of_shows.dart';
-part 'widgets/detail_card.dart';
 part 'widgets/person_header.dart';
 
 class PeopleDetailScreen extends StatelessWidget {
@@ -18,17 +17,15 @@ class PeopleDetailScreen extends StatelessWidget {
   }) : super(key: key);
 
   final People person;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<PersonBloc>(
       create: (_) => GetIt.I.get<PersonBloc>()..add(PersonEvent.getPersonDetail(person)),
       child: Scaffold(
         appBar: AppBar(title: Text(person.name)),
-        body: Column(
-          children: [
-            _PersonHeader(person: person),
-            const Expanded(child: _ListOfShows()),
-          ],
+        body: _ListOfShows(
+          person: person,
         ),
       ),
     );
