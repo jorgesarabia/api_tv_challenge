@@ -1,3 +1,4 @@
+import 'package:api_tv_challenge/app/domain/models/app_user.dart';
 import 'package:api_tv_challenge/auth/domain/i_auth_facade.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -19,10 +20,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   void _mapAppIsStartingToState(event, Emitter<AuthState> emit) async {
     emit(const AuthState.initial());
 
-    final isLoggedIn = await _authFacade.getSignedInUser();
+    final appUser = await _authFacade.getSignedInUser();
 
-    if (isLoggedIn != null) {
-      emit(const AuthState.isLoggedIn());
+    if (appUser != null) {
+      emit(AuthState.isLoggedIn(appUser));
     } else {
       emit(const AuthState.userIsNotLoggedIn());
     }

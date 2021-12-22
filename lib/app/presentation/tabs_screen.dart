@@ -1,5 +1,6 @@
 import 'package:api_tv_challenge/app/presentation/app_button.dart';
 import 'package:api_tv_challenge/auth/application/auth/auth_bloc.dart';
+import 'package:api_tv_challenge/auth/presentation/profile/profile_screen.dart';
 import 'package:api_tv_challenge/people/presentation/people_list/people_list_screen.dart';
 import 'package:api_tv_challenge/shows/presentation/show_main/show_main_screen.dart';
 import 'package:flutter/material.dart';
@@ -18,17 +19,12 @@ class _TabsPageState extends State<TabsScreen> {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        body: TabBarView(
+        body: const TabBarView(
           children: [
-            const ShowMainScreen(),
-            const PeopleListScreen(),
-            const ShowMainScreen(isFavorite: true),
-            AppButton(
-              label: 'Logout',
-              onPressed: () {
-                BlocProvider.of<AuthBloc>(context).add(const AuthEvent.signOutPressed());
-              },
-            ),
+            ShowMainScreen(),
+            PeopleListScreen(),
+            ShowMainScreen(isFavorite: true),
+            ProfileScreen(),
           ],
         ),
         bottomNavigationBar: Container(
