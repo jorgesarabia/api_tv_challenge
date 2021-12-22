@@ -18,8 +18,10 @@ _$_Episodes _$$_EpisodesFromJson(Map<String, dynamic> json) => _$_Episodes(
       airstamp: DateTime.parse(json['airstamp'] as String),
       runtime: json['runtime'] as int,
       rating: Rating.fromJson(json['rating'] as Map<String, dynamic>),
-      image: Image.fromJson(json['image'] as Map<String, dynamic>),
-      summary: json['summary'] as String,
+      image: json['image'] == null
+          ? null
+          : Image.fromJson(json['image'] as Map<String, dynamic>),
+      summary: json['summary'] as String?,
       links: json['links'] == null
           ? null
           : Links.fromJson(json['links'] as Map<String, dynamic>),

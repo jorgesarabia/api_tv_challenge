@@ -27,9 +27,13 @@ class _ShowMainScreenState extends State<ShowMainScreen> {
       child: Scaffold(
         backgroundColor: Colors.black.withOpacity(.9),
         body: Column(
-          children: const [
-            AppSearchInput(),
-            Expanded(child: _MainList()),
+          children: [
+            AppSearchInput(
+              onChanged: (query) {
+                BlocProvider.of<ShowBloc>(context).add(ShowEvent.onMainSearchChanged(query));
+              },
+            ),
+            const Expanded(child: _MainList()),
           ],
         ),
       ),

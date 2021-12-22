@@ -26,7 +26,7 @@ class _$ShowTearOff {
       required String url,
       required String name,
       required String type,
-      required String language,
+      String? language,
       required List<String> genres,
       required String status,
       int? runtime,
@@ -42,7 +42,7 @@ class _$ShowTearOff {
       required dynamic dvdCountry,
       required Externals externals,
       Image? image,
-      required String summary,
+      String? summary,
       required int updated,
       Links? links}) {
     return _Show(
@@ -86,7 +86,7 @@ mixin _$Show {
   String get url => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
-  String get language => throw _privateConstructorUsedError;
+  String? get language => throw _privateConstructorUsedError;
   List<String> get genres => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   int? get runtime => throw _privateConstructorUsedError;
@@ -102,7 +102,7 @@ mixin _$Show {
   dynamic get dvdCountry => throw _privateConstructorUsedError;
   Externals get externals => throw _privateConstructorUsedError;
   Image? get image => throw _privateConstructorUsedError;
-  String get summary => throw _privateConstructorUsedError;
+  String? get summary => throw _privateConstructorUsedError;
   int get updated => throw _privateConstructorUsedError;
   Links? get links => throw _privateConstructorUsedError;
 
@@ -120,7 +120,7 @@ abstract class $ShowCopyWith<$Res> {
       String url,
       String name,
       String type,
-      String language,
+      String? language,
       List<String> genres,
       String status,
       int? runtime,
@@ -136,7 +136,7 @@ abstract class $ShowCopyWith<$Res> {
       dynamic dvdCountry,
       Externals externals,
       Image? image,
-      String summary,
+      String? summary,
       int updated,
       Links? links});
 
@@ -202,7 +202,7 @@ class _$ShowCopyWithImpl<$Res> implements $ShowCopyWith<$Res> {
       language: language == freezed
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       genres: genres == freezed
           ? _value.genres
           : genres // ignore: cast_nullable_to_non_nullable
@@ -266,7 +266,7 @@ class _$ShowCopyWithImpl<$Res> implements $ShowCopyWith<$Res> {
       summary: summary == freezed
           ? _value.summary
           : summary // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       updated: updated == freezed
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
@@ -343,7 +343,7 @@ abstract class _$ShowCopyWith<$Res> implements $ShowCopyWith<$Res> {
       String url,
       String name,
       String type,
-      String language,
+      String? language,
       List<String> genres,
       String status,
       int? runtime,
@@ -359,7 +359,7 @@ abstract class _$ShowCopyWith<$Res> implements $ShowCopyWith<$Res> {
       dynamic dvdCountry,
       Externals externals,
       Image? image,
-      String summary,
+      String? summary,
       int updated,
       Links? links});
 
@@ -432,7 +432,7 @@ class __$ShowCopyWithImpl<$Res> extends _$ShowCopyWithImpl<$Res>
       language: language == freezed
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       genres: genres == freezed
           ? _value.genres
           : genres // ignore: cast_nullable_to_non_nullable
@@ -496,7 +496,7 @@ class __$ShowCopyWithImpl<$Res> extends _$ShowCopyWithImpl<$Res>
       summary: summary == freezed
           ? _value.summary
           : summary // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       updated: updated == freezed
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
@@ -517,7 +517,7 @@ class _$_Show implements _Show {
       required this.url,
       required this.name,
       required this.type,
-      required this.language,
+      this.language,
       required this.genres,
       required this.status,
       this.runtime,
@@ -533,7 +533,7 @@ class _$_Show implements _Show {
       required this.dvdCountry,
       required this.externals,
       this.image,
-      required this.summary,
+      this.summary,
       required this.updated,
       this.links});
 
@@ -548,7 +548,7 @@ class _$_Show implements _Show {
   @override
   final String type;
   @override
-  final String language;
+  final String? language;
   @override
   final List<String> genres;
   @override
@@ -580,7 +580,7 @@ class _$_Show implements _Show {
   @override
   final Image? image;
   @override
-  final String summary;
+  final String? summary;
   @override
   final int updated;
   @override
@@ -670,7 +670,7 @@ abstract class _Show implements Show {
       required String url,
       required String name,
       required String type,
-      required String language,
+      String? language,
       required List<String> genres,
       required String status,
       int? runtime,
@@ -686,7 +686,7 @@ abstract class _Show implements Show {
       required dynamic dvdCountry,
       required Externals externals,
       Image? image,
-      required String summary,
+      String? summary,
       required int updated,
       Links? links}) = _$_Show;
 
@@ -701,7 +701,7 @@ abstract class _Show implements Show {
   @override
   String get type;
   @override
-  String get language;
+  String? get language;
   @override
   List<String> get genres;
   @override
@@ -733,7 +733,7 @@ abstract class _Show implements Show {
   @override
   Image? get image;
   @override
-  String get summary;
+  String? get summary;
   @override
   int get updated;
   @override

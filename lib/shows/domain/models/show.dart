@@ -16,7 +16,7 @@ class Show with _$Show {
     required String url,
     required String name,
     required String type,
-    required String language,
+    String? language,
     required List<String> genres,
     required String status,
     int? runtime,
@@ -32,7 +32,7 @@ class Show with _$Show {
     required dynamic dvdCountry,
     required Externals externals,
     Image? image,
-    required String summary,
+    String? summary,
     required int updated,
     Links? links,
   }) = _Show;

@@ -20,8 +20,8 @@ class Episodes with _$Episodes {
     required DateTime airstamp,
     required int runtime,
     required Rating rating,
-    required Image image,
-    required String summary,
+    Image? image,
+    String? summary,
     Links? links,
   }) = _Episodes;
 

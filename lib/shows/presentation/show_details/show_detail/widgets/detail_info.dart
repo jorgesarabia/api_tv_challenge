@@ -16,7 +16,7 @@ class _DetailInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 20),
-          _Summary(summary: show.summary),
+          _Summary(summary: show.summary ?? ''),
           const SizedBox(height: 20),
           _Generes(generes: show.genres),
           const SizedBox(height: 20),

@@ -11,7 +11,7 @@ _$_Show _$$_ShowFromJson(Map<String, dynamic> json) => _$_Show(
       url: json['url'] as String,
       name: json['name'] as String,
       type: json['type'] as String,
-      language: json['language'] as String,
+      language: json['language'] as String?,
       genres:
           (json['genres'] as List<dynamic>).map((e) => e as String).toList(),
       status: json['status'] as String,
@@ -36,7 +36,7 @@ _$_Show _$$_ShowFromJson(Map<String, dynamic> json) => _$_Show(
       image: json['image'] == null
           ? null
           : Image.fromJson(json['image'] as Map<String, dynamic>),
-      summary: json['summary'] as String,
+      summary: json['summary'] as String?,
       updated: json['updated'] as int,
       links: json['links'] == null
           ? null

@@ -18,9 +18,14 @@ class _$ShowStateTearOff {
   const _$ShowStateTearOff();
 
   _ShowState call(
-      {required bool isSubmitting, required List<SearchShowResponse> shows}) {
+      {required bool isLoading,
+      required bool hasReachedMax,
+      required int pageNumber,
+      required List<Show> shows}) {
     return _ShowState(
-      isSubmitting: isSubmitting,
+      isLoading: isLoading,
+      hasReachedMax: hasReachedMax,
+      pageNumber: pageNumber,
       shows: shows,
     );
   }
@@ -31,8 +36,10 @@ const $ShowState = _$ShowStateTearOff();
 
 /// @nodoc
 mixin _$ShowState {
-  bool get isSubmitting => throw _privateConstructorUsedError;
-  List<SearchShowResponse> get shows => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get hasReachedMax => throw _privateConstructorUsedError;
+  int get pageNumber => throw _privateConstructorUsedError;
+  List<Show> get shows => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ShowStateCopyWith<ShowState> get copyWith =>
@@ -43,7 +50,8 @@ mixin _$ShowState {
 abstract class $ShowStateCopyWith<$Res> {
   factory $ShowStateCopyWith(ShowState value, $Res Function(ShowState) then) =
       _$ShowStateCopyWithImpl<$Res>;
-  $Res call({bool isSubmitting, List<SearchShowResponse> shows});
+  $Res call(
+      {bool isLoading, bool hasReachedMax, int pageNumber, List<Show> shows});
 }
 
 /// @nodoc
@@ -56,18 +64,28 @@ class _$ShowStateCopyWithImpl<$Res> implements $ShowStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? isSubmitting = freezed,
+    Object? isLoading = freezed,
+    Object? hasReachedMax = freezed,
+    Object? pageNumber = freezed,
     Object? shows = freezed,
   }) {
     return _then(_value.copyWith(
-      isSubmitting: isSubmitting == freezed
-          ? _value.isSubmitting
-          : isSubmitting // ignore: cast_nullable_to_non_nullable
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      hasReachedMax: hasReachedMax == freezed
+          ? _value.hasReachedMax
+          : hasReachedMax // ignore: cast_nullable_to_non_nullable
+              as bool,
+      pageNumber: pageNumber == freezed
+          ? _value.pageNumber
+          : pageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
       shows: shows == freezed
           ? _value.shows
           : shows // ignore: cast_nullable_to_non_nullable
-              as List<SearchShowResponse>,
+              as List<Show>,
     ));
   }
 }
@@ -78,7 +96,8 @@ abstract class _$ShowStateCopyWith<$Res> implements $ShowStateCopyWith<$Res> {
           _ShowState value, $Res Function(_ShowState) then) =
       __$ShowStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isSubmitting, List<SearchShowResponse> shows});
+  $Res call(
+      {bool isLoading, bool hasReachedMax, int pageNumber, List<Show> shows});
 }
 
 /// @nodoc
@@ -92,18 +111,28 @@ class __$ShowStateCopyWithImpl<$Res> extends _$ShowStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? isSubmitting = freezed,
+    Object? isLoading = freezed,
+    Object? hasReachedMax = freezed,
+    Object? pageNumber = freezed,
     Object? shows = freezed,
   }) {
     return _then(_ShowState(
-      isSubmitting: isSubmitting == freezed
-          ? _value.isSubmitting
-          : isSubmitting // ignore: cast_nullable_to_non_nullable
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      hasReachedMax: hasReachedMax == freezed
+          ? _value.hasReachedMax
+          : hasReachedMax // ignore: cast_nullable_to_non_nullable
+              as bool,
+      pageNumber: pageNumber == freezed
+          ? _value.pageNumber
+          : pageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
       shows: shows == freezed
           ? _value.shows
           : shows // ignore: cast_nullable_to_non_nullable
-              as List<SearchShowResponse>,
+              as List<Show>,
     ));
   }
 }
@@ -111,16 +140,24 @@ class __$ShowStateCopyWithImpl<$Res> extends _$ShowStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ShowState implements _ShowState {
-  const _$_ShowState({required this.isSubmitting, required this.shows});
+  const _$_ShowState(
+      {required this.isLoading,
+      required this.hasReachedMax,
+      required this.pageNumber,
+      required this.shows});
 
   @override
-  final bool isSubmitting;
+  final bool isLoading;
   @override
-  final List<SearchShowResponse> shows;
+  final bool hasReachedMax;
+  @override
+  final int pageNumber;
+  @override
+  final List<Show> shows;
 
   @override
   String toString() {
-    return 'ShowState(isSubmitting: $isSubmitting, shows: $shows)';
+    return 'ShowState(isLoading: $isLoading, hasReachedMax: $hasReachedMax, pageNumber: $pageNumber, shows: $shows)';
   }
 
   @override
@@ -128,15 +165,20 @@ class _$_ShowState implements _ShowState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ShowState &&
+            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
-                .equals(other.isSubmitting, isSubmitting) &&
+                .equals(other.hasReachedMax, hasReachedMax) &&
+            const DeepCollectionEquality()
+                .equals(other.pageNumber, pageNumber) &&
             const DeepCollectionEquality().equals(other.shows, shows));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(isSubmitting),
+      const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(hasReachedMax),
+      const DeepCollectionEquality().hash(pageNumber),
       const DeepCollectionEquality().hash(shows));
 
   @JsonKey(ignore: true)
@@ -147,13 +189,19 @@ class _$_ShowState implements _ShowState {
 
 abstract class _ShowState implements ShowState {
   const factory _ShowState(
-      {required bool isSubmitting,
-      required List<SearchShowResponse> shows}) = _$_ShowState;
+      {required bool isLoading,
+      required bool hasReachedMax,
+      required int pageNumber,
+      required List<Show> shows}) = _$_ShowState;
 
   @override
-  bool get isSubmitting;
+  bool get isLoading;
   @override
-  List<SearchShowResponse> get shows;
+  bool get hasReachedMax;
+  @override
+  int get pageNumber;
+  @override
+  List<Show> get shows;
   @override
   @JsonKey(ignore: true)
   _$ShowStateCopyWith<_ShowState> get copyWith =>
@@ -183,6 +231,10 @@ class _$ShowEventTearOff {
   _OnEnterToFavorite onEnterToFavorite() {
     return const _OnEnterToFavorite();
   }
+
+  _GetMoreItems getMoreItems() {
+    return const _GetMoreItems();
+  }
 }
 
 /// @nodoc
@@ -196,6 +248,7 @@ mixin _$ShowEvent {
     required TResult Function(String query) onMainSearchChanged,
     required TResult Function(String query) onFavoriteSearchChanged,
     required TResult Function() onEnterToFavorite,
+    required TResult Function() getMoreItems,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -204,6 +257,7 @@ mixin _$ShowEvent {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
+    TResult Function()? getMoreItems,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -212,6 +266,7 @@ mixin _$ShowEvent {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
+    TResult Function()? getMoreItems,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -222,6 +277,7 @@ mixin _$ShowEvent {
     required TResult Function(_FavoriteSearchChanged value)
         onFavoriteSearchChanged,
     required TResult Function(_OnEnterToFavorite value) onEnterToFavorite,
+    required TResult Function(_GetMoreItems value) getMoreItems,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -230,6 +286,7 @@ mixin _$ShowEvent {
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
     TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
+    TResult Function(_GetMoreItems value)? getMoreItems,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -238,6 +295,7 @@ mixin _$ShowEvent {
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
     TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
+    TResult Function(_GetMoreItems value)? getMoreItems,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -302,6 +360,7 @@ class _$_OnEnterToMain implements _OnEnterToMain {
     required TResult Function(String query) onMainSearchChanged,
     required TResult Function(String query) onFavoriteSearchChanged,
     required TResult Function() onEnterToFavorite,
+    required TResult Function() getMoreItems,
   }) {
     return onEnterToMain();
   }
@@ -313,6 +372,7 @@ class _$_OnEnterToMain implements _OnEnterToMain {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
+    TResult Function()? getMoreItems,
   }) {
     return onEnterToMain?.call();
   }
@@ -324,6 +384,7 @@ class _$_OnEnterToMain implements _OnEnterToMain {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
+    TResult Function()? getMoreItems,
     required TResult orElse(),
   }) {
     if (onEnterToMain != null) {
@@ -340,6 +401,7 @@ class _$_OnEnterToMain implements _OnEnterToMain {
     required TResult Function(_FavoriteSearchChanged value)
         onFavoriteSearchChanged,
     required TResult Function(_OnEnterToFavorite value) onEnterToFavorite,
+    required TResult Function(_GetMoreItems value) getMoreItems,
   }) {
     return onEnterToMain(this);
   }
@@ -351,6 +413,7 @@ class _$_OnEnterToMain implements _OnEnterToMain {
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
     TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
+    TResult Function(_GetMoreItems value)? getMoreItems,
   }) {
     return onEnterToMain?.call(this);
   }
@@ -362,6 +425,7 @@ class _$_OnEnterToMain implements _OnEnterToMain {
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
     TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
+    TResult Function(_GetMoreItems value)? getMoreItems,
     required TResult orElse(),
   }) {
     if (onEnterToMain != null) {
@@ -444,6 +508,7 @@ class _$_MainSearchChanged implements _MainSearchChanged {
     required TResult Function(String query) onMainSearchChanged,
     required TResult Function(String query) onFavoriteSearchChanged,
     required TResult Function() onEnterToFavorite,
+    required TResult Function() getMoreItems,
   }) {
     return onMainSearchChanged(query);
   }
@@ -455,6 +520,7 @@ class _$_MainSearchChanged implements _MainSearchChanged {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
+    TResult Function()? getMoreItems,
   }) {
     return onMainSearchChanged?.call(query);
   }
@@ -466,6 +532,7 @@ class _$_MainSearchChanged implements _MainSearchChanged {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
+    TResult Function()? getMoreItems,
     required TResult orElse(),
   }) {
     if (onMainSearchChanged != null) {
@@ -482,6 +549,7 @@ class _$_MainSearchChanged implements _MainSearchChanged {
     required TResult Function(_FavoriteSearchChanged value)
         onFavoriteSearchChanged,
     required TResult Function(_OnEnterToFavorite value) onEnterToFavorite,
+    required TResult Function(_GetMoreItems value) getMoreItems,
   }) {
     return onMainSearchChanged(this);
   }
@@ -493,6 +561,7 @@ class _$_MainSearchChanged implements _MainSearchChanged {
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
     TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
+    TResult Function(_GetMoreItems value)? getMoreItems,
   }) {
     return onMainSearchChanged?.call(this);
   }
@@ -504,6 +573,7 @@ class _$_MainSearchChanged implements _MainSearchChanged {
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
     TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
+    TResult Function(_GetMoreItems value)? getMoreItems,
     required TResult orElse(),
   }) {
     if (onMainSearchChanged != null) {
@@ -592,6 +662,7 @@ class _$_FavoriteSearchChanged implements _FavoriteSearchChanged {
     required TResult Function(String query) onMainSearchChanged,
     required TResult Function(String query) onFavoriteSearchChanged,
     required TResult Function() onEnterToFavorite,
+    required TResult Function() getMoreItems,
   }) {
     return onFavoriteSearchChanged(query);
   }
@@ -603,6 +674,7 @@ class _$_FavoriteSearchChanged implements _FavoriteSearchChanged {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
+    TResult Function()? getMoreItems,
   }) {
     return onFavoriteSearchChanged?.call(query);
   }
@@ -614,6 +686,7 @@ class _$_FavoriteSearchChanged implements _FavoriteSearchChanged {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
+    TResult Function()? getMoreItems,
     required TResult orElse(),
   }) {
     if (onFavoriteSearchChanged != null) {
@@ -630,6 +703,7 @@ class _$_FavoriteSearchChanged implements _FavoriteSearchChanged {
     required TResult Function(_FavoriteSearchChanged value)
         onFavoriteSearchChanged,
     required TResult Function(_OnEnterToFavorite value) onEnterToFavorite,
+    required TResult Function(_GetMoreItems value) getMoreItems,
   }) {
     return onFavoriteSearchChanged(this);
   }
@@ -641,6 +715,7 @@ class _$_FavoriteSearchChanged implements _FavoriteSearchChanged {
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
     TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
+    TResult Function(_GetMoreItems value)? getMoreItems,
   }) {
     return onFavoriteSearchChanged?.call(this);
   }
@@ -652,6 +727,7 @@ class _$_FavoriteSearchChanged implements _FavoriteSearchChanged {
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
     TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
+    TResult Function(_GetMoreItems value)? getMoreItems,
     required TResult orElse(),
   }) {
     if (onFavoriteSearchChanged != null) {
@@ -715,6 +791,7 @@ class _$_OnEnterToFavorite implements _OnEnterToFavorite {
     required TResult Function(String query) onMainSearchChanged,
     required TResult Function(String query) onFavoriteSearchChanged,
     required TResult Function() onEnterToFavorite,
+    required TResult Function() getMoreItems,
   }) {
     return onEnterToFavorite();
   }
@@ -726,6 +803,7 @@ class _$_OnEnterToFavorite implements _OnEnterToFavorite {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
+    TResult Function()? getMoreItems,
   }) {
     return onEnterToFavorite?.call();
   }
@@ -737,6 +815,7 @@ class _$_OnEnterToFavorite implements _OnEnterToFavorite {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
+    TResult Function()? getMoreItems,
     required TResult orElse(),
   }) {
     if (onEnterToFavorite != null) {
@@ -753,6 +832,7 @@ class _$_OnEnterToFavorite implements _OnEnterToFavorite {
     required TResult Function(_FavoriteSearchChanged value)
         onFavoriteSearchChanged,
     required TResult Function(_OnEnterToFavorite value) onEnterToFavorite,
+    required TResult Function(_GetMoreItems value) getMoreItems,
   }) {
     return onEnterToFavorite(this);
   }
@@ -764,6 +844,7 @@ class _$_OnEnterToFavorite implements _OnEnterToFavorite {
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
     TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
+    TResult Function(_GetMoreItems value)? getMoreItems,
   }) {
     return onEnterToFavorite?.call(this);
   }
@@ -775,6 +856,7 @@ class _$_OnEnterToFavorite implements _OnEnterToFavorite {
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
     TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
+    TResult Function(_GetMoreItems value)? getMoreItems,
     required TResult orElse(),
   }) {
     if (onEnterToFavorite != null) {
@@ -786,4 +868,127 @@ class _$_OnEnterToFavorite implements _OnEnterToFavorite {
 
 abstract class _OnEnterToFavorite implements ShowEvent {
   const factory _OnEnterToFavorite() = _$_OnEnterToFavorite;
+}
+
+/// @nodoc
+abstract class _$GetMoreItemsCopyWith<$Res> {
+  factory _$GetMoreItemsCopyWith(
+          _GetMoreItems value, $Res Function(_GetMoreItems) then) =
+      __$GetMoreItemsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$GetMoreItemsCopyWithImpl<$Res> extends _$ShowEventCopyWithImpl<$Res>
+    implements _$GetMoreItemsCopyWith<$Res> {
+  __$GetMoreItemsCopyWithImpl(
+      _GetMoreItems _value, $Res Function(_GetMoreItems) _then)
+      : super(_value, (v) => _then(v as _GetMoreItems));
+
+  @override
+  _GetMoreItems get _value => super._value as _GetMoreItems;
+}
+
+/// @nodoc
+
+class _$_GetMoreItems implements _GetMoreItems {
+  const _$_GetMoreItems();
+
+  @override
+  String toString() {
+    return 'ShowEvent.getMoreItems()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _GetMoreItems);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() onEnterToMain,
+    required TResult Function(String query) onMainSearchChanged,
+    required TResult Function(String query) onFavoriteSearchChanged,
+    required TResult Function() onEnterToFavorite,
+    required TResult Function() getMoreItems,
+  }) {
+    return getMoreItems();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? onEnterToMain,
+    TResult Function(String query)? onMainSearchChanged,
+    TResult Function(String query)? onFavoriteSearchChanged,
+    TResult Function()? onEnterToFavorite,
+    TResult Function()? getMoreItems,
+  }) {
+    return getMoreItems?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? onEnterToMain,
+    TResult Function(String query)? onMainSearchChanged,
+    TResult Function(String query)? onFavoriteSearchChanged,
+    TResult Function()? onEnterToFavorite,
+    TResult Function()? getMoreItems,
+    required TResult orElse(),
+  }) {
+    if (getMoreItems != null) {
+      return getMoreItems();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OnEnterToMain value) onEnterToMain,
+    required TResult Function(_MainSearchChanged value) onMainSearchChanged,
+    required TResult Function(_FavoriteSearchChanged value)
+        onFavoriteSearchChanged,
+    required TResult Function(_OnEnterToFavorite value) onEnterToFavorite,
+    required TResult Function(_GetMoreItems value) getMoreItems,
+  }) {
+    return getMoreItems(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_OnEnterToMain value)? onEnterToMain,
+    TResult Function(_MainSearchChanged value)? onMainSearchChanged,
+    TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
+    TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
+    TResult Function(_GetMoreItems value)? getMoreItems,
+  }) {
+    return getMoreItems?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OnEnterToMain value)? onEnterToMain,
+    TResult Function(_MainSearchChanged value)? onMainSearchChanged,
+    TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
+    TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
+    TResult Function(_GetMoreItems value)? getMoreItems,
+    required TResult orElse(),
+  }) {
+    if (getMoreItems != null) {
+      return getMoreItems(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetMoreItems implements ShowEvent {
+  const factory _GetMoreItems() = _$_GetMoreItems;
 }

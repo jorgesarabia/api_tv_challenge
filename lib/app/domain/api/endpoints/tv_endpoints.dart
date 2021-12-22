@@ -1,7 +1,7 @@
 class TvEndpoints {
   static const _search = '/search';
-  static const _shows = '/shows';
+  static const shows = '/shows';
 
-  static const searchShows = '$_search$_shows';
-  static getEpisodes(String showId) => '$_shows/$showId/episodes';
+  static const searchShows = '$_search$shows';
+  static getEpisodes(String showId) => '$shows/$showId/episodes';
 }

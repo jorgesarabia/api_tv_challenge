@@ -1,3 +1,4 @@
+import 'package:api_tv_challenge/app/utils/constants.dart';
 import 'package:api_tv_challenge/shows/domain/models/episodes.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class EpisodeDetailScreen extends StatelessWidget {
           child: Column(
             children: [
               Image.network(
-                episode.image.original,
+                episode.image?.original ?? Constants.defaultImage,
                 fit: BoxFit.fill,
               ),
               Padding(
@@ -35,7 +36,7 @@ class EpisodeDetailScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Text(
-                  episode.summary,
+                  episode.summary ?? '',
                   style: const TextStyle(fontSize: 18),
                 ),
               ),

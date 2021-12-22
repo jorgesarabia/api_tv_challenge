@@ -46,4 +46,21 @@ class MainRepository implements MainRepositoryFacade {
       return [];
     }
   }
+
+  @override
+  Future<List<Show>?> getShowByPage(int page) async {
+    try {
+      final result = await _mainShowApi.getShowByPage(page.toString());
+      return result.map(
+        success: (success) {
+          return success.data!;
+        },
+        failure: (failure) {
+          return null;
+        },
+      );
+    } on Exception catch (_) {
+      return null;
+    }
+  }
 }

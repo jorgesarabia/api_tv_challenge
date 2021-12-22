@@ -33,8 +33,8 @@ class _$EpisodesTearOff {
       required DateTime airstamp,
       required int runtime,
       required Rating rating,
-      required Image image,
-      required String summary,
+      Image? image,
+      String? summary,
       Links? links}) {
     return _Episodes(
       id: id,
@@ -75,8 +75,8 @@ mixin _$Episodes {
   DateTime get airstamp => throw _privateConstructorUsedError;
   int get runtime => throw _privateConstructorUsedError;
   Rating get rating => throw _privateConstructorUsedError;
-  Image get image => throw _privateConstructorUsedError;
-  String get summary => throw _privateConstructorUsedError;
+  Image? get image => throw _privateConstructorUsedError;
+  String? get summary => throw _privateConstructorUsedError;
   Links? get links => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -101,12 +101,12 @@ abstract class $EpisodesCopyWith<$Res> {
       DateTime airstamp,
       int runtime,
       Rating rating,
-      Image image,
-      String summary,
+      Image? image,
+      String? summary,
       Links? links});
 
   $RatingCopyWith<$Res> get rating;
-  $ImageCopyWith<$Res> get image;
+  $ImageCopyWith<$Res>? get image;
   $LinksCopyWith<$Res>? get links;
 }
 
@@ -183,11 +183,11 @@ class _$EpisodesCopyWithImpl<$Res> implements $EpisodesCopyWith<$Res> {
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as Image,
+              as Image?,
       summary: summary == freezed
           ? _value.summary
           : summary // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       links: links == freezed
           ? _value.links
           : links // ignore: cast_nullable_to_non_nullable
@@ -203,8 +203,12 @@ class _$EpisodesCopyWithImpl<$Res> implements $EpisodesCopyWith<$Res> {
   }
 
   @override
-  $ImageCopyWith<$Res> get image {
-    return $ImageCopyWith<$Res>(_value.image, (value) {
+  $ImageCopyWith<$Res>? get image {
+    if (_value.image == null) {
+      return null;
+    }
+
+    return $ImageCopyWith<$Res>(_value.image!, (value) {
       return _then(_value.copyWith(image: value));
     });
   }
@@ -238,14 +242,14 @@ abstract class _$EpisodesCopyWith<$Res> implements $EpisodesCopyWith<$Res> {
       DateTime airstamp,
       int runtime,
       Rating rating,
-      Image image,
-      String summary,
+      Image? image,
+      String? summary,
       Links? links});
 
   @override
   $RatingCopyWith<$Res> get rating;
   @override
-  $ImageCopyWith<$Res> get image;
+  $ImageCopyWith<$Res>? get image;
   @override
   $LinksCopyWith<$Res>? get links;
 }
@@ -324,11 +328,11 @@ class __$EpisodesCopyWithImpl<$Res> extends _$EpisodesCopyWithImpl<$Res>
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as Image,
+              as Image?,
       summary: summary == freezed
           ? _value.summary
           : summary // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       links: links == freezed
           ? _value.links
           : links // ignore: cast_nullable_to_non_nullable
@@ -352,8 +356,8 @@ class _$_Episodes implements _Episodes {
       required this.airstamp,
       required this.runtime,
       required this.rating,
-      required this.image,
-      required this.summary,
+      this.image,
+      this.summary,
       this.links});
 
   factory _$_Episodes.fromJson(Map<String, dynamic> json) =>
@@ -382,9 +386,9 @@ class _$_Episodes implements _Episodes {
   @override
   final Rating rating;
   @override
-  final Image image;
+  final Image? image;
   @override
-  final String summary;
+  final String? summary;
   @override
   final Links? links;
 
@@ -456,8 +460,8 @@ abstract class _Episodes implements Episodes {
       required DateTime airstamp,
       required int runtime,
       required Rating rating,
-      required Image image,
-      required String summary,
+      Image? image,
+      String? summary,
       Links? links}) = _$_Episodes;
 
   factory _Episodes.fromJson(Map<String, dynamic> json) = _$_Episodes.fromJson;
@@ -485,9 +489,9 @@ abstract class _Episodes implements Episodes {
   @override
   Rating get rating;
   @override
-  Image get image;
+  Image? get image;
   @override
-  String get summary;
+  String? get summary;
   @override
   Links? get links;
   @override
