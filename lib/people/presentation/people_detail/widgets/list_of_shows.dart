@@ -42,7 +42,7 @@ class _ListOfShows extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                        Text('See show details: ${links[index].show.href}'),
+                        const Text('See show details'),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -52,26 +52,35 @@ class _ListOfShows extends StatelessWidget {
                                 bloc.add(PersonEvent.getShowDetail(_getShowId(
                                   links[index].show.href,
                                 )));
-
                                 Navigator.of(context).push<dynamic>(
-                                  MaterialPageRoute<dynamic>(
-                                    builder: (BuildContext context) {
-                                      return BlocProvider.value(
-                                        value: bloc,
-                                        child: const ShowDetailWrapper(
-                                          openInWeb: false,
-                                          // url: links[index].show.href,
-                                          // personBloc: context.read<PersonBloc>(),
-                                        ),
-                                      );
-                                    },
+                                  PageRouteBuilder(
+                                    opaque: false,
+                                    pageBuilder: (_, __, ___) => BlocProvider.value(
+                                      value: bloc,
+                                      child: const ShowDetailWrapper(openInWeb: false),
+                                    ),
                                   ),
                                 );
                               },
                               child: const Text('In the app'),
                             ),
                             ElevatedButton(
-                              onPressed: () => _launchURL(links[index].show.href),
+                              onPressed: () {
+                                final bloc = context.read<PersonBloc>();
+                                bloc.add(PersonEvent.getShowDetail(_getShowId(
+                                  links[index].show.href,
+                                )));
+
+                                Navigator.of(context).push<dynamic>(
+                                  PageRouteBuilder(
+                                    opaque: false,
+                                    pageBuilder: (_, __, ___) => BlocProvider.value(
+                                      value: bloc,
+                                      child: const ShowDetailWrapper(openInWeb: true),
+                                    ),
+                                  ),
+                                );
+                              },
                               child: const Text('Visit page'),
                             ),
                           ],
@@ -89,8 +98,4 @@ class _ListOfShows extends StatelessWidget {
   }
 
   String _getShowId(String href) => href.split('/').last;
-
-  void _launchURL(String url) async {
-    if (!await launch(url)) throw 'Could not launch $url';
-  }
 }
