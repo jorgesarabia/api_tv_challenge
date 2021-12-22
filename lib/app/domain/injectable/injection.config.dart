@@ -51,8 +51,8 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
   gh.lazySingleton<_i11.IAuthFacade>(() =>
       _i12.AuthRepository(get<_i9.StorageService>(), get<_i13.Database>()));
   gh.factory<_i14.LoginBloc>(() => _i14.LoginBloc(get<_i11.IAuthFacade>()));
-  gh.factory<_i15.MainRepositoryFacade>(
-      () => _i16.MainRepository(get<_i7.MainShowApiFacade>()));
+  gh.factory<_i15.MainRepositoryFacade>(() =>
+      _i16.MainRepository(get<_i7.MainShowApiFacade>(), get<_i6.Database>()));
   gh.factory<_i17.ShowBloc>(
       () => _i17.ShowBloc(get<_i15.MainRepositoryFacade>()));
   gh.factory<_i18.SignUpBloc>(() => _i18.SignUpBloc(get<_i11.IAuthFacade>()));

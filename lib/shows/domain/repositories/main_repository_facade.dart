@@ -6,4 +6,5 @@ abstract class MainRepositoryFacade {
   Future<List<SearchShowResponse>> searchShow(String query);
   Future<List<Episodes>> getEpisodes(String showId);
   Future<List<Show>?> getShowByPage(int page);
+  Future<List<Show>?> getMyFavorites();
 }

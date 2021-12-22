@@ -49,6 +49,27 @@ class ShowBloc extends Bloc<ShowEvent, ShowState> {
     }
   }
 
+  Future<void> _getAllFavorites(Emitter<ShowState> emit) async {
+    final _newShows = <Show>[];
+
+    emit(state.copyWith(
+      isLoading: true,
+      shows: _newShows,
+    ));
+
+    final result = await _mainRepositoryFacade.getMyFavorites();
+
+    if (result != null) {
+      _newShows.addAll(result);
+    }
+
+    emit(state.copyWith(
+      isLoading: false,
+      shows: _newShows,
+      hasReachedMax: true,
+    ));
+  }
+
   void _mapFavoriteSearchChangedToState(_FavoriteSearchChanged event, Emitter<ShowState> emit) async {}
 
   void _mapMainSearchChangedToState(_MainSearchChanged event, Emitter<ShowState> emit) async {
@@ -80,6 +101,7 @@ class ShowBloc extends Bloc<ShowEvent, ShowState> {
 
   void _mapGetMoreItemsToState(_GetMoreItems event, Emitter<ShowState> emit) async {
     if (event.isFavorite) {
+      await _getAllFavorites(emit);
     } else {
       await _callNextPage(emit);
     }
@@ -88,6 +110,7 @@ class ShowBloc extends Bloc<ShowEvent, ShowState> {
   void _mapRefreshListToState(_RefreshList event, Emitter<ShowState> emit) async {
     emit(ShowState.initial());
     if (event.isFavorite) {
+      await _getAllFavorites(emit);
     } else {
       await _callNextPage(emit);
     }

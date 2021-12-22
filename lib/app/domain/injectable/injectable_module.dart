@@ -17,7 +17,7 @@ abstract class InjectableModule {
       path,
       version: 1,
       onCreate: (Database db, int version) async {
-        const query = '''
+        const createUser = '''
         CREATE TABLE Users(
           id INTEGER PRIMARY KEY,
           firstName TEXT,
@@ -26,7 +26,16 @@ abstract class InjectableModule {
           password TEXT
         )
         ''';
-        await db.execute(query);
+        await db.execute(createUser);
+
+        const createFavorites = '''
+        CREATE TABLE Favorites(
+          id INTEGER PRIMARY KEY,
+          show TEXT
+        )
+        ''';
+
+        await db.execute(createFavorites);
       },
     );
   }

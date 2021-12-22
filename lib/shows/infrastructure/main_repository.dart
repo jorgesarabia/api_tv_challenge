@@ -4,14 +4,17 @@ import 'package:api_tv_challenge/shows/domain/models/search_show_response.dart';
 import 'package:api_tv_challenge/shows/domain/models/show.dart';
 import 'package:api_tv_challenge/shows/domain/repositories/main_repository_facade.dart';
 import 'package:injectable/injectable.dart';
+import 'package:sqflite/sqflite.dart';
 
 @Injectable(as: MainRepositoryFacade)
 class MainRepository implements MainRepositoryFacade {
   const MainRepository(
     this._mainShowApi,
+    this._database,
   );
 
   final MainShowApiFacade _mainShowApi;
+  final Database _database;
 
   @override
   Future<List<SearchShowResponse>> searchShow(String query) async {
@@ -62,5 +65,14 @@ class MainRepository implements MainRepositoryFacade {
     } on Exception catch (_) {
       return null;
     }
+  }
+
+  @override
+  Future<List<Show>?> getMyFavorites() async {
+    final result = await _database.query('Favorites');
+
+    final shows = result.map((json) => Show.fromJson(json)).toList();
+
+    return shows;
   }
 }
