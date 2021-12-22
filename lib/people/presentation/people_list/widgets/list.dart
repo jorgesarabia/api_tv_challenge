@@ -43,7 +43,7 @@ class _MainListState extends State<_List> {
 
         return RefreshIndicator(
           onRefresh: () {
-            // _peopleBloc.add(ShowEvent.refreshList(widget.isFavorite));
+            _peopleBloc.add(const PeopleEvent.refreshList());
             widget.onRefresh?.call();
 
             return Future.value();
@@ -67,7 +67,15 @@ class _MainListState extends State<_List> {
               }
 
               return GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push<dynamic>(
+                    MaterialPageRoute<dynamic>(
+                      builder: (BuildContext context) {
+                        return PeopleDetailScreen(person: state.people[index]);
+                      },
+                    ),
+                  );
+                },
                 child: _PeopleCard(people: state.people[index]),
               );
             },
@@ -82,7 +90,7 @@ class _MainListState extends State<_List> {
     final hasNotReachedMax = !_peopleBloc.state.hasReachedMax;
 
     if (_isBottom && isNotLoading && hasNotReachedMax) {
-      // _peopleBloc.add(const ShowEvent.getMoreItems());
+      _peopleBloc.add(const PeopleEvent.getMoreItems());
     }
   }
 

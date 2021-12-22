@@ -7,5 +7,5 @@ class TvEndpoints {
   static getEpisodes(String showId) => '$shows/$showId/episodes';
 
   static const searchPeople = '$_search$people';
-  static personInformation(String personId) => '$people/$personId';
+  static personCredits(String personId) => '$people/$personId?embed[]=crewcredits&embed[]=castcredits';
 }

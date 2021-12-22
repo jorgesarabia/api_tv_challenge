@@ -3,6 +3,7 @@ import 'package:api_tv_challenge/app/presentation/app_search_input.dart';
 import 'package:api_tv_challenge/app/utils/constants.dart';
 import 'package:api_tv_challenge/people/application/people/people_bloc.dart';
 import 'package:api_tv_challenge/people/domain/models/people.dart';
+import 'package:api_tv_challenge/people/presentation/people_detail/people_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

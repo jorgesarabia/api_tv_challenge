@@ -8,7 +8,8 @@ part 'links.g.dart';
 class Links with _$Links {
   const factory Links({
     required PreviousEpisode self,
-    required PreviousEpisode previousepisode,
+    PreviousEpisode? previousepisode,
+    PreviousEpisode? nextepisode,
   }) = _Links;
 
   factory Links.fromJson(Map<String, dynamic> json) => _$LinksFromJson(json);

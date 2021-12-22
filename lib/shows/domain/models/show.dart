@@ -34,7 +34,7 @@ class Show with _$Show {
     Image? image,
     String? summary,
     required int updated,
-    Links? links,
+    @JsonKey(name: '_links') Links? links,
   }) = _Show;
 
   factory Show.fromJson(Map<String, dynamic> json) => _$ShowFromJson(json);

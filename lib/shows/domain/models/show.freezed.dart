@@ -44,7 +44,7 @@ class _$ShowTearOff {
       Image? image,
       String? summary,
       required int updated,
-      Links? links}) {
+      @JsonKey(name: '_links') Links? links}) {
     return _Show(
       id: id,
       url: url,
@@ -104,6 +104,7 @@ mixin _$Show {
   Image? get image => throw _privateConstructorUsedError;
   String? get summary => throw _privateConstructorUsedError;
   int get updated => throw _privateConstructorUsedError;
+  @JsonKey(name: '_links')
   Links? get links => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -138,7 +139,7 @@ abstract class $ShowCopyWith<$Res> {
       Image? image,
       String? summary,
       int updated,
-      Links? links});
+      @JsonKey(name: '_links') Links? links});
 
   $ScheduleCopyWith<$Res> get schedule;
   $RatingCopyWith<$Res> get rating;
@@ -361,7 +362,7 @@ abstract class _$ShowCopyWith<$Res> implements $ShowCopyWith<$Res> {
       Image? image,
       String? summary,
       int updated,
-      Links? links});
+      @JsonKey(name: '_links') Links? links});
 
   @override
   $ScheduleCopyWith<$Res> get schedule;
@@ -535,7 +536,7 @@ class _$_Show implements _Show {
       this.image,
       this.summary,
       required this.updated,
-      this.links});
+      @JsonKey(name: '_links') this.links});
 
   factory _$_Show.fromJson(Map<String, dynamic> json) => _$$_ShowFromJson(json);
 
@@ -584,6 +585,7 @@ class _$_Show implements _Show {
   @override
   final int updated;
   @override
+  @JsonKey(name: '_links')
   final Links? links;
 
   @override
@@ -688,7 +690,7 @@ abstract class _Show implements Show {
       Image? image,
       String? summary,
       required int updated,
-      Links? links}) = _$_Show;
+      @JsonKey(name: '_links') Links? links}) = _$_Show;
 
   factory _Show.fromJson(Map<String, dynamic> json) = _$_Show.fromJson;
 
@@ -737,6 +739,7 @@ abstract class _Show implements Show {
   @override
   int get updated;
   @override
+  @JsonKey(name: '_links')
   Links? get links;
   @override
   @JsonKey(ignore: true)

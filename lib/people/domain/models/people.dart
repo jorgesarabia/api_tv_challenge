@@ -18,7 +18,7 @@ class People with _$People {
     String? gender,
     Image? image,
     required int updated,
-    Links? links,
+    @JsonKey(name: '_links') Links? links,
   }) = _People;
 
   factory People.fromJson(Map<String, dynamic> json) => _$PeopleFromJson(json);

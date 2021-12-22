@@ -1,4 +1,5 @@
 import 'package:api_tv_challenge/app/domain/api/domain/people_api_facade.dart';
+import 'package:api_tv_challenge/people/domain/models/person_info_response.dart';
 import 'package:api_tv_challenge/people/domain/models/search_people_response.dart';
 import 'package:api_tv_challenge/people/domain/models/people.dart';
 import 'package:api_tv_challenge/people/domain/repositories/people_repository_facade.dart';
@@ -43,6 +44,23 @@ class PeopleRepository implements PeopleRepositoryFacade {
       );
     } on Exception catch (_) {
       return [];
+    }
+  }
+
+  @override
+  Future<PersonInfoResponse?> getPersonInfo(String personId) async {
+    try {
+      final result = await _peopleApiFacade.getPersonInfo(personId);
+      return result.map(
+        success: (success) {
+          return success.data!;
+        },
+        failure: (failure) {
+          return null;
+        },
+      );
+    } on Exception catch (_) {
+      return null;
     }
   }
 }

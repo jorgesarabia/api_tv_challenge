@@ -23,10 +23,12 @@ class _$LinksTearOff {
 
   _Links call(
       {required PreviousEpisode self,
-      required PreviousEpisode previousepisode}) {
+      PreviousEpisode? previousepisode,
+      PreviousEpisode? nextepisode}) {
     return _Links(
       self: self,
       previousepisode: previousepisode,
+      nextepisode: nextepisode,
     );
   }
 
@@ -41,7 +43,8 @@ const $Links = _$LinksTearOff();
 /// @nodoc
 mixin _$Links {
   PreviousEpisode get self => throw _privateConstructorUsedError;
-  PreviousEpisode get previousepisode => throw _privateConstructorUsedError;
+  PreviousEpisode? get previousepisode => throw _privateConstructorUsedError;
+  PreviousEpisode? get nextepisode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,10 +55,14 @@ mixin _$Links {
 abstract class $LinksCopyWith<$Res> {
   factory $LinksCopyWith(Links value, $Res Function(Links) then) =
       _$LinksCopyWithImpl<$Res>;
-  $Res call({PreviousEpisode self, PreviousEpisode previousepisode});
+  $Res call(
+      {PreviousEpisode self,
+      PreviousEpisode? previousepisode,
+      PreviousEpisode? nextepisode});
 
   $PreviousEpisodeCopyWith<$Res> get self;
-  $PreviousEpisodeCopyWith<$Res> get previousepisode;
+  $PreviousEpisodeCopyWith<$Res>? get previousepisode;
+  $PreviousEpisodeCopyWith<$Res>? get nextepisode;
 }
 
 /// @nodoc
@@ -70,6 +77,7 @@ class _$LinksCopyWithImpl<$Res> implements $LinksCopyWith<$Res> {
   $Res call({
     Object? self = freezed,
     Object? previousepisode = freezed,
+    Object? nextepisode = freezed,
   }) {
     return _then(_value.copyWith(
       self: self == freezed
@@ -79,7 +87,11 @@ class _$LinksCopyWithImpl<$Res> implements $LinksCopyWith<$Res> {
       previousepisode: previousepisode == freezed
           ? _value.previousepisode
           : previousepisode // ignore: cast_nullable_to_non_nullable
-              as PreviousEpisode,
+              as PreviousEpisode?,
+      nextepisode: nextepisode == freezed
+          ? _value.nextepisode
+          : nextepisode // ignore: cast_nullable_to_non_nullable
+              as PreviousEpisode?,
     ));
   }
 
@@ -91,9 +103,24 @@ class _$LinksCopyWithImpl<$Res> implements $LinksCopyWith<$Res> {
   }
 
   @override
-  $PreviousEpisodeCopyWith<$Res> get previousepisode {
-    return $PreviousEpisodeCopyWith<$Res>(_value.previousepisode, (value) {
+  $PreviousEpisodeCopyWith<$Res>? get previousepisode {
+    if (_value.previousepisode == null) {
+      return null;
+    }
+
+    return $PreviousEpisodeCopyWith<$Res>(_value.previousepisode!, (value) {
       return _then(_value.copyWith(previousepisode: value));
+    });
+  }
+
+  @override
+  $PreviousEpisodeCopyWith<$Res>? get nextepisode {
+    if (_value.nextepisode == null) {
+      return null;
+    }
+
+    return $PreviousEpisodeCopyWith<$Res>(_value.nextepisode!, (value) {
+      return _then(_value.copyWith(nextepisode: value));
     });
   }
 }
@@ -103,12 +130,17 @@ abstract class _$LinksCopyWith<$Res> implements $LinksCopyWith<$Res> {
   factory _$LinksCopyWith(_Links value, $Res Function(_Links) then) =
       __$LinksCopyWithImpl<$Res>;
   @override
-  $Res call({PreviousEpisode self, PreviousEpisode previousepisode});
+  $Res call(
+      {PreviousEpisode self,
+      PreviousEpisode? previousepisode,
+      PreviousEpisode? nextepisode});
 
   @override
   $PreviousEpisodeCopyWith<$Res> get self;
   @override
-  $PreviousEpisodeCopyWith<$Res> get previousepisode;
+  $PreviousEpisodeCopyWith<$Res>? get previousepisode;
+  @override
+  $PreviousEpisodeCopyWith<$Res>? get nextepisode;
 }
 
 /// @nodoc
@@ -124,6 +156,7 @@ class __$LinksCopyWithImpl<$Res> extends _$LinksCopyWithImpl<$Res>
   $Res call({
     Object? self = freezed,
     Object? previousepisode = freezed,
+    Object? nextepisode = freezed,
   }) {
     return _then(_Links(
       self: self == freezed
@@ -133,7 +166,11 @@ class __$LinksCopyWithImpl<$Res> extends _$LinksCopyWithImpl<$Res>
       previousepisode: previousepisode == freezed
           ? _value.previousepisode
           : previousepisode // ignore: cast_nullable_to_non_nullable
-              as PreviousEpisode,
+              as PreviousEpisode?,
+      nextepisode: nextepisode == freezed
+          ? _value.nextepisode
+          : nextepisode // ignore: cast_nullable_to_non_nullable
+              as PreviousEpisode?,
     ));
   }
 }
@@ -141,7 +178,7 @@ class __$LinksCopyWithImpl<$Res> extends _$LinksCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Links implements _Links {
-  const _$_Links({required this.self, required this.previousepisode});
+  const _$_Links({required this.self, this.previousepisode, this.nextepisode});
 
   factory _$_Links.fromJson(Map<String, dynamic> json) =>
       _$$_LinksFromJson(json);
@@ -149,11 +186,13 @@ class _$_Links implements _Links {
   @override
   final PreviousEpisode self;
   @override
-  final PreviousEpisode previousepisode;
+  final PreviousEpisode? previousepisode;
+  @override
+  final PreviousEpisode? nextepisode;
 
   @override
   String toString() {
-    return 'Links(self: $self, previousepisode: $previousepisode)';
+    return 'Links(self: $self, previousepisode: $previousepisode, nextepisode: $nextepisode)';
   }
 
   @override
@@ -163,14 +202,17 @@ class _$_Links implements _Links {
             other is _Links &&
             const DeepCollectionEquality().equals(other.self, self) &&
             const DeepCollectionEquality()
-                .equals(other.previousepisode, previousepisode));
+                .equals(other.previousepisode, previousepisode) &&
+            const DeepCollectionEquality()
+                .equals(other.nextepisode, nextepisode));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(self),
-      const DeepCollectionEquality().hash(previousepisode));
+      const DeepCollectionEquality().hash(previousepisode),
+      const DeepCollectionEquality().hash(nextepisode));
 
   @JsonKey(ignore: true)
   @override
@@ -186,14 +228,17 @@ class _$_Links implements _Links {
 abstract class _Links implements Links {
   const factory _Links(
       {required PreviousEpisode self,
-      required PreviousEpisode previousepisode}) = _$_Links;
+      PreviousEpisode? previousepisode,
+      PreviousEpisode? nextepisode}) = _$_Links;
 
   factory _Links.fromJson(Map<String, dynamic> json) = _$_Links.fromJson;
 
   @override
   PreviousEpisode get self;
   @override
-  PreviousEpisode get previousepisode;
+  PreviousEpisode? get previousepisode;
+  @override
+  PreviousEpisode? get nextepisode;
   @override
   @JsonKey(ignore: true)
   _$LinksCopyWith<_Links> get copyWith => throw _privateConstructorUsedError;

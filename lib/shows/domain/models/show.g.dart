@@ -38,9 +38,9 @@ _$_Show _$$_ShowFromJson(Map<String, dynamic> json) => _$_Show(
           : Image.fromJson(json['image'] as Map<String, dynamic>),
       summary: json['summary'] as String?,
       updated: json['updated'] as int,
-      links: json['links'] == null
+      links: json['_links'] == null
           ? null
-          : Links.fromJson(json['links'] as Map<String, dynamic>),
+          : Links.fromJson(json['_links'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_ShowToJson(_$_Show instance) => <String, dynamic>{
@@ -66,5 +66,5 @@ Map<String, dynamic> _$$_ShowToJson(_$_Show instance) => <String, dynamic>{
       'image': instance.image,
       'summary': instance.summary,
       'updated': instance.updated,
-      'links': instance.links,
+      '_links': instance.links,
     };
