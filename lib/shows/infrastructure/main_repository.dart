@@ -73,7 +73,7 @@ class MainRepository implements MainRepositoryFacade {
   Future<List<Show>?> getMyFavorites() async {
     final result = await _database.query('Favorites');
 
-    final shows = result.map((json) => Show.fromJson(json)).toList();
+    final shows = result.map((json) => Show.fromJson(jsonDecode(json['show'] as String))).toList();
 
     return shows;
   }
