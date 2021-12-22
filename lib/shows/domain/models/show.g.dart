@@ -8,7 +8,7 @@ part of 'show.dart';
 
 _$_Show _$$_ShowFromJson(Map<String, dynamic> json) => _$_Show(
       id: json['id'] as int,
-      url: json['url'] as String,
+      url: json['url'] as String?,
       name: json['name'] as String,
       type: json['type'] as String,
       language: json['language'] as String?,

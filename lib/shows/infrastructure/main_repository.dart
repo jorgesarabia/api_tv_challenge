@@ -80,23 +80,21 @@ class MainRepository implements MainRepositoryFacade {
 
   @override
   Future<bool> addFavorite(Show show) async {
-    final checkIfExist = await _database.query(
-      'Favorites',
-      where: 'showId = ?',
-      whereArgs: [show.id],
-    );
+    final checkIfExist = await getFavorite(show.id.toString());
 
-    if (checkIfExist.isNotEmpty) {
+    if (checkIfExist != null) {
       return true;
     }
 
     Map<String, Object?> values = {
       'show': jsonEncode(show),
+      'showId': show.id.toString(),
     };
 
     final result = await _database.insert(
       'Favorites',
       values,
+      conflictAlgorithm: ConflictAlgorithm.replace,
     );
 
     return result != 0;
@@ -111,5 +109,19 @@ class MainRepository implements MainRepositoryFacade {
     );
 
     return result == 1;
+  }
+
+  @override
+  Future<Show?> getFavorite(String showId) async {
+    final favorite = await _database.query(
+      'Favorites',
+      where: 'showId = ?',
+      whereArgs: [showId],
+    );
+    if (favorite.isNotEmpty && favorite.length == 1) {
+      return Show.fromJson(jsonDecode(favorite.first['show'] as String));
+    }
+
+    return null;
   }
 }

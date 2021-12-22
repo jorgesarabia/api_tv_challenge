@@ -18,10 +18,13 @@ class _$EpisodesStateTearOff {
   const _$EpisodesStateTearOff();
 
   _EpisodesState call(
-      {required bool isSubmitting, required List<SeasonEpisodes> episodes}) {
+      {required bool isSubmitting,
+      required List<SeasonEpisodes> episodes,
+      required bool isFavorite}) {
     return _EpisodesState(
       isSubmitting: isSubmitting,
       episodes: episodes,
+      isFavorite: isFavorite,
     );
   }
 }
@@ -33,6 +36,7 @@ const $EpisodesState = _$EpisodesStateTearOff();
 mixin _$EpisodesState {
   bool get isSubmitting => throw _privateConstructorUsedError;
   List<SeasonEpisodes> get episodes => throw _privateConstructorUsedError;
+  bool get isFavorite => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EpisodesStateCopyWith<EpisodesState> get copyWith =>
@@ -44,7 +48,8 @@ abstract class $EpisodesStateCopyWith<$Res> {
   factory $EpisodesStateCopyWith(
           EpisodesState value, $Res Function(EpisodesState) then) =
       _$EpisodesStateCopyWithImpl<$Res>;
-  $Res call({bool isSubmitting, List<SeasonEpisodes> episodes});
+  $Res call(
+      {bool isSubmitting, List<SeasonEpisodes> episodes, bool isFavorite});
 }
 
 /// @nodoc
@@ -60,6 +65,7 @@ class _$EpisodesStateCopyWithImpl<$Res>
   $Res call({
     Object? isSubmitting = freezed,
     Object? episodes = freezed,
+    Object? isFavorite = freezed,
   }) {
     return _then(_value.copyWith(
       isSubmitting: isSubmitting == freezed
@@ -70,6 +76,10 @@ class _$EpisodesStateCopyWithImpl<$Res>
           ? _value.episodes
           : episodes // ignore: cast_nullable_to_non_nullable
               as List<SeasonEpisodes>,
+      isFavorite: isFavorite == freezed
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -81,7 +91,8 @@ abstract class _$EpisodesStateCopyWith<$Res>
           _EpisodesState value, $Res Function(_EpisodesState) then) =
       __$EpisodesStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isSubmitting, List<SeasonEpisodes> episodes});
+  $Res call(
+      {bool isSubmitting, List<SeasonEpisodes> episodes, bool isFavorite});
 }
 
 /// @nodoc
@@ -99,6 +110,7 @@ class __$EpisodesStateCopyWithImpl<$Res>
   $Res call({
     Object? isSubmitting = freezed,
     Object? episodes = freezed,
+    Object? isFavorite = freezed,
   }) {
     return _then(_EpisodesState(
       isSubmitting: isSubmitting == freezed
@@ -109,6 +121,10 @@ class __$EpisodesStateCopyWithImpl<$Res>
           ? _value.episodes
           : episodes // ignore: cast_nullable_to_non_nullable
               as List<SeasonEpisodes>,
+      isFavorite: isFavorite == freezed
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -116,16 +132,21 @@ class __$EpisodesStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_EpisodesState implements _EpisodesState {
-  const _$_EpisodesState({required this.isSubmitting, required this.episodes});
+  const _$_EpisodesState(
+      {required this.isSubmitting,
+      required this.episodes,
+      required this.isFavorite});
 
   @override
   final bool isSubmitting;
   @override
   final List<SeasonEpisodes> episodes;
+  @override
+  final bool isFavorite;
 
   @override
   String toString() {
-    return 'EpisodesState(isSubmitting: $isSubmitting, episodes: $episodes)';
+    return 'EpisodesState(isSubmitting: $isSubmitting, episodes: $episodes, isFavorite: $isFavorite)';
   }
 
   @override
@@ -135,14 +156,17 @@ class _$_EpisodesState implements _EpisodesState {
             other is _EpisodesState &&
             const DeepCollectionEquality()
                 .equals(other.isSubmitting, isSubmitting) &&
-            const DeepCollectionEquality().equals(other.episodes, episodes));
+            const DeepCollectionEquality().equals(other.episodes, episodes) &&
+            const DeepCollectionEquality()
+                .equals(other.isFavorite, isFavorite));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isSubmitting),
-      const DeepCollectionEquality().hash(episodes));
+      const DeepCollectionEquality().hash(episodes),
+      const DeepCollectionEquality().hash(isFavorite));
 
   @JsonKey(ignore: true)
   @override
@@ -153,12 +177,15 @@ class _$_EpisodesState implements _EpisodesState {
 abstract class _EpisodesState implements EpisodesState {
   const factory _EpisodesState(
       {required bool isSubmitting,
-      required List<SeasonEpisodes> episodes}) = _$_EpisodesState;
+      required List<SeasonEpisodes> episodes,
+      required bool isFavorite}) = _$_EpisodesState;
 
   @override
   bool get isSubmitting;
   @override
   List<SeasonEpisodes> get episodes;
+  @override
+  bool get isFavorite;
   @override
   @JsonKey(ignore: true)
   _$EpisodesStateCopyWith<_EpisodesState> get copyWith =>

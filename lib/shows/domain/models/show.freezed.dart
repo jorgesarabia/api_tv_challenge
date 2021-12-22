@@ -23,7 +23,7 @@ class _$ShowTearOff {
 
   _Show call(
       {required int id,
-      required String url,
+      String? url,
       required String name,
       required String type,
       String? language,
@@ -83,7 +83,7 @@ const $Show = _$ShowTearOff();
 /// @nodoc
 mixin _$Show {
   int get id => throw _privateConstructorUsedError;
-  String get url => throw _privateConstructorUsedError;
+  String? get url => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   String? get language => throw _privateConstructorUsedError;
@@ -117,7 +117,7 @@ abstract class $ShowCopyWith<$Res> {
       _$ShowCopyWithImpl<$Res>;
   $Res call(
       {int id,
-      String url,
+      String? url,
       String name,
       String type,
       String? language,
@@ -190,7 +190,7 @@ class _$ShowCopyWithImpl<$Res> implements $ShowCopyWith<$Res> {
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -340,7 +340,7 @@ abstract class _$ShowCopyWith<$Res> implements $ShowCopyWith<$Res> {
   @override
   $Res call(
       {int id,
-      String url,
+      String? url,
       String name,
       String type,
       String? language,
@@ -420,7 +420,7 @@ class __$ShowCopyWithImpl<$Res> extends _$ShowCopyWithImpl<$Res>
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -514,7 +514,7 @@ class __$ShowCopyWithImpl<$Res> extends _$ShowCopyWithImpl<$Res>
 class _$_Show implements _Show {
   const _$_Show(
       {required this.id,
-      required this.url,
+      this.url,
       required this.name,
       required this.type,
       this.language,
@@ -542,7 +542,7 @@ class _$_Show implements _Show {
   @override
   final int id;
   @override
-  final String url;
+  final String? url;
   @override
   final String name;
   @override
@@ -667,7 +667,7 @@ class _$_Show implements _Show {
 abstract class _Show implements Show {
   const factory _Show(
       {required int id,
-      required String url,
+      String? url,
       required String name,
       required String type,
       String? language,
@@ -695,7 +695,7 @@ abstract class _Show implements Show {
   @override
   int get id;
   @override
-  String get url;
+  String? get url;
   @override
   String get name;
   @override

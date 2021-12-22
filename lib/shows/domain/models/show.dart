@@ -13,7 +13,7 @@ part 'show.g.dart';
 class Show with _$Show {
   const factory Show({
     required int id,
-    required String url,
+    String? url,
     required String name,
     required String type,
     String? language,

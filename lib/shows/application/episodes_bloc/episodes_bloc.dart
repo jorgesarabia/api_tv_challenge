@@ -1,5 +1,6 @@
 import 'package:api_tv_challenge/shows/domain/models/episodes.dart';
 import 'package:api_tv_challenge/shows/domain/models/season_episodes.dart';
+import 'package:api_tv_challenge/shows/domain/models/show.dart';
 import 'package:api_tv_challenge/shows/domain/repositories/main_repository_facade.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -19,6 +20,7 @@ class EpisodesBloc extends Bloc<EpisodesEvent, EpisodesState> {
 
   void _mapGetEpisodesToState(_GetEpisodes event, Emitter<EpisodesState> emit) async {
     final result = await _mainRepositoryFacade.getEpisodes(event.showId);
+    final favoriteResult = await _mainRepositoryFacade.getFavorite(event.showId);
 
     List<SeasonEpisodes> seasons = [];
 
@@ -29,6 +31,9 @@ class EpisodesBloc extends Bloc<EpisodesEvent, EpisodesState> {
       seasons[episode.season - 1].episodes.add(episode);
     }
 
-    emit(state.copyWith(episodes: seasons));
+    emit(state.copyWith(
+      episodes: seasons,
+      isFavorite: favoriteResult != null,
+    ));
   }
 }

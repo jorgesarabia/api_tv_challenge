@@ -1,6 +1,7 @@
 import 'package:api_tv_challenge/app/domain/injectable/injection.dart';
 import 'package:api_tv_challenge/app/utils/constants.dart';
 import 'package:api_tv_challenge/shows/application/episodes_bloc/episodes_bloc.dart';
+import 'package:api_tv_challenge/shows/application/show/show_bloc.dart';
 import 'package:api_tv_challenge/shows/domain/models/episodes.dart';
 import 'package:api_tv_challenge/shows/domain/models/show.dart';
 import 'package:api_tv_challenge/shows/presentation/show_details/episode_detail/episode_detail_screen.dart';
@@ -53,18 +54,23 @@ class ShowDetailScreen extends StatelessWidget {
                       ),
                     ),
                     actions: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 30.0),
-                        child: Container(
-                          padding: const EdgeInsets.all(5.0),
-                          decoration: const BoxDecoration(
-                            color: Colors.red,
-                            shape: BoxShape.circle,
-                          ),
-                          child: const Icon(
-                            Icons.favorite,
-                            color: Colors.white,
-                            size: 40,
+                      GestureDetector(
+                        onTap: () {
+                          context.read<ShowBloc>().add(ShowEvent.addFavorite(show));
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 30.0),
+                          child: Container(
+                            padding: const EdgeInsets.all(5.0),
+                            decoration: const BoxDecoration(
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Icon(
+                              Icons.favorite,
+                              color: state.isFavorite ? Colors.black : Colors.white,
+                              size: 40,
+                            ),
                           ),
                         ),
                       )

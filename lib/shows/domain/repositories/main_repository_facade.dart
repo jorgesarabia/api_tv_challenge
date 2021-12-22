@@ -9,4 +9,5 @@ abstract class MainRepositoryFacade {
   Future<List<Show>?> getMyFavorites();
   Future<bool> addFavorite(Show show);
   Future<bool> removeFavorite(Show show);
+  Future<Show?> getFavorite(String showId);
 }
