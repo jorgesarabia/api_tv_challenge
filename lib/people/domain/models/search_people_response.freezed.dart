@@ -21,10 +21,10 @@ SearchPeopleResponse _$SearchPeopleResponseFromJson(Map<String, dynamic> json) {
 class _$SearchPeopleResponseTearOff {
   const _$SearchPeopleResponseTearOff();
 
-  _SearchPeopleResponse call({required double score, required People people}) {
+  _SearchPeopleResponse call({required double score, required People person}) {
     return _SearchPeopleResponse(
       score: score,
-      people: people,
+      person: person,
     );
   }
 
@@ -39,7 +39,7 @@ const $SearchPeopleResponse = _$SearchPeopleResponseTearOff();
 /// @nodoc
 mixin _$SearchPeopleResponse {
   double get score => throw _privateConstructorUsedError;
-  People get people => throw _privateConstructorUsedError;
+  People get person => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,9 +52,9 @@ abstract class $SearchPeopleResponseCopyWith<$Res> {
   factory $SearchPeopleResponseCopyWith(SearchPeopleResponse value,
           $Res Function(SearchPeopleResponse) then) =
       _$SearchPeopleResponseCopyWithImpl<$Res>;
-  $Res call({double score, People people});
+  $Res call({double score, People person});
 
-  $PeopleCopyWith<$Res> get people;
+  $PeopleCopyWith<$Res> get person;
 }
 
 /// @nodoc
@@ -69,24 +69,24 @@ class _$SearchPeopleResponseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? score = freezed,
-    Object? people = freezed,
+    Object? person = freezed,
   }) {
     return _then(_value.copyWith(
       score: score == freezed
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
               as double,
-      people: people == freezed
-          ? _value.people
-          : people // ignore: cast_nullable_to_non_nullable
+      person: person == freezed
+          ? _value.person
+          : person // ignore: cast_nullable_to_non_nullable
               as People,
     ));
   }
 
   @override
-  $PeopleCopyWith<$Res> get people {
-    return $PeopleCopyWith<$Res>(_value.people, (value) {
-      return _then(_value.copyWith(people: value));
+  $PeopleCopyWith<$Res> get person {
+    return $PeopleCopyWith<$Res>(_value.person, (value) {
+      return _then(_value.copyWith(person: value));
     });
   }
 }
@@ -98,10 +98,10 @@ abstract class _$SearchPeopleResponseCopyWith<$Res>
           $Res Function(_SearchPeopleResponse) then) =
       __$SearchPeopleResponseCopyWithImpl<$Res>;
   @override
-  $Res call({double score, People people});
+  $Res call({double score, People person});
 
   @override
-  $PeopleCopyWith<$Res> get people;
+  $PeopleCopyWith<$Res> get person;
 }
 
 /// @nodoc
@@ -118,16 +118,16 @@ class __$SearchPeopleResponseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? score = freezed,
-    Object? people = freezed,
+    Object? person = freezed,
   }) {
     return _then(_SearchPeopleResponse(
       score: score == freezed
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
               as double,
-      people: people == freezed
-          ? _value.people
-          : people // ignore: cast_nullable_to_non_nullable
+      person: person == freezed
+          ? _value.person
+          : person // ignore: cast_nullable_to_non_nullable
               as People,
     ));
   }
@@ -136,7 +136,7 @@ class __$SearchPeopleResponseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_SearchPeopleResponse implements _SearchPeopleResponse {
-  _$_SearchPeopleResponse({required this.score, required this.people});
+  _$_SearchPeopleResponse({required this.score, required this.person});
 
   factory _$_SearchPeopleResponse.fromJson(Map<String, dynamic> json) =>
       _$$_SearchPeopleResponseFromJson(json);
@@ -144,11 +144,11 @@ class _$_SearchPeopleResponse implements _SearchPeopleResponse {
   @override
   final double score;
   @override
-  final People people;
+  final People person;
 
   @override
   String toString() {
-    return 'SearchPeopleResponse(score: $score, people: $people)';
+    return 'SearchPeopleResponse(score: $score, person: $person)';
   }
 
   @override
@@ -157,14 +157,14 @@ class _$_SearchPeopleResponse implements _SearchPeopleResponse {
         (other.runtimeType == runtimeType &&
             other is _SearchPeopleResponse &&
             const DeepCollectionEquality().equals(other.score, score) &&
-            const DeepCollectionEquality().equals(other.people, people));
+            const DeepCollectionEquality().equals(other.person, person));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(score),
-      const DeepCollectionEquality().hash(people));
+      const DeepCollectionEquality().hash(person));
 
   @JsonKey(ignore: true)
   @override
@@ -181,7 +181,7 @@ class _$_SearchPeopleResponse implements _SearchPeopleResponse {
 abstract class _SearchPeopleResponse implements SearchPeopleResponse {
   factory _SearchPeopleResponse(
       {required double score,
-      required People people}) = _$_SearchPeopleResponse;
+      required People person}) = _$_SearchPeopleResponse;
 
   factory _SearchPeopleResponse.fromJson(Map<String, dynamic> json) =
       _$_SearchPeopleResponse.fromJson;
@@ -189,7 +189,7 @@ abstract class _SearchPeopleResponse implements SearchPeopleResponse {
   @override
   double get score;
   @override
-  People get people;
+  People get person;
   @override
   @JsonKey(ignore: true)
   _$SearchPeopleResponseCopyWith<_SearchPeopleResponse> get copyWith =>

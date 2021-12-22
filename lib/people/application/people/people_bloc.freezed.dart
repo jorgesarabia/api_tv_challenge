@@ -221,7 +221,7 @@ abstract class _PeopleState implements PeopleState {
 class _$PeopleEventTearOff {
   const _$PeopleEventTearOff();
 
-  _SearchChanged onMainSearchChanged(String query) {
+  _SearchChanged onPeopleSearchChanged(String query) {
     return _SearchChanged(
       query,
     );
@@ -243,21 +243,21 @@ const $PeopleEvent = _$PeopleEventTearOff();
 mixin _$PeopleEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String query) onMainSearchChanged,
+    required TResult Function(String query) onPeopleSearchChanged,
     required TResult Function() getMoreItems,
     required TResult Function() refreshList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String query)? onMainSearchChanged,
+    TResult Function(String query)? onPeopleSearchChanged,
     TResult Function()? getMoreItems,
     TResult Function()? refreshList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? onMainSearchChanged,
+    TResult Function(String query)? onPeopleSearchChanged,
     TResult Function()? getMoreItems,
     TResult Function()? refreshList,
     required TResult orElse(),
@@ -265,21 +265,21 @@ mixin _$PeopleEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SearchChanged value) onMainSearchChanged,
+    required TResult Function(_SearchChanged value) onPeopleSearchChanged,
     required TResult Function(_GetMoreItems value) getMoreItems,
     required TResult Function(_RefreshList value) refreshList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_SearchChanged value)? onMainSearchChanged,
+    TResult Function(_SearchChanged value)? onPeopleSearchChanged,
     TResult Function(_GetMoreItems value)? getMoreItems,
     TResult Function(_RefreshList value)? refreshList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SearchChanged value)? onMainSearchChanged,
+    TResult Function(_SearchChanged value)? onPeopleSearchChanged,
     TResult Function(_GetMoreItems value)? getMoreItems,
     TResult Function(_RefreshList value)? refreshList,
     required TResult orElse(),
@@ -344,7 +344,7 @@ class _$_SearchChanged implements _SearchChanged {
 
   @override
   String toString() {
-    return 'PeopleEvent.onMainSearchChanged(query: $query)';
+    return 'PeopleEvent.onPeopleSearchChanged(query: $query)';
   }
 
   @override
@@ -367,33 +367,33 @@ class _$_SearchChanged implements _SearchChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String query) onMainSearchChanged,
+    required TResult Function(String query) onPeopleSearchChanged,
     required TResult Function() getMoreItems,
     required TResult Function() refreshList,
   }) {
-    return onMainSearchChanged(query);
+    return onPeopleSearchChanged(query);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String query)? onMainSearchChanged,
+    TResult Function(String query)? onPeopleSearchChanged,
     TResult Function()? getMoreItems,
     TResult Function()? refreshList,
   }) {
-    return onMainSearchChanged?.call(query);
+    return onPeopleSearchChanged?.call(query);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? onMainSearchChanged,
+    TResult Function(String query)? onPeopleSearchChanged,
     TResult Function()? getMoreItems,
     TResult Function()? refreshList,
     required TResult orElse(),
   }) {
-    if (onMainSearchChanged != null) {
-      return onMainSearchChanged(query);
+    if (onPeopleSearchChanged != null) {
+      return onPeopleSearchChanged(query);
     }
     return orElse();
   }
@@ -401,33 +401,33 @@ class _$_SearchChanged implements _SearchChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SearchChanged value) onMainSearchChanged,
+    required TResult Function(_SearchChanged value) onPeopleSearchChanged,
     required TResult Function(_GetMoreItems value) getMoreItems,
     required TResult Function(_RefreshList value) refreshList,
   }) {
-    return onMainSearchChanged(this);
+    return onPeopleSearchChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_SearchChanged value)? onMainSearchChanged,
+    TResult Function(_SearchChanged value)? onPeopleSearchChanged,
     TResult Function(_GetMoreItems value)? getMoreItems,
     TResult Function(_RefreshList value)? refreshList,
   }) {
-    return onMainSearchChanged?.call(this);
+    return onPeopleSearchChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SearchChanged value)? onMainSearchChanged,
+    TResult Function(_SearchChanged value)? onPeopleSearchChanged,
     TResult Function(_GetMoreItems value)? getMoreItems,
     TResult Function(_RefreshList value)? refreshList,
     required TResult orElse(),
   }) {
-    if (onMainSearchChanged != null) {
-      return onMainSearchChanged(this);
+    if (onPeopleSearchChanged != null) {
+      return onPeopleSearchChanged(this);
     }
     return orElse();
   }
@@ -482,7 +482,7 @@ class _$_GetMoreItems implements _GetMoreItems {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String query) onMainSearchChanged,
+    required TResult Function(String query) onPeopleSearchChanged,
     required TResult Function() getMoreItems,
     required TResult Function() refreshList,
   }) {
@@ -492,7 +492,7 @@ class _$_GetMoreItems implements _GetMoreItems {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String query)? onMainSearchChanged,
+    TResult Function(String query)? onPeopleSearchChanged,
     TResult Function()? getMoreItems,
     TResult Function()? refreshList,
   }) {
@@ -502,7 +502,7 @@ class _$_GetMoreItems implements _GetMoreItems {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? onMainSearchChanged,
+    TResult Function(String query)? onPeopleSearchChanged,
     TResult Function()? getMoreItems,
     TResult Function()? refreshList,
     required TResult orElse(),
@@ -516,7 +516,7 @@ class _$_GetMoreItems implements _GetMoreItems {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SearchChanged value) onMainSearchChanged,
+    required TResult Function(_SearchChanged value) onPeopleSearchChanged,
     required TResult Function(_GetMoreItems value) getMoreItems,
     required TResult Function(_RefreshList value) refreshList,
   }) {
@@ -526,7 +526,7 @@ class _$_GetMoreItems implements _GetMoreItems {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_SearchChanged value)? onMainSearchChanged,
+    TResult Function(_SearchChanged value)? onPeopleSearchChanged,
     TResult Function(_GetMoreItems value)? getMoreItems,
     TResult Function(_RefreshList value)? refreshList,
   }) {
@@ -536,7 +536,7 @@ class _$_GetMoreItems implements _GetMoreItems {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SearchChanged value)? onMainSearchChanged,
+    TResult Function(_SearchChanged value)? onPeopleSearchChanged,
     TResult Function(_GetMoreItems value)? getMoreItems,
     TResult Function(_RefreshList value)? refreshList,
     required TResult orElse(),
@@ -592,7 +592,7 @@ class _$_RefreshList implements _RefreshList {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String query) onMainSearchChanged,
+    required TResult Function(String query) onPeopleSearchChanged,
     required TResult Function() getMoreItems,
     required TResult Function() refreshList,
   }) {
@@ -602,7 +602,7 @@ class _$_RefreshList implements _RefreshList {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String query)? onMainSearchChanged,
+    TResult Function(String query)? onPeopleSearchChanged,
     TResult Function()? getMoreItems,
     TResult Function()? refreshList,
   }) {
@@ -612,7 +612,7 @@ class _$_RefreshList implements _RefreshList {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? onMainSearchChanged,
+    TResult Function(String query)? onPeopleSearchChanged,
     TResult Function()? getMoreItems,
     TResult Function()? refreshList,
     required TResult orElse(),
@@ -626,7 +626,7 @@ class _$_RefreshList implements _RefreshList {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SearchChanged value) onMainSearchChanged,
+    required TResult Function(_SearchChanged value) onPeopleSearchChanged,
     required TResult Function(_GetMoreItems value) getMoreItems,
     required TResult Function(_RefreshList value) refreshList,
   }) {
@@ -636,7 +636,7 @@ class _$_RefreshList implements _RefreshList {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_SearchChanged value)? onMainSearchChanged,
+    TResult Function(_SearchChanged value)? onPeopleSearchChanged,
     TResult Function(_GetMoreItems value)? getMoreItems,
     TResult Function(_RefreshList value)? refreshList,
   }) {
@@ -646,7 +646,7 @@ class _$_RefreshList implements _RefreshList {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SearchChanged value)? onMainSearchChanged,
+    TResult Function(_SearchChanged value)? onPeopleSearchChanged,
     TResult Function(_GetMoreItems value)? getMoreItems,
     TResult Function(_RefreshList value)? refreshList,
     required TResult orElse(),

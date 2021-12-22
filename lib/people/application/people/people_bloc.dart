@@ -18,7 +18,30 @@ class PeopleBloc extends Bloc<PeopleEvent, PeopleState> {
 
   final PeopleRepositoryFacade _peopleRepositoryFacade;
 
-  void _mapMainSearchChangedToState(_SearchChanged event, Emitter<PeopleState> emit) {}
+  void _mapMainSearchChangedToState(_SearchChanged event, Emitter<PeopleState> emit) async {
+    if (event.query.trim().isNotEmpty) {
+      emit(state.copyWith(
+        isLoading: true,
+        people: [],
+      ));
+
+      final result = await _peopleRepositoryFacade.searchPeople(event.query);
+
+      final _people = result.map((e) => e.person).toList();
+
+      emit(state.copyWith(
+        people: _people,
+        isLoading: false,
+      ));
+    } else {
+      emit(state.copyWith(
+        isLoading: true,
+        people: [],
+      ));
+
+      await _callNextPage(emit);
+    }
+  }
 
   void _mapGetMoreItemsToState(_GetMoreItems event, Emitter<PeopleState> emit) async {
     await _callNextPage(emit);

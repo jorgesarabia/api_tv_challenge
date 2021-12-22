@@ -30,7 +30,7 @@ class PeopleRepository implements PeopleRepositoryFacade {
   }
 
   @override
-  Future<List<SearchPeopleResponse>> searchShow(String query) async {
+  Future<List<SearchPeopleResponse>> searchPeople(String query) async {
     try {
       final result = await _peopleApiFacade.searchPeople(query);
       return result.map(

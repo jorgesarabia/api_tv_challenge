@@ -28,7 +28,9 @@ class _PeopleListScreenState extends State<PeopleListScreen> {
           children: [
             AppSearchInput(
               textEditingController: _searchController,
-              onChanged: (query) {},
+              onChanged: (query) {
+                BlocProvider.of<PeopleBloc>(context).add(PeopleEvent.onPeopleSearchChanged(query));
+              },
             ),
             Expanded(
               child: _List(

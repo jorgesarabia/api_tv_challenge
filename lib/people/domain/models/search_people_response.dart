@@ -8,7 +8,7 @@ part 'search_people_response.g.dart';
 class SearchPeopleResponse with _$SearchPeopleResponse {
   factory SearchPeopleResponse({
     required double score,
-    required People people,
+    required People person,
   }) = _SearchPeopleResponse;
 
   factory SearchPeopleResponse.fromJson(Map<String, dynamic> json) => _$SearchPeopleResponseFromJson(json);
