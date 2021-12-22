@@ -1,4 +1,5 @@
 import 'package:api_tv_challenge/app/domain/injectable/injection.dart';
+import 'package:api_tv_challenge/app/presentation/loading_cover.dart';
 import 'package:api_tv_challenge/app/utils/constants.dart';
 import 'package:api_tv_challenge/shows/application/episodes_bloc/episodes_bloc.dart';
 import 'package:api_tv_challenge/shows/application/show/show_bloc.dart';
@@ -30,124 +31,129 @@ class ShowDetailScreen extends StatelessWidget {
         builder: (context, state) {
           return SafeArea(
             child: Scaffold(
-              body: CustomScrollView(
-                slivers: [
-                  SliverAppBar(
-                    leading: GestureDetector(
-                      onTap: () {
-                        if (Navigator.of(context).canPop()) {
-                          Navigator.of(context).pop();
-                        }
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 5.0),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            color: Colors.red,
-                            shape: BoxShape.circle,
+              body: Stack(
+                children: [
+                  CustomScrollView(
+                    slivers: [
+                      SliverAppBar(
+                        leading: GestureDetector(
+                          onTap: () {
+                            if (Navigator.of(context).canPop()) {
+                              Navigator.of(context).pop();
+                            }
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 5.0),
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                color: Colors.red,
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(
+                                Icons.chevron_left,
+                                size: 50,
+                              ),
+                            ),
                           ),
-                          child: const Icon(
-                            Icons.chevron_left,
-                            size: 50,
+                        ),
+                        actions: [
+                          GestureDetector(
+                            onTap: () {
+                              context.read<ShowBloc>().add(ShowEvent.addFavorite(show));
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 30.0),
+                              child: Container(
+                                padding: const EdgeInsets.all(5.0),
+                                decoration: const BoxDecoration(
+                                  color: Colors.red,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Icon(
+                                  Icons.favorite,
+                                  color: state.isFavorite ? Colors.black : Colors.white,
+                                  size: 40,
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                        expandedHeight: 200,
+                        floating: true,
+                        pinned: true,
+                        stretch: true,
+                        flexibleSpace: FlexibleSpaceBar(
+                          centerTitle: true,
+                          background: Image.network(
+                            show.image?.original ?? Constants.defaultImage,
+                            fit: BoxFit.cover,
+                          ),
+                          title: Text(
+                            show.name,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              shadows: <Shadow>[
+                                Shadow(
+                                  offset: const Offset(2.0, 2.0),
+                                  blurRadius: 20.0,
+                                  color: Colors.black.withOpacity(0.5),
+                                ),
+                                Shadow(
+                                  offset: const Offset(-2.0, -2.0),
+                                  blurRadius: 20.0,
+                                  color: Colors.black.withOpacity(0.5),
+                                ),
+                                Shadow(
+                                  offset: const Offset(-2.0, 2.0),
+                                  blurRadius: 20.0,
+                                  color: Colors.black.withOpacity(0.5),
+                                ),
+                                Shadow(
+                                  offset: const Offset(2.0, -2.0),
+                                  blurRadius: 20.0,
+                                  color: Colors.black.withOpacity(0.5),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    actions: [
-                      GestureDetector(
-                        onTap: () {
-                          context.read<ShowBloc>().add(ShowEvent.addFavorite(show));
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 30.0),
-                          child: Container(
-                            padding: const EdgeInsets.all(5.0),
-                            decoration: const BoxDecoration(
-                              color: Colors.red,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Icon(
-                              Icons.favorite,
-                              color: state.isFavorite ? Colors.black : Colors.white,
-                              size: 40,
-                            ),
-                          ),
+                      SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                            if (index == 0) {
+                              return _DetailInfo(show: show);
+                            }
+
+                            final season = state.episodes[index - 1];
+
+                            return ExpansionTile(
+                              title: Text('Season ${season.season}'),
+                              children: List.generate(
+                                season.episodes.length,
+                                (index) => GestureDetector(
+                                  onTap: () {
+                                    Navigator.of(context).push<dynamic>(
+                                      MaterialPageRoute<dynamic>(
+                                        builder: (BuildContext context) {
+                                          return EpisodeDetailScreen(episode: season.episodes[index]);
+                                        },
+                                      ),
+                                    );
+                                  },
+                                  child: _ListOfEpisodies(episode: season.episodes[index]),
+                                ),
+                              ),
+                            );
+                          },
+                          childCount: state.episodes.length + 1,
                         ),
-                      )
+                      ),
                     ],
-                    expandedHeight: 200,
-                    floating: true,
-                    pinned: true,
-                    stretch: true,
-                    flexibleSpace: FlexibleSpaceBar(
-                      centerTitle: true,
-                      background: Image.network(
-                        show.image?.original ?? Constants.defaultImage,
-                        fit: BoxFit.cover,
-                      ),
-                      title: Text(
-                        show.name,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          shadows: <Shadow>[
-                            Shadow(
-                              offset: const Offset(2.0, 2.0),
-                              blurRadius: 20.0,
-                              color: Colors.black.withOpacity(0.5),
-                            ),
-                            Shadow(
-                              offset: const Offset(-2.0, -2.0),
-                              blurRadius: 20.0,
-                              color: Colors.black.withOpacity(0.5),
-                            ),
-                            Shadow(
-                              offset: const Offset(-2.0, 2.0),
-                              blurRadius: 20.0,
-                              color: Colors.black.withOpacity(0.5),
-                            ),
-                            Shadow(
-                              offset: const Offset(2.0, -2.0),
-                              blurRadius: 20.0,
-                              color: Colors.black.withOpacity(0.5),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
                   ),
-                  SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      (context, index) {
-                        if (index == 0) {
-                          return _DetailInfo(show: show);
-                        }
-
-                        final season = state.episodes[index - 1];
-
-                        return ExpansionTile(
-                          title: Text('Season ${season.season}'),
-                          children: List.generate(
-                            season.episodes.length,
-                            (index) => GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).push<dynamic>(
-                                  MaterialPageRoute<dynamic>(
-                                    builder: (BuildContext context) {
-                                      return EpisodeDetailScreen(episode: season.episodes[index]);
-                                    },
-                                  ),
-                                );
-                              },
-                              child: _ListOfEpisodies(episode: season.episodes[index]),
-                            ),
-                          ),
-                        );
-                      },
-                      childCount: state.episodes.length + 1,
-                    ),
-                  ),
+                  if (state.isSubmitting) const LoadingCover(),
                 ],
               ),
             ),
