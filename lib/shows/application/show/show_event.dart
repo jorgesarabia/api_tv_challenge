@@ -7,4 +7,5 @@ class ShowEvent with _$ShowEvent {
   const factory ShowEvent.onFavoriteSearchChanged(String query) = _FavoriteSearchChanged;
   const factory ShowEvent.onEnterToFavorite() = _OnEnterToFavorite;
   const factory ShowEvent.getMoreItems() = _GetMoreItems;
+  const factory ShowEvent.refreshList() = _RefreshList;
 }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:api_tv_challenge/shows/domain/models/show.dart';
 import 'package:api_tv_challenge/shows/domain/repositories/main_repository_facade.dart';
 import 'package:bloc/bloc.dart';
@@ -16,6 +18,7 @@ class ShowBloc extends Bloc<ShowEvent, ShowState> {
     on<_FavoriteSearchChanged>(_mapFavoriteSearchChangedToState);
     on<_OnEnterToFavorite>(_mapOnEnterToFavoriteToState);
     on<_GetMoreItems>(_mapGetMoreItemsToState);
+    on<_RefreshList>(_mapRefreshListToState);
   }
 
   final MainRepositoryFacade _mainRepositoryFacade;
@@ -84,6 +87,11 @@ class ShowBloc extends Bloc<ShowEvent, ShowState> {
   void _mapOnEnterToFavoriteToState(_OnEnterToFavorite event, Emitter<ShowState> emit) {}
 
   void _mapGetMoreItemsToState(_GetMoreItems event, Emitter<ShowState> emit) async {
+    await _callNextPage(emit);
+  }
+
+  void _mapRefreshListToState(_RefreshList event, Emitter<ShowState> emit) async {
+    emit(ShowState.initial());
     await _callNextPage(emit);
   }
 }

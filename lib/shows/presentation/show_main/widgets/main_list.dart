@@ -23,22 +23,43 @@ class _MainListState extends State<_MainList> {
   Widget build(BuildContext context) {
     return BlocBuilder<ShowBloc, ShowState>(
       builder: (context, state) {
-        return ListView.builder(
-          itemCount: state.shows.length,
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {
-                Navigator.of(context).push<dynamic>(
-                  MaterialPageRoute<dynamic>(
-                    builder: (BuildContext context) {
-                      return ShowDetailScreen(show: state.shows[index]);
-                    },
-                  ),
-                );
-              },
-              child: ShowCard(show: state.shows[index]),
-            );
+        return RefreshIndicator(
+          onRefresh: () {
+            _showBloc.add(const ShowEvent.refreshList());
+            return Future.value();
           },
+          child: ListView.builder(
+            controller: _scrollController,
+            physics: const AlwaysScrollableScrollPhysics(),
+            itemCount: state.shows.length,
+            itemBuilder: (context, index) {
+              if (index >= state.shows.length) {
+                if (state.hasReachedMax && _isBottom) {
+                  return const Center(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 25.0),
+                      child: Text('No more items'),
+                    ),
+                  );
+                }
+
+                return _BottomLoader(isLoading: state.isLoading);
+              }
+
+              return GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push<dynamic>(
+                    MaterialPageRoute<dynamic>(
+                      builder: (BuildContext context) {
+                        return ShowDetailScreen(show: state.shows[index]);
+                      },
+                    ),
+                  );
+                },
+                child: ShowCard(show: state.shows[index]),
+              );
+            },
+          ),
         );
       },
     );
@@ -64,5 +85,32 @@ class _MainListState extends State<_MainList> {
   void dispose() {
     _scrollController.dispose();
     super.dispose();
+  }
+}
+
+class _BottomLoader extends StatelessWidget {
+  const _BottomLoader({required this.isLoading});
+
+  final bool isLoading;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 25.0),
+        child: Visibility(
+          visible: isLoading,
+          child: SizedBox(
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(
+                Theme.of(context).primaryColor,
+              ),
+            ),
+            height: 25.0,
+            width: 25.0,
+          ),
+        ),
+      ),
+    );
   }
 }
