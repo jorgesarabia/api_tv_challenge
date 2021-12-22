@@ -15,7 +15,7 @@ part 'widgets/list_of_episodies.dart';
 part 'widgets/summary.dart';
 part 'widgets/time_during_air.dart';
 
-class ShowDetailScreen extends StatelessWidget {
+class ShowDetailScreen extends StatefulWidget {
   const ShowDetailScreen({
     Key? key,
     required this.show,
@@ -24,10 +24,21 @@ class ShowDetailScreen extends StatelessWidget {
   final Show show;
 
   @override
+  State<ShowDetailScreen> createState() => _ShowDetailScreenState();
+}
+
+class _ShowDetailScreenState extends State<ShowDetailScreen> {
+  bool _isFavorite = false;
+
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => getIt<EpisodesBloc>()..add(EpisodesEvent.getEpisodes(show.id.toString())),
-      child: BlocBuilder<EpisodesBloc, EpisodesState>(
+      create: (_) => getIt<EpisodesBloc>()..add(EpisodesEvent.getEpisodes(widget.show.id.toString())),
+      child: BlocConsumer<EpisodesBloc, EpisodesState>(
+        listenWhen: (previous, current) => previous.isFavorite != current.isFavorite,
+        listener: (context, state) {
+          setState(() => _isFavorite = state.isFavorite);
+        },
         builder: (context, state) {
           return SafeArea(
             child: Scaffold(
@@ -59,7 +70,12 @@ class ShowDetailScreen extends StatelessWidget {
                         actions: [
                           GestureDetector(
                             onTap: () {
-                              context.read<ShowBloc>().add(ShowEvent.addFavorite(show));
+                              if (_isFavorite) {
+                                context.read<ShowBloc>().add(ShowEvent.removeFavorite(widget.show));
+                              } else {
+                                context.read<ShowBloc>().add(ShowEvent.addFavorite(widget.show));
+                              }
+                              setState(() => _isFavorite = !_isFavorite);
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(right: 30.0),
@@ -71,7 +87,7 @@ class ShowDetailScreen extends StatelessWidget {
                                 ),
                                 child: Icon(
                                   Icons.favorite,
-                                  color: state.isFavorite ? Colors.black : Colors.white,
+                                  color: _isFavorite ? Colors.black : Colors.white,
                                   size: 40,
                                 ),
                               ),
@@ -85,11 +101,11 @@ class ShowDetailScreen extends StatelessWidget {
                         flexibleSpace: FlexibleSpaceBar(
                           centerTitle: true,
                           background: Image.network(
-                            show.image?.original ?? Constants.defaultImage,
+                            widget.show.image?.original ?? Constants.defaultImage,
                             fit: BoxFit.cover,
                           ),
                           title: Text(
-                            show.name,
+                            widget.show.name,
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -124,7 +140,7 @@ class ShowDetailScreen extends StatelessWidget {
                         delegate: SliverChildBuilderDelegate(
                           (context, index) {
                             if (index == 0) {
-                              return _DetailInfo(show: show);
+                              return _DetailInfo(show: widget.show);
                             }
 
                             final season = state.episodes[index - 1];

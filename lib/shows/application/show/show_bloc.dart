@@ -119,10 +119,10 @@ class ShowBloc extends Bloc<ShowEvent, ShowState> {
   }
 
   void _mapAddFavoriteToState(_AddFavorite event, Emitter<ShowState> emit) async {
-    final result = await _mainRepositoryFacade.addFavorite(event.show);
-
-    print(result);
+    await _mainRepositoryFacade.addFavorite(event.show);
   }
 
-  void _mapRemoveFavoriteToState(_RemoveFavorite event, Emitter<ShowState> emit) {}
+  void _mapRemoveFavoriteToState(_RemoveFavorite event, Emitter<ShowState> emit) async {
+    await _mainRepositoryFacade.removeFavorite(event.show);
+  }
 }
