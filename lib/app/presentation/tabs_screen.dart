@@ -1,5 +1,6 @@
 import 'package:api_tv_challenge/app/presentation/app_button.dart';
 import 'package:api_tv_challenge/auth/application/auth/auth_bloc.dart';
+import 'package:api_tv_challenge/people/presentation/people_list/people_list_screen.dart';
 import 'package:api_tv_challenge/shows/presentation/show_main/show_main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +21,7 @@ class _TabsPageState extends State<TabsScreen> {
         body: TabBarView(
           children: [
             const ShowMainScreen(),
-            const Icon(Icons.directions_bike),
+            const PeopleListScreen(),
             const ShowMainScreen(isFavorite: true),
             AppButton(
               label: 'Logout',

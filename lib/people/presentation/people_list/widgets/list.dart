@@ -1,26 +1,24 @@
-part of '../show_main_screen.dart';
+part of '../people_list_screen.dart';
 
-class _MainList extends StatefulWidget {
-  const _MainList({
+class _List extends StatefulWidget {
+  const _List({
     Key? key,
-    required this.isFavorite,
     this.onRefresh,
   }) : super(key: key);
 
-  final bool isFavorite;
   final VoidCallback? onRefresh;
 
   @override
-  State<_MainList> createState() => _MainListState();
+  State<_List> createState() => _MainListState();
 }
 
-class _MainListState extends State<_MainList> {
+class _MainListState extends State<_List> {
   final _scrollController = ScrollController();
-  late final ShowBloc _showBloc;
+  late final PeopleBloc _peopleBloc;
 
   @override
   void initState() {
-    _showBloc = context.read<ShowBloc>();
+    _peopleBloc = context.read<PeopleBloc>();
     _scrollController.addListener(_onScroll);
 
     super.initState();
@@ -28,20 +26,13 @@ class _MainListState extends State<_MainList> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ShowBloc, ShowState>(
+    return BlocBuilder<PeopleBloc, PeopleState>(
       builder: (context, state) {
-        late List<Show> _shows;
-        if (widget.isFavorite) {
-          _shows = state.favoriteShows;
-        } else {
-          _shows = state.shows;
-        }
-
         if (state.isLoading) {
           return const Center(child: CircularProgressIndicator());
         }
 
-        if (_shows.isEmpty) {
+        if (state.people.isEmpty) {
           return const Center(
             child: Text(
               'No items',
@@ -52,7 +43,7 @@ class _MainListState extends State<_MainList> {
 
         return RefreshIndicator(
           onRefresh: () {
-            _showBloc.add(ShowEvent.refreshList(widget.isFavorite));
+            // _peopleBloc.add(ShowEvent.refreshList(widget.isFavorite));
             widget.onRefresh?.call();
 
             return Future.value();
@@ -60,9 +51,9 @@ class _MainListState extends State<_MainList> {
           child: ListView.builder(
             controller: _scrollController,
             physics: const AlwaysScrollableScrollPhysics(),
-            itemCount: _shows.length,
+            itemCount: state.people.length,
             itemBuilder: (context, index) {
-              if (index >= _shows.length) {
+              if (index >= state.people.length) {
                 if (state.hasReachedMax && _isBottom) {
                   return const Center(
                     child: Padding(
@@ -76,21 +67,8 @@ class _MainListState extends State<_MainList> {
               }
 
               return GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push<dynamic>(
-                    MaterialPageRoute<dynamic>(
-                      builder: (BuildContext context) {
-                        return ShowDetailScreen(show: _shows[index]);
-                      },
-                    ),
-                  ).then((value) {
-                    if (widget.isFavorite) {
-                      BlocProvider.of<ShowBloc>(context).add(const ShowEvent.refreshList(true));
-                      FocusScope.of(context).unfocus();
-                    }
-                  });
-                },
-                child: ShowCard(show: _shows[index]),
+                onTap: () {},
+                child: _PeopleCard(people: state.people[index]),
               );
             },
           ),
@@ -100,11 +78,11 @@ class _MainListState extends State<_MainList> {
   }
 
   void _onScroll() {
-    final isNotLoading = !_showBloc.state.isLoading;
-    final hasNotReachedMax = !_showBloc.state.hasReachedMax;
+    final isNotLoading = !_peopleBloc.state.isLoading;
+    final hasNotReachedMax = !_peopleBloc.state.hasReachedMax;
 
     if (_isBottom && isNotLoading && hasNotReachedMax) {
-      _showBloc.add(ShowEvent.getMoreItems(widget.isFavorite));
+      // _peopleBloc.add(const ShowEvent.getMoreItems());
     }
   }
 

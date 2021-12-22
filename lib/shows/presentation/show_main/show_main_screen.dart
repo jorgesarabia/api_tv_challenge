@@ -1,3 +1,4 @@
+import 'package:api_tv_challenge/app/infrastructure/bottom_loader.dart';
 import 'package:api_tv_challenge/app/presentation/app_search_input.dart';
 import 'package:api_tv_challenge/shows/application/show/show_bloc.dart';
 import 'package:api_tv_challenge/shows/domain/models/show.dart';

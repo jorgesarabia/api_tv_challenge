@@ -1,5 +1,7 @@
 import 'package:api_tv_challenge/app/domain/api/data/main_show_api.dart';
+import 'package:api_tv_challenge/app/domain/api/data/people_api.dart';
 import 'package:api_tv_challenge/app/domain/api/domain/main_show_api_facade.dart';
+import 'package:api_tv_challenge/app/domain/api/domain/people_api_facade.dart';
 import 'package:api_tv_challenge/app/infrastructure/client.dart';
 import 'package:api_tv_challenge/app/domain/api/domain/client_api.dart';
 
@@ -22,4 +24,7 @@ class TvApi implements ClientApi {
 
   @override
   MainShowApiFacade get mainShow => MainShowApi();
+
+  @override
+  PeopleApiFacade get people => PeopleApi();
 }

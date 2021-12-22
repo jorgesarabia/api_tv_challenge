@@ -1,4 +1,5 @@
 import 'package:api_tv_challenge/app/domain/api/domain/main_show_api_facade.dart';
+import 'package:api_tv_challenge/app/domain/api/domain/people_api_facade.dart';
 
 abstract class ClientApi {
   void init({
@@ -7,4 +8,5 @@ abstract class ClientApi {
   });
 
   MainShowApiFacade get mainShow;
+  PeopleApiFacade get people;
 }
