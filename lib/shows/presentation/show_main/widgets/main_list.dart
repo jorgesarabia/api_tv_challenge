@@ -83,7 +83,12 @@ class _MainListState extends State<_MainList> {
                         return ShowDetailScreen(show: _shows[index]);
                       },
                     ),
-                  );
+                  ).then((value) {
+                    if (widget.isFavorite) {
+                      BlocProvider.of<ShowBloc>(context).add(const ShowEvent.refreshList(true));
+                      FocusScope.of(context).unfocus();
+                    }
+                  });
                 },
                 child: ShowCard(show: _shows[index]),
               );
