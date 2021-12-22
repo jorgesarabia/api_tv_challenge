@@ -19,7 +19,11 @@ class PeopleBloc extends Bloc<PeopleEvent, PeopleState> {
   final PeopleRepositoryFacade _peopleRepositoryFacade;
 
   void _mapMainSearchChangedToState(_SearchChanged event, Emitter<PeopleState> emit) {}
-  void _mapGetMoreItemsToState(_GetMoreItems event, Emitter<PeopleState> emit) {}
+
+  void _mapGetMoreItemsToState(_GetMoreItems event, Emitter<PeopleState> emit) async {
+    await _callNextPage(emit);
+  }
+
   void _mapRefreshListToState(_RefreshList event, Emitter<PeopleState> emit) async {
     emit(PeopleState.initial());
     await _callNextPage(emit);

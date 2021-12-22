@@ -10,10 +10,16 @@ class _PeopleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        leading: Image.network(Constants.defaultImage),
-        title: Text(people.name),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        elevation: 1.5,
+        child: ListTile(
+          leading: CircleAvatar(
+            backgroundImage: NetworkImage(people.image?.medium ?? Constants.defaultProfile),
+          ),
+          title: Text(people.name),
+        ),
       ),
     );
   }
