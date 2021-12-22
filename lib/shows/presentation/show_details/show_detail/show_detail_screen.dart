@@ -38,11 +38,37 @@ class ShowDetailScreen extends StatelessWidget {
                           Navigator.of(context).pop();
                         }
                       },
-                      child: const Icon(
-                        Icons.chevron_left,
-                        size: 50,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 5.0),
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            color: Colors.red,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.chevron_left,
+                            size: 50,
+                          ),
+                        ),
                       ),
                     ),
+                    actions: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 30.0),
+                        child: Container(
+                          padding: const EdgeInsets.all(5.0),
+                          decoration: const BoxDecoration(
+                            color: Colors.red,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.favorite,
+                            color: Colors.white,
+                            size: 40,
+                          ),
+                        ),
+                      )
+                    ],
                     expandedHeight: 200,
                     floating: true,
                     pinned: true,

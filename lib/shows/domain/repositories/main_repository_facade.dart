@@ -7,4 +7,6 @@ abstract class MainRepositoryFacade {
   Future<List<Episodes>> getEpisodes(String showId);
   Future<List<Show>?> getShowByPage(int page);
   Future<List<Show>?> getMyFavorites();
+  Future<bool> addFavorite(Show show);
+  Future<bool> removeFavorite(Show show);
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:api_tv_challenge/app/domain/api/domain/main_show_api_facade.dart';
 import 'package:api_tv_challenge/shows/domain/models/episodes.dart';
 import 'package:api_tv_challenge/shows/domain/models/search_show_response.dart';
@@ -74,5 +76,40 @@ class MainRepository implements MainRepositoryFacade {
     final shows = result.map((json) => Show.fromJson(json)).toList();
 
     return shows;
+  }
+
+  @override
+  Future<bool> addFavorite(Show show) async {
+    final checkIfExist = await _database.query(
+      'Favorites',
+      where: 'showId = ?',
+      whereArgs: [show.id],
+    );
+
+    if (checkIfExist.isNotEmpty) {
+      return true;
+    }
+
+    Map<String, Object?> values = {
+      'show': jsonEncode(show),
+    };
+
+    final result = await _database.insert(
+      'Favorites',
+      values,
+    );
+
+    return result != 0;
+  }
+
+  @override
+  Future<bool> removeFavorite(Show show) async {
+    final result = await _database.delete(
+      'Favorites',
+      where: 'showId = ?',
+      whereArgs: [show.id],
+    );
+
+    return result == 1;
   }
 }

@@ -17,6 +17,8 @@ class ShowBloc extends Bloc<ShowEvent, ShowState> {
     on<_FavoriteSearchChanged>(_mapFavoriteSearchChangedToState);
     on<_GetMoreItems>(_mapGetMoreItemsToState);
     on<_RefreshList>(_mapRefreshListToState);
+    on<_AddFavorite>(_mapAddFavoriteToState);
+    on<_RemoveFavorite>(_mapRemoveFavoriteToState);
   }
 
   final MainRepositoryFacade _mainRepositoryFacade;
@@ -115,4 +117,8 @@ class ShowBloc extends Bloc<ShowEvent, ShowState> {
       await _callNextPage(emit);
     }
   }
+
+  FutureOr<void> _mapAddFavoriteToState(_AddFavorite event, Emitter<ShowState> emit) {}
+
+  FutureOr<void> _mapRemoveFavoriteToState(_RemoveFavorite event, Emitter<ShowState> emit) {}
 }

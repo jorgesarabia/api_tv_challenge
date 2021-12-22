@@ -31,7 +31,8 @@ abstract class InjectableModule {
         const createFavorites = '''
         CREATE TABLE Favorites(
           id INTEGER PRIMARY KEY,
-          show TEXT
+          show TEXT,
+          showId INTEGER
         )
         ''';
 
