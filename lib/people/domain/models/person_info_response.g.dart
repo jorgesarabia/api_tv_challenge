@@ -15,11 +15,13 @@ _$_PersonInfoResponse _$$_PersonInfoResponseFromJson(
       country: json['country'] == null
           ? null
           : Country.fromJson(json['country'] as Map<String, dynamic>),
-      birthday: DateTime.parse(json['birthday'] as String),
+      birthday: json['birthday'] == null
+          ? null
+          : DateTime.parse(json['birthday'] as String),
       deathday: json['deathday'] == null
           ? null
           : DateTime.parse(json['deathday'] as String),
-      gender: json['gender'] as String,
+      gender: json['gender'] as String?,
       image: json['image'] == null
           ? null
           : Image.fromJson(json['image'] as Map<String, dynamic>),
@@ -35,7 +37,7 @@ Map<String, dynamic> _$$_PersonInfoResponseToJson(
       'url': instance.url,
       'name': instance.name,
       'country': instance.country,
-      'birthday': instance.birthday.toIso8601String(),
+      'birthday': instance.birthday?.toIso8601String(),
       'deathday': instance.deathday?.toIso8601String(),
       'gender': instance.gender,
       'image': instance.image,

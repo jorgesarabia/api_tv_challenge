@@ -26,9 +26,9 @@ class _$PersonInfoResponseTearOff {
       required String url,
       required String name,
       Country? country,
-      required DateTime birthday,
+      DateTime? birthday,
       DateTime? deathday,
-      required String gender,
+      String? gender,
       Image? image,
       required int updated,
       @JsonKey(name: '_links') required Links links,
@@ -62,9 +62,9 @@ mixin _$PersonInfoResponse {
   String get url => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   Country? get country => throw _privateConstructorUsedError;
-  DateTime get birthday => throw _privateConstructorUsedError;
+  DateTime? get birthday => throw _privateConstructorUsedError;
   DateTime? get deathday => throw _privateConstructorUsedError;
-  String get gender => throw _privateConstructorUsedError;
+  String? get gender => throw _privateConstructorUsedError;
   Image? get image => throw _privateConstructorUsedError;
   int get updated => throw _privateConstructorUsedError;
   @JsonKey(name: '_links')
@@ -88,9 +88,9 @@ abstract class $PersonInfoResponseCopyWith<$Res> {
       String url,
       String name,
       Country? country,
-      DateTime birthday,
+      DateTime? birthday,
       DateTime? deathday,
-      String gender,
+      String? gender,
       Image? image,
       int updated,
       @JsonKey(name: '_links') Links links,
@@ -145,7 +145,7 @@ class _$PersonInfoResponseCopyWithImpl<$Res>
       birthday: birthday == freezed
           ? _value.birthday
           : birthday // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       deathday: deathday == freezed
           ? _value.deathday
           : deathday // ignore: cast_nullable_to_non_nullable
@@ -153,7 +153,7 @@ class _$PersonInfoResponseCopyWithImpl<$Res>
       gender: gender == freezed
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -222,9 +222,9 @@ abstract class _$PersonInfoResponseCopyWith<$Res>
       String url,
       String name,
       Country? country,
-      DateTime birthday,
+      DateTime? birthday,
       DateTime? deathday,
-      String gender,
+      String? gender,
       Image? image,
       int updated,
       @JsonKey(name: '_links') Links links,
@@ -285,7 +285,7 @@ class __$PersonInfoResponseCopyWithImpl<$Res>
       birthday: birthday == freezed
           ? _value.birthday
           : birthday // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       deathday: deathday == freezed
           ? _value.deathday
           : deathday // ignore: cast_nullable_to_non_nullable
@@ -293,7 +293,7 @@ class __$PersonInfoResponseCopyWithImpl<$Res>
       gender: gender == freezed
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -322,9 +322,9 @@ class _$_PersonInfoResponse implements _PersonInfoResponse {
       required this.url,
       required this.name,
       this.country,
-      required this.birthday,
+      this.birthday,
       this.deathday,
-      required this.gender,
+      this.gender,
       this.image,
       required this.updated,
       @JsonKey(name: '_links') required this.links,
@@ -342,11 +342,11 @@ class _$_PersonInfoResponse implements _PersonInfoResponse {
   @override
   final Country? country;
   @override
-  final DateTime birthday;
+  final DateTime? birthday;
   @override
   final DateTime? deathday;
   @override
-  final String gender;
+  final String? gender;
   @override
   final Image? image;
   @override
@@ -413,9 +413,9 @@ abstract class _PersonInfoResponse implements PersonInfoResponse {
           required String url,
           required String name,
           Country? country,
-          required DateTime birthday,
+          DateTime? birthday,
           DateTime? deathday,
-          required String gender,
+          String? gender,
           Image? image,
           required int updated,
           @JsonKey(name: '_links') required Links links,
@@ -434,11 +434,11 @@ abstract class _PersonInfoResponse implements PersonInfoResponse {
   @override
   Country? get country;
   @override
-  DateTime get birthday;
+  DateTime? get birthday;
   @override
   DateTime? get deathday;
   @override
-  String get gender;
+  String? get gender;
   @override
   Image? get image;
   @override

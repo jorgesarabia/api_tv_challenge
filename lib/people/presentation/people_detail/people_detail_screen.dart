@@ -1,3 +1,4 @@
+import 'package:api_tv_challenge/app/utils/constants.dart';
 import 'package:api_tv_challenge/people/application/person/person_bloc.dart';
 import 'package:api_tv_challenge/people/domain/models/credit_links.dart';
 import 'package:api_tv_challenge/people/domain/models/people.dart';
@@ -6,6 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 part 'widgets/list_of_shows.dart';
+part 'widgets/detail_card.dart';
+part 'widgets/person_header.dart';
 
 class PeopleDetailScreen extends StatelessWidget {
   const PeopleDetailScreen({
@@ -21,8 +24,9 @@ class PeopleDetailScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(title: Text(person.name)),
         body: Column(
-          children: const [
-            Expanded(child: _ListOfShows()),
+          children: [
+            _PersonHeader(person: person),
+            const Expanded(child: _ListOfShows()),
           ],
         ),
       ),
