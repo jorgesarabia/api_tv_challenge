@@ -5,6 +5,7 @@ import 'package:api_tv_challenge/people/domain/models/people.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 part 'widgets/list_of_shows.dart';
 part 'widgets/detail_card.dart';

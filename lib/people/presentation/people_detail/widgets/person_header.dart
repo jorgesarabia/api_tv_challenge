@@ -27,9 +27,7 @@ class _PersonHeader extends StatelessWidget {
                 style: const TextStyle(fontSize: 20.0),
               ),
               ElevatedButton(
-                onPressed: () {
-                  print(person.url);
-                },
+                onPressed: () => _launchURL(person.url),
                 child: const Text('Visit profile'),
               ),
             ],
@@ -37,5 +35,9 @@ class _PersonHeader extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void _launchURL(String url) async {
+    if (!await launch(url)) throw 'Could not launch $url';
   }
 }
