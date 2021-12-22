@@ -21,12 +21,14 @@ class _$ShowStateTearOff {
       {required bool isLoading,
       required bool hasReachedMax,
       required int pageNumber,
-      required List<Show> shows}) {
+      required List<Show> shows,
+      required List<Show> favoriteShows}) {
     return _ShowState(
       isLoading: isLoading,
       hasReachedMax: hasReachedMax,
       pageNumber: pageNumber,
       shows: shows,
+      favoriteShows: favoriteShows,
     );
   }
 }
@@ -40,6 +42,7 @@ mixin _$ShowState {
   bool get hasReachedMax => throw _privateConstructorUsedError;
   int get pageNumber => throw _privateConstructorUsedError;
   List<Show> get shows => throw _privateConstructorUsedError;
+  List<Show> get favoriteShows => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ShowStateCopyWith<ShowState> get copyWith =>
@@ -51,7 +54,11 @@ abstract class $ShowStateCopyWith<$Res> {
   factory $ShowStateCopyWith(ShowState value, $Res Function(ShowState) then) =
       _$ShowStateCopyWithImpl<$Res>;
   $Res call(
-      {bool isLoading, bool hasReachedMax, int pageNumber, List<Show> shows});
+      {bool isLoading,
+      bool hasReachedMax,
+      int pageNumber,
+      List<Show> shows,
+      List<Show> favoriteShows});
 }
 
 /// @nodoc
@@ -68,6 +75,7 @@ class _$ShowStateCopyWithImpl<$Res> implements $ShowStateCopyWith<$Res> {
     Object? hasReachedMax = freezed,
     Object? pageNumber = freezed,
     Object? shows = freezed,
+    Object? favoriteShows = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: isLoading == freezed
@@ -86,6 +94,10 @@ class _$ShowStateCopyWithImpl<$Res> implements $ShowStateCopyWith<$Res> {
           ? _value.shows
           : shows // ignore: cast_nullable_to_non_nullable
               as List<Show>,
+      favoriteShows: favoriteShows == freezed
+          ? _value.favoriteShows
+          : favoriteShows // ignore: cast_nullable_to_non_nullable
+              as List<Show>,
     ));
   }
 }
@@ -97,7 +109,11 @@ abstract class _$ShowStateCopyWith<$Res> implements $ShowStateCopyWith<$Res> {
       __$ShowStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {bool isLoading, bool hasReachedMax, int pageNumber, List<Show> shows});
+      {bool isLoading,
+      bool hasReachedMax,
+      int pageNumber,
+      List<Show> shows,
+      List<Show> favoriteShows});
 }
 
 /// @nodoc
@@ -115,6 +131,7 @@ class __$ShowStateCopyWithImpl<$Res> extends _$ShowStateCopyWithImpl<$Res>
     Object? hasReachedMax = freezed,
     Object? pageNumber = freezed,
     Object? shows = freezed,
+    Object? favoriteShows = freezed,
   }) {
     return _then(_ShowState(
       isLoading: isLoading == freezed
@@ -133,6 +150,10 @@ class __$ShowStateCopyWithImpl<$Res> extends _$ShowStateCopyWithImpl<$Res>
           ? _value.shows
           : shows // ignore: cast_nullable_to_non_nullable
               as List<Show>,
+      favoriteShows: favoriteShows == freezed
+          ? _value.favoriteShows
+          : favoriteShows // ignore: cast_nullable_to_non_nullable
+              as List<Show>,
     ));
   }
 }
@@ -144,7 +165,8 @@ class _$_ShowState implements _ShowState {
       {required this.isLoading,
       required this.hasReachedMax,
       required this.pageNumber,
-      required this.shows});
+      required this.shows,
+      required this.favoriteShows});
 
   @override
   final bool isLoading;
@@ -154,10 +176,12 @@ class _$_ShowState implements _ShowState {
   final int pageNumber;
   @override
   final List<Show> shows;
+  @override
+  final List<Show> favoriteShows;
 
   @override
   String toString() {
-    return 'ShowState(isLoading: $isLoading, hasReachedMax: $hasReachedMax, pageNumber: $pageNumber, shows: $shows)';
+    return 'ShowState(isLoading: $isLoading, hasReachedMax: $hasReachedMax, pageNumber: $pageNumber, shows: $shows, favoriteShows: $favoriteShows)';
   }
 
   @override
@@ -170,7 +194,9 @@ class _$_ShowState implements _ShowState {
                 .equals(other.hasReachedMax, hasReachedMax) &&
             const DeepCollectionEquality()
                 .equals(other.pageNumber, pageNumber) &&
-            const DeepCollectionEquality().equals(other.shows, shows));
+            const DeepCollectionEquality().equals(other.shows, shows) &&
+            const DeepCollectionEquality()
+                .equals(other.favoriteShows, favoriteShows));
   }
 
   @override
@@ -179,7 +205,8 @@ class _$_ShowState implements _ShowState {
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(hasReachedMax),
       const DeepCollectionEquality().hash(pageNumber),
-      const DeepCollectionEquality().hash(shows));
+      const DeepCollectionEquality().hash(shows),
+      const DeepCollectionEquality().hash(favoriteShows));
 
   @JsonKey(ignore: true)
   @override
@@ -192,7 +219,8 @@ abstract class _ShowState implements ShowState {
       {required bool isLoading,
       required bool hasReachedMax,
       required int pageNumber,
-      required List<Show> shows}) = _$_ShowState;
+      required List<Show> shows,
+      required List<Show> favoriteShows}) = _$_ShowState;
 
   @override
   bool get isLoading;
@@ -202,6 +230,8 @@ abstract class _ShowState implements ShowState {
   int get pageNumber;
   @override
   List<Show> get shows;
+  @override
+  List<Show> get favoriteShows;
   @override
   @JsonKey(ignore: true)
   _$ShowStateCopyWith<_ShowState> get copyWith =>

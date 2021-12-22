@@ -24,7 +24,11 @@ class MyApp extends StatelessWidget {
         BlocProvider<AuthBloc>(
           create: (_) => getIt<AuthBloc>()..add(const AuthEvent.appIsStarting()),
         ),
-        BlocProvider<ShowBloc>(create: (_) => getIt<ShowBloc>()),
+        BlocProvider<ShowBloc>(create: (_) {
+          final showBloc = getIt<ShowBloc>();
+          showBloc.add(const ShowEvent.refreshList(false));
+          return showBloc;
+        }),
       ],
       child: MaterialApp(
         title: 'API TV Movie',

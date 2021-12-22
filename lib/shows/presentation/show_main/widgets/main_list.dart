@@ -30,11 +30,18 @@ class _MainListState extends State<_MainList> {
   Widget build(BuildContext context) {
     return BlocBuilder<ShowBloc, ShowState>(
       builder: (context, state) {
+        late List<Show> _shows;
+        if (widget.isFavorite) {
+          _shows = state.favoriteShows;
+        } else {
+          _shows = state.shows;
+        }
+
         if (state.isLoading) {
           return const Center(child: CircularProgressIndicator());
         }
 
-        if (state.shows.isEmpty) {
+        if (_shows.isEmpty) {
           return const Center(
             child: Text(
               'No items',
@@ -53,9 +60,9 @@ class _MainListState extends State<_MainList> {
           child: ListView.builder(
             controller: _scrollController,
             physics: const AlwaysScrollableScrollPhysics(),
-            itemCount: state.shows.length,
+            itemCount: _shows.length,
             itemBuilder: (context, index) {
-              if (index >= state.shows.length) {
+              if (index >= _shows.length) {
                 if (state.hasReachedMax && _isBottom) {
                   return const Center(
                     child: Padding(
@@ -73,12 +80,12 @@ class _MainListState extends State<_MainList> {
                   Navigator.of(context).push<dynamic>(
                     MaterialPageRoute<dynamic>(
                       builder: (BuildContext context) {
-                        return ShowDetailScreen(show: state.shows[index]);
+                        return ShowDetailScreen(show: _shows[index]);
                       },
                     ),
                   );
                 },
-                child: ShowCard(show: state.shows[index]),
+                child: ShowCard(show: _shows[index]),
               );
             },
           ),

@@ -1,5 +1,6 @@
 import 'package:api_tv_challenge/app/presentation/app_search_input.dart';
 import 'package:api_tv_challenge/shows/application/show/show_bloc.dart';
+import 'package:api_tv_challenge/shows/domain/models/show.dart';
 import 'package:api_tv_challenge/shows/presentation/common/show_card.dart';
 import 'package:api_tv_challenge/shows/presentation/show_details/show_detail/show_detail_screen.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,9 @@ class _ShowMainScreenState extends State<ShowMainScreen> {
   @override
   void initState() {
     _isFavorite = widget.isFavorite;
-    BlocProvider.of<ShowBloc>(context).add(ShowEvent.refreshList(_isFavorite));
+    if (_isFavorite) {
+      BlocProvider.of<ShowBloc>(context).add(ShowEvent.refreshList(_isFavorite));
+    }
     super.initState();
   }
 

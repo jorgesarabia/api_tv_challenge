@@ -7,6 +7,7 @@ class ShowState with _$ShowState {
     required bool hasReachedMax,
     required int pageNumber,
     required List<Show> shows,
+    required List<Show> favoriteShows,
   }) = _ShowState;
 
   factory ShowState.initial() {
@@ -15,6 +16,7 @@ class ShowState with _$ShowState {
       hasReachedMax: false,
       pageNumber: -1,
       shows: [],
+      favoriteShows: [],
     );
   }
 }

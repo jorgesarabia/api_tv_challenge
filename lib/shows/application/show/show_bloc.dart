@@ -56,7 +56,7 @@ class ShowBloc extends Bloc<ShowEvent, ShowState> {
 
     emit(state.copyWith(
       isLoading: true,
-      shows: _newShows,
+      favoriteShows: _newShows,
     ));
 
     final result = await _mainRepositoryFacade.getMyFavorites();
@@ -67,7 +67,7 @@ class ShowBloc extends Bloc<ShowEvent, ShowState> {
 
     emit(state.copyWith(
       isLoading: false,
-      shows: _newShows,
+      favoriteShows: _newShows,
       hasReachedMax: true,
     ));
   }
@@ -110,10 +110,23 @@ class ShowBloc extends Bloc<ShowEvent, ShowState> {
   }
 
   void _mapRefreshListToState(_RefreshList event, Emitter<ShowState> emit) async {
-    emit(ShowState.initial());
     if (event.isFavorite) {
+      emit(state.copyWith(
+        isLoading: true,
+        hasReachedMax: false,
+        pageNumber: -1,
+        favoriteShows: [],
+      ));
+
       await _getAllFavorites(emit);
     } else {
+      emit(state.copyWith(
+        isLoading: true,
+        hasReachedMax: false,
+        pageNumber: -1,
+        shows: [],
+      ));
+
       await _callNextPage(emit);
     }
   }
