@@ -8,16 +8,29 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'widgets/main_list.dart';
 
 class ShowMainScreen extends StatefulWidget {
-  const ShowMainScreen({Key? key}) : super(key: key);
+  const ShowMainScreen({
+    Key? key,
+    this.isFavorite = false,
+  }) : super(key: key);
+
+  final bool isFavorite;
 
   @override
   State<ShowMainScreen> createState() => _ShowMainScreenState();
 }
 
 class _ShowMainScreenState extends State<ShowMainScreen> {
+  late bool _isFavorite;
+  final _searchController = TextEditingController();
+
   @override
   void initState() {
-    BlocProvider.of<ShowBloc>(context).add(const ShowEvent.onEnterToMain());
+    _isFavorite = widget.isFavorite;
+    if (_isFavorite) {
+      BlocProvider.of<ShowBloc>(context).add(const ShowEvent.onEnterToFavorite());
+    } else {
+      BlocProvider.of<ShowBloc>(context).add(const ShowEvent.onEnterToMain());
+    }
     super.initState();
   }
 
@@ -29,11 +42,21 @@ class _ShowMainScreenState extends State<ShowMainScreen> {
         body: Column(
           children: [
             AppSearchInput(
+              textEditingController: _searchController,
               onChanged: (query) {
-                BlocProvider.of<ShowBloc>(context).add(ShowEvent.onMainSearchChanged(query));
+                if (_isFavorite) {
+                  BlocProvider.of<ShowBloc>(context).add(ShowEvent.onFavoriteSearchChanged(query));
+                } else {
+                  BlocProvider.of<ShowBloc>(context).add(ShowEvent.onMainSearchChanged(query));
+                }
               },
             ),
-            const Expanded(child: _MainList()),
+            Expanded(
+              child: _MainList(
+                isFavorite: _isFavorite,
+                onRefresh: () => _searchController.clear(),
+              ),
+            ),
           ],
         ),
       ),

@@ -4,9 +4,11 @@ class AppSearchInput extends StatelessWidget {
   const AppSearchInput({
     Key? key,
     this.onChanged,
+    this.textEditingController,
   }) : super(key: key);
 
   final void Function(String)? onChanged;
+  final TextEditingController? textEditingController;
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +19,7 @@ class AppSearchInput extends StatelessWidget {
         color: Colors.grey[300],
       ),
       child: TextFormField(
+        controller: textEditingController,
         decoration: InputDecoration(
           icon: const Padding(
             padding: EdgeInsets.only(left: 17),

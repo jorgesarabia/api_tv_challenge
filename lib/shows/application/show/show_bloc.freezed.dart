@@ -232,12 +232,16 @@ class _$ShowEventTearOff {
     return const _OnEnterToFavorite();
   }
 
-  _GetMoreItems getMoreItems() {
-    return const _GetMoreItems();
+  _GetMoreItems getMoreItems(bool isFavorite) {
+    return _GetMoreItems(
+      isFavorite,
+    );
   }
 
-  _RefreshList refreshList() {
-    return const _RefreshList();
+  _RefreshList refreshList(bool isFavorite) {
+    return _RefreshList(
+      isFavorite,
+    );
   }
 }
 
@@ -252,8 +256,8 @@ mixin _$ShowEvent {
     required TResult Function(String query) onMainSearchChanged,
     required TResult Function(String query) onFavoriteSearchChanged,
     required TResult Function() onEnterToFavorite,
-    required TResult Function() getMoreItems,
-    required TResult Function() refreshList,
+    required TResult Function(bool isFavorite) getMoreItems,
+    required TResult Function(bool isFavorite) refreshList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -262,8 +266,8 @@ mixin _$ShowEvent {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
-    TResult Function()? getMoreItems,
-    TResult Function()? refreshList,
+    TResult Function(bool isFavorite)? getMoreItems,
+    TResult Function(bool isFavorite)? refreshList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -272,8 +276,8 @@ mixin _$ShowEvent {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
-    TResult Function()? getMoreItems,
-    TResult Function()? refreshList,
+    TResult Function(bool isFavorite)? getMoreItems,
+    TResult Function(bool isFavorite)? refreshList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -370,8 +374,8 @@ class _$_OnEnterToMain implements _OnEnterToMain {
     required TResult Function(String query) onMainSearchChanged,
     required TResult Function(String query) onFavoriteSearchChanged,
     required TResult Function() onEnterToFavorite,
-    required TResult Function() getMoreItems,
-    required TResult Function() refreshList,
+    required TResult Function(bool isFavorite) getMoreItems,
+    required TResult Function(bool isFavorite) refreshList,
   }) {
     return onEnterToMain();
   }
@@ -383,8 +387,8 @@ class _$_OnEnterToMain implements _OnEnterToMain {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
-    TResult Function()? getMoreItems,
-    TResult Function()? refreshList,
+    TResult Function(bool isFavorite)? getMoreItems,
+    TResult Function(bool isFavorite)? refreshList,
   }) {
     return onEnterToMain?.call();
   }
@@ -396,8 +400,8 @@ class _$_OnEnterToMain implements _OnEnterToMain {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
-    TResult Function()? getMoreItems,
-    TResult Function()? refreshList,
+    TResult Function(bool isFavorite)? getMoreItems,
+    TResult Function(bool isFavorite)? refreshList,
     required TResult orElse(),
   }) {
     if (onEnterToMain != null) {
@@ -524,8 +528,8 @@ class _$_MainSearchChanged implements _MainSearchChanged {
     required TResult Function(String query) onMainSearchChanged,
     required TResult Function(String query) onFavoriteSearchChanged,
     required TResult Function() onEnterToFavorite,
-    required TResult Function() getMoreItems,
-    required TResult Function() refreshList,
+    required TResult Function(bool isFavorite) getMoreItems,
+    required TResult Function(bool isFavorite) refreshList,
   }) {
     return onMainSearchChanged(query);
   }
@@ -537,8 +541,8 @@ class _$_MainSearchChanged implements _MainSearchChanged {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
-    TResult Function()? getMoreItems,
-    TResult Function()? refreshList,
+    TResult Function(bool isFavorite)? getMoreItems,
+    TResult Function(bool isFavorite)? refreshList,
   }) {
     return onMainSearchChanged?.call(query);
   }
@@ -550,8 +554,8 @@ class _$_MainSearchChanged implements _MainSearchChanged {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
-    TResult Function()? getMoreItems,
-    TResult Function()? refreshList,
+    TResult Function(bool isFavorite)? getMoreItems,
+    TResult Function(bool isFavorite)? refreshList,
     required TResult orElse(),
   }) {
     if (onMainSearchChanged != null) {
@@ -684,8 +688,8 @@ class _$_FavoriteSearchChanged implements _FavoriteSearchChanged {
     required TResult Function(String query) onMainSearchChanged,
     required TResult Function(String query) onFavoriteSearchChanged,
     required TResult Function() onEnterToFavorite,
-    required TResult Function() getMoreItems,
-    required TResult Function() refreshList,
+    required TResult Function(bool isFavorite) getMoreItems,
+    required TResult Function(bool isFavorite) refreshList,
   }) {
     return onFavoriteSearchChanged(query);
   }
@@ -697,8 +701,8 @@ class _$_FavoriteSearchChanged implements _FavoriteSearchChanged {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
-    TResult Function()? getMoreItems,
-    TResult Function()? refreshList,
+    TResult Function(bool isFavorite)? getMoreItems,
+    TResult Function(bool isFavorite)? refreshList,
   }) {
     return onFavoriteSearchChanged?.call(query);
   }
@@ -710,8 +714,8 @@ class _$_FavoriteSearchChanged implements _FavoriteSearchChanged {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
-    TResult Function()? getMoreItems,
-    TResult Function()? refreshList,
+    TResult Function(bool isFavorite)? getMoreItems,
+    TResult Function(bool isFavorite)? refreshList,
     required TResult orElse(),
   }) {
     if (onFavoriteSearchChanged != null) {
@@ -819,8 +823,8 @@ class _$_OnEnterToFavorite implements _OnEnterToFavorite {
     required TResult Function(String query) onMainSearchChanged,
     required TResult Function(String query) onFavoriteSearchChanged,
     required TResult Function() onEnterToFavorite,
-    required TResult Function() getMoreItems,
-    required TResult Function() refreshList,
+    required TResult Function(bool isFavorite) getMoreItems,
+    required TResult Function(bool isFavorite) refreshList,
   }) {
     return onEnterToFavorite();
   }
@@ -832,8 +836,8 @@ class _$_OnEnterToFavorite implements _OnEnterToFavorite {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
-    TResult Function()? getMoreItems,
-    TResult Function()? refreshList,
+    TResult Function(bool isFavorite)? getMoreItems,
+    TResult Function(bool isFavorite)? refreshList,
   }) {
     return onEnterToFavorite?.call();
   }
@@ -845,8 +849,8 @@ class _$_OnEnterToFavorite implements _OnEnterToFavorite {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
-    TResult Function()? getMoreItems,
-    TResult Function()? refreshList,
+    TResult Function(bool isFavorite)? getMoreItems,
+    TResult Function(bool isFavorite)? refreshList,
     required TResult orElse(),
   }) {
     if (onEnterToFavorite != null) {
@@ -909,6 +913,7 @@ abstract class _$GetMoreItemsCopyWith<$Res> {
   factory _$GetMoreItemsCopyWith(
           _GetMoreItems value, $Res Function(_GetMoreItems) then) =
       __$GetMoreItemsCopyWithImpl<$Res>;
+  $Res call({bool isFavorite});
 }
 
 /// @nodoc
@@ -920,26 +925,50 @@ class __$GetMoreItemsCopyWithImpl<$Res> extends _$ShowEventCopyWithImpl<$Res>
 
   @override
   _GetMoreItems get _value => super._value as _GetMoreItems;
+
+  @override
+  $Res call({
+    Object? isFavorite = freezed,
+  }) {
+    return _then(_GetMoreItems(
+      isFavorite == freezed
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_GetMoreItems implements _GetMoreItems {
-  const _$_GetMoreItems();
+  const _$_GetMoreItems(this.isFavorite);
+
+  @override
+  final bool isFavorite;
 
   @override
   String toString() {
-    return 'ShowEvent.getMoreItems()';
+    return 'ShowEvent.getMoreItems(isFavorite: $isFavorite)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _GetMoreItems);
+        (other.runtimeType == runtimeType &&
+            other is _GetMoreItems &&
+            const DeepCollectionEquality()
+                .equals(other.isFavorite, isFavorite));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(isFavorite));
+
+  @JsonKey(ignore: true)
+  @override
+  _$GetMoreItemsCopyWith<_GetMoreItems> get copyWith =>
+      __$GetMoreItemsCopyWithImpl<_GetMoreItems>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -948,10 +977,10 @@ class _$_GetMoreItems implements _GetMoreItems {
     required TResult Function(String query) onMainSearchChanged,
     required TResult Function(String query) onFavoriteSearchChanged,
     required TResult Function() onEnterToFavorite,
-    required TResult Function() getMoreItems,
-    required TResult Function() refreshList,
+    required TResult Function(bool isFavorite) getMoreItems,
+    required TResult Function(bool isFavorite) refreshList,
   }) {
-    return getMoreItems();
+    return getMoreItems(isFavorite);
   }
 
   @override
@@ -961,10 +990,10 @@ class _$_GetMoreItems implements _GetMoreItems {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
-    TResult Function()? getMoreItems,
-    TResult Function()? refreshList,
+    TResult Function(bool isFavorite)? getMoreItems,
+    TResult Function(bool isFavorite)? refreshList,
   }) {
-    return getMoreItems?.call();
+    return getMoreItems?.call(isFavorite);
   }
 
   @override
@@ -974,12 +1003,12 @@ class _$_GetMoreItems implements _GetMoreItems {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
-    TResult Function()? getMoreItems,
-    TResult Function()? refreshList,
+    TResult Function(bool isFavorite)? getMoreItems,
+    TResult Function(bool isFavorite)? refreshList,
     required TResult orElse(),
   }) {
     if (getMoreItems != null) {
-      return getMoreItems();
+      return getMoreItems(isFavorite);
     }
     return orElse();
   }
@@ -1030,7 +1059,12 @@ class _$_GetMoreItems implements _GetMoreItems {
 }
 
 abstract class _GetMoreItems implements ShowEvent {
-  const factory _GetMoreItems() = _$_GetMoreItems;
+  const factory _GetMoreItems(bool isFavorite) = _$_GetMoreItems;
+
+  bool get isFavorite;
+  @JsonKey(ignore: true)
+  _$GetMoreItemsCopyWith<_GetMoreItems> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1038,6 +1072,7 @@ abstract class _$RefreshListCopyWith<$Res> {
   factory _$RefreshListCopyWith(
           _RefreshList value, $Res Function(_RefreshList) then) =
       __$RefreshListCopyWithImpl<$Res>;
+  $Res call({bool isFavorite});
 }
 
 /// @nodoc
@@ -1049,26 +1084,50 @@ class __$RefreshListCopyWithImpl<$Res> extends _$ShowEventCopyWithImpl<$Res>
 
   @override
   _RefreshList get _value => super._value as _RefreshList;
+
+  @override
+  $Res call({
+    Object? isFavorite = freezed,
+  }) {
+    return _then(_RefreshList(
+      isFavorite == freezed
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_RefreshList implements _RefreshList {
-  const _$_RefreshList();
+  const _$_RefreshList(this.isFavorite);
+
+  @override
+  final bool isFavorite;
 
   @override
   String toString() {
-    return 'ShowEvent.refreshList()';
+    return 'ShowEvent.refreshList(isFavorite: $isFavorite)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _RefreshList);
+        (other.runtimeType == runtimeType &&
+            other is _RefreshList &&
+            const DeepCollectionEquality()
+                .equals(other.isFavorite, isFavorite));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(isFavorite));
+
+  @JsonKey(ignore: true)
+  @override
+  _$RefreshListCopyWith<_RefreshList> get copyWith =>
+      __$RefreshListCopyWithImpl<_RefreshList>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1077,10 +1136,10 @@ class _$_RefreshList implements _RefreshList {
     required TResult Function(String query) onMainSearchChanged,
     required TResult Function(String query) onFavoriteSearchChanged,
     required TResult Function() onEnterToFavorite,
-    required TResult Function() getMoreItems,
-    required TResult Function() refreshList,
+    required TResult Function(bool isFavorite) getMoreItems,
+    required TResult Function(bool isFavorite) refreshList,
   }) {
-    return refreshList();
+    return refreshList(isFavorite);
   }
 
   @override
@@ -1090,10 +1149,10 @@ class _$_RefreshList implements _RefreshList {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
-    TResult Function()? getMoreItems,
-    TResult Function()? refreshList,
+    TResult Function(bool isFavorite)? getMoreItems,
+    TResult Function(bool isFavorite)? refreshList,
   }) {
-    return refreshList?.call();
+    return refreshList?.call(isFavorite);
   }
 
   @override
@@ -1103,12 +1162,12 @@ class _$_RefreshList implements _RefreshList {
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
     TResult Function()? onEnterToFavorite,
-    TResult Function()? getMoreItems,
-    TResult Function()? refreshList,
+    TResult Function(bool isFavorite)? getMoreItems,
+    TResult Function(bool isFavorite)? refreshList,
     required TResult orElse(),
   }) {
     if (refreshList != null) {
-      return refreshList();
+      return refreshList(isFavorite);
     }
     return orElse();
   }
@@ -1159,5 +1218,10 @@ class _$_RefreshList implements _RefreshList {
 }
 
 abstract class _RefreshList implements ShowEvent {
-  const factory _RefreshList() = _$_RefreshList;
+  const factory _RefreshList(bool isFavorite) = _$_RefreshList;
+
+  bool get isFavorite;
+  @JsonKey(ignore: true)
+  _$RefreshListCopyWith<_RefreshList> get copyWith =>
+      throw _privateConstructorUsedError;
 }

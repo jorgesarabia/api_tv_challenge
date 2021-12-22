@@ -1,7 +1,14 @@
 part of '../show_main_screen.dart';
 
 class _MainList extends StatefulWidget {
-  const _MainList({Key? key}) : super(key: key);
+  const _MainList({
+    Key? key,
+    required this.isFavorite,
+    this.onRefresh,
+  }) : super(key: key);
+
+  final bool isFavorite;
+  final VoidCallback? onRefresh;
 
   @override
   State<_MainList> createState() => _MainListState();
@@ -25,7 +32,9 @@ class _MainListState extends State<_MainList> {
       builder: (context, state) {
         return RefreshIndicator(
           onRefresh: () {
-            _showBloc.add(const ShowEvent.refreshList());
+            _showBloc.add(ShowEvent.refreshList(widget.isFavorite));
+            widget.onRefresh?.call();
+
             return Future.value();
           },
           child: ListView.builder(
@@ -70,7 +79,7 @@ class _MainListState extends State<_MainList> {
     final hasNotReachedMax = !_showBloc.state.hasReachedMax;
 
     if (_isBottom && isNotLoading && hasNotReachedMax) {
-      _showBloc.add(const ShowEvent.getMoreItems());
+      _showBloc.add(ShowEvent.getMoreItems(widget.isFavorite));
     }
   }
 
