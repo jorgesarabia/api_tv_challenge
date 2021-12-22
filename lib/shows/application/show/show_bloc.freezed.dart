@@ -212,10 +212,6 @@ abstract class _ShowState implements ShowState {
 class _$ShowEventTearOff {
   const _$ShowEventTearOff();
 
-  _OnEnterToMain onEnterToMain() {
-    return const _OnEnterToMain();
-  }
-
   _MainSearchChanged onMainSearchChanged(String query) {
     return _MainSearchChanged(
       query,
@@ -226,10 +222,6 @@ class _$ShowEventTearOff {
     return _FavoriteSearchChanged(
       query,
     );
-  }
-
-  _OnEnterToFavorite onEnterToFavorite() {
-    return const _OnEnterToFavorite();
   }
 
   _GetMoreItems getMoreItems(bool isFavorite) {
@@ -252,30 +244,24 @@ const $ShowEvent = _$ShowEventTearOff();
 mixin _$ShowEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() onEnterToMain,
     required TResult Function(String query) onMainSearchChanged,
     required TResult Function(String query) onFavoriteSearchChanged,
-    required TResult Function() onEnterToFavorite,
     required TResult Function(bool isFavorite) getMoreItems,
     required TResult Function(bool isFavorite) refreshList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? onEnterToMain,
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
-    TResult Function()? onEnterToFavorite,
     TResult Function(bool isFavorite)? getMoreItems,
     TResult Function(bool isFavorite)? refreshList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? onEnterToMain,
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
-    TResult Function()? onEnterToFavorite,
     TResult Function(bool isFavorite)? getMoreItems,
     TResult Function(bool isFavorite)? refreshList,
     required TResult orElse(),
@@ -283,31 +269,25 @@ mixin _$ShowEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_OnEnterToMain value) onEnterToMain,
     required TResult Function(_MainSearchChanged value) onMainSearchChanged,
     required TResult Function(_FavoriteSearchChanged value)
         onFavoriteSearchChanged,
-    required TResult Function(_OnEnterToFavorite value) onEnterToFavorite,
     required TResult Function(_GetMoreItems value) getMoreItems,
     required TResult Function(_RefreshList value) refreshList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_OnEnterToMain value)? onEnterToMain,
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
-    TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
     TResult Function(_GetMoreItems value)? getMoreItems,
     TResult Function(_RefreshList value)? refreshList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OnEnterToMain value)? onEnterToMain,
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
-    TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
     TResult Function(_GetMoreItems value)? getMoreItems,
     TResult Function(_RefreshList value)? refreshList,
     required TResult orElse(),
@@ -328,135 +308,6 @@ class _$ShowEventCopyWithImpl<$Res> implements $ShowEventCopyWith<$Res> {
   final ShowEvent _value;
   // ignore: unused_field
   final $Res Function(ShowEvent) _then;
-}
-
-/// @nodoc
-abstract class _$OnEnterToMainCopyWith<$Res> {
-  factory _$OnEnterToMainCopyWith(
-          _OnEnterToMain value, $Res Function(_OnEnterToMain) then) =
-      __$OnEnterToMainCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$OnEnterToMainCopyWithImpl<$Res> extends _$ShowEventCopyWithImpl<$Res>
-    implements _$OnEnterToMainCopyWith<$Res> {
-  __$OnEnterToMainCopyWithImpl(
-      _OnEnterToMain _value, $Res Function(_OnEnterToMain) _then)
-      : super(_value, (v) => _then(v as _OnEnterToMain));
-
-  @override
-  _OnEnterToMain get _value => super._value as _OnEnterToMain;
-}
-
-/// @nodoc
-
-class _$_OnEnterToMain implements _OnEnterToMain {
-  const _$_OnEnterToMain();
-
-  @override
-  String toString() {
-    return 'ShowEvent.onEnterToMain()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _OnEnterToMain);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() onEnterToMain,
-    required TResult Function(String query) onMainSearchChanged,
-    required TResult Function(String query) onFavoriteSearchChanged,
-    required TResult Function() onEnterToFavorite,
-    required TResult Function(bool isFavorite) getMoreItems,
-    required TResult Function(bool isFavorite) refreshList,
-  }) {
-    return onEnterToMain();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? onEnterToMain,
-    TResult Function(String query)? onMainSearchChanged,
-    TResult Function(String query)? onFavoriteSearchChanged,
-    TResult Function()? onEnterToFavorite,
-    TResult Function(bool isFavorite)? getMoreItems,
-    TResult Function(bool isFavorite)? refreshList,
-  }) {
-    return onEnterToMain?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? onEnterToMain,
-    TResult Function(String query)? onMainSearchChanged,
-    TResult Function(String query)? onFavoriteSearchChanged,
-    TResult Function()? onEnterToFavorite,
-    TResult Function(bool isFavorite)? getMoreItems,
-    TResult Function(bool isFavorite)? refreshList,
-    required TResult orElse(),
-  }) {
-    if (onEnterToMain != null) {
-      return onEnterToMain();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_OnEnterToMain value) onEnterToMain,
-    required TResult Function(_MainSearchChanged value) onMainSearchChanged,
-    required TResult Function(_FavoriteSearchChanged value)
-        onFavoriteSearchChanged,
-    required TResult Function(_OnEnterToFavorite value) onEnterToFavorite,
-    required TResult Function(_GetMoreItems value) getMoreItems,
-    required TResult Function(_RefreshList value) refreshList,
-  }) {
-    return onEnterToMain(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_OnEnterToMain value)? onEnterToMain,
-    TResult Function(_MainSearchChanged value)? onMainSearchChanged,
-    TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
-    TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
-    TResult Function(_GetMoreItems value)? getMoreItems,
-    TResult Function(_RefreshList value)? refreshList,
-  }) {
-    return onEnterToMain?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OnEnterToMain value)? onEnterToMain,
-    TResult Function(_MainSearchChanged value)? onMainSearchChanged,
-    TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
-    TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
-    TResult Function(_GetMoreItems value)? getMoreItems,
-    TResult Function(_RefreshList value)? refreshList,
-    required TResult orElse(),
-  }) {
-    if (onEnterToMain != null) {
-      return onEnterToMain(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _OnEnterToMain implements ShowEvent {
-  const factory _OnEnterToMain() = _$_OnEnterToMain;
 }
 
 /// @nodoc
@@ -524,10 +375,8 @@ class _$_MainSearchChanged implements _MainSearchChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() onEnterToMain,
     required TResult Function(String query) onMainSearchChanged,
     required TResult Function(String query) onFavoriteSearchChanged,
-    required TResult Function() onEnterToFavorite,
     required TResult Function(bool isFavorite) getMoreItems,
     required TResult Function(bool isFavorite) refreshList,
   }) {
@@ -537,10 +386,8 @@ class _$_MainSearchChanged implements _MainSearchChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? onEnterToMain,
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
-    TResult Function()? onEnterToFavorite,
     TResult Function(bool isFavorite)? getMoreItems,
     TResult Function(bool isFavorite)? refreshList,
   }) {
@@ -550,10 +397,8 @@ class _$_MainSearchChanged implements _MainSearchChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? onEnterToMain,
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
-    TResult Function()? onEnterToFavorite,
     TResult Function(bool isFavorite)? getMoreItems,
     TResult Function(bool isFavorite)? refreshList,
     required TResult orElse(),
@@ -567,11 +412,9 @@ class _$_MainSearchChanged implements _MainSearchChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_OnEnterToMain value) onEnterToMain,
     required TResult Function(_MainSearchChanged value) onMainSearchChanged,
     required TResult Function(_FavoriteSearchChanged value)
         onFavoriteSearchChanged,
-    required TResult Function(_OnEnterToFavorite value) onEnterToFavorite,
     required TResult Function(_GetMoreItems value) getMoreItems,
     required TResult Function(_RefreshList value) refreshList,
   }) {
@@ -581,10 +424,8 @@ class _$_MainSearchChanged implements _MainSearchChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_OnEnterToMain value)? onEnterToMain,
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
-    TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
     TResult Function(_GetMoreItems value)? getMoreItems,
     TResult Function(_RefreshList value)? refreshList,
   }) {
@@ -594,10 +435,8 @@ class _$_MainSearchChanged implements _MainSearchChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OnEnterToMain value)? onEnterToMain,
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
-    TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
     TResult Function(_GetMoreItems value)? getMoreItems,
     TResult Function(_RefreshList value)? refreshList,
     required TResult orElse(),
@@ -684,10 +523,8 @@ class _$_FavoriteSearchChanged implements _FavoriteSearchChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() onEnterToMain,
     required TResult Function(String query) onMainSearchChanged,
     required TResult Function(String query) onFavoriteSearchChanged,
-    required TResult Function() onEnterToFavorite,
     required TResult Function(bool isFavorite) getMoreItems,
     required TResult Function(bool isFavorite) refreshList,
   }) {
@@ -697,10 +534,8 @@ class _$_FavoriteSearchChanged implements _FavoriteSearchChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? onEnterToMain,
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
-    TResult Function()? onEnterToFavorite,
     TResult Function(bool isFavorite)? getMoreItems,
     TResult Function(bool isFavorite)? refreshList,
   }) {
@@ -710,10 +545,8 @@ class _$_FavoriteSearchChanged implements _FavoriteSearchChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? onEnterToMain,
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
-    TResult Function()? onEnterToFavorite,
     TResult Function(bool isFavorite)? getMoreItems,
     TResult Function(bool isFavorite)? refreshList,
     required TResult orElse(),
@@ -727,11 +560,9 @@ class _$_FavoriteSearchChanged implements _FavoriteSearchChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_OnEnterToMain value) onEnterToMain,
     required TResult Function(_MainSearchChanged value) onMainSearchChanged,
     required TResult Function(_FavoriteSearchChanged value)
         onFavoriteSearchChanged,
-    required TResult Function(_OnEnterToFavorite value) onEnterToFavorite,
     required TResult Function(_GetMoreItems value) getMoreItems,
     required TResult Function(_RefreshList value) refreshList,
   }) {
@@ -741,10 +572,8 @@ class _$_FavoriteSearchChanged implements _FavoriteSearchChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_OnEnterToMain value)? onEnterToMain,
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
-    TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
     TResult Function(_GetMoreItems value)? getMoreItems,
     TResult Function(_RefreshList value)? refreshList,
   }) {
@@ -754,10 +583,8 @@ class _$_FavoriteSearchChanged implements _FavoriteSearchChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OnEnterToMain value)? onEnterToMain,
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
-    TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
     TResult Function(_GetMoreItems value)? getMoreItems,
     TResult Function(_RefreshList value)? refreshList,
     required TResult orElse(),
@@ -776,136 +603,6 @@ abstract class _FavoriteSearchChanged implements ShowEvent {
   @JsonKey(ignore: true)
   _$FavoriteSearchChangedCopyWith<_FavoriteSearchChanged> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$OnEnterToFavoriteCopyWith<$Res> {
-  factory _$OnEnterToFavoriteCopyWith(
-          _OnEnterToFavorite value, $Res Function(_OnEnterToFavorite) then) =
-      __$OnEnterToFavoriteCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$OnEnterToFavoriteCopyWithImpl<$Res>
-    extends _$ShowEventCopyWithImpl<$Res>
-    implements _$OnEnterToFavoriteCopyWith<$Res> {
-  __$OnEnterToFavoriteCopyWithImpl(
-      _OnEnterToFavorite _value, $Res Function(_OnEnterToFavorite) _then)
-      : super(_value, (v) => _then(v as _OnEnterToFavorite));
-
-  @override
-  _OnEnterToFavorite get _value => super._value as _OnEnterToFavorite;
-}
-
-/// @nodoc
-
-class _$_OnEnterToFavorite implements _OnEnterToFavorite {
-  const _$_OnEnterToFavorite();
-
-  @override
-  String toString() {
-    return 'ShowEvent.onEnterToFavorite()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _OnEnterToFavorite);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() onEnterToMain,
-    required TResult Function(String query) onMainSearchChanged,
-    required TResult Function(String query) onFavoriteSearchChanged,
-    required TResult Function() onEnterToFavorite,
-    required TResult Function(bool isFavorite) getMoreItems,
-    required TResult Function(bool isFavorite) refreshList,
-  }) {
-    return onEnterToFavorite();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? onEnterToMain,
-    TResult Function(String query)? onMainSearchChanged,
-    TResult Function(String query)? onFavoriteSearchChanged,
-    TResult Function()? onEnterToFavorite,
-    TResult Function(bool isFavorite)? getMoreItems,
-    TResult Function(bool isFavorite)? refreshList,
-  }) {
-    return onEnterToFavorite?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? onEnterToMain,
-    TResult Function(String query)? onMainSearchChanged,
-    TResult Function(String query)? onFavoriteSearchChanged,
-    TResult Function()? onEnterToFavorite,
-    TResult Function(bool isFavorite)? getMoreItems,
-    TResult Function(bool isFavorite)? refreshList,
-    required TResult orElse(),
-  }) {
-    if (onEnterToFavorite != null) {
-      return onEnterToFavorite();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_OnEnterToMain value) onEnterToMain,
-    required TResult Function(_MainSearchChanged value) onMainSearchChanged,
-    required TResult Function(_FavoriteSearchChanged value)
-        onFavoriteSearchChanged,
-    required TResult Function(_OnEnterToFavorite value) onEnterToFavorite,
-    required TResult Function(_GetMoreItems value) getMoreItems,
-    required TResult Function(_RefreshList value) refreshList,
-  }) {
-    return onEnterToFavorite(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_OnEnterToMain value)? onEnterToMain,
-    TResult Function(_MainSearchChanged value)? onMainSearchChanged,
-    TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
-    TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
-    TResult Function(_GetMoreItems value)? getMoreItems,
-    TResult Function(_RefreshList value)? refreshList,
-  }) {
-    return onEnterToFavorite?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OnEnterToMain value)? onEnterToMain,
-    TResult Function(_MainSearchChanged value)? onMainSearchChanged,
-    TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
-    TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
-    TResult Function(_GetMoreItems value)? getMoreItems,
-    TResult Function(_RefreshList value)? refreshList,
-    required TResult orElse(),
-  }) {
-    if (onEnterToFavorite != null) {
-      return onEnterToFavorite(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _OnEnterToFavorite implements ShowEvent {
-  const factory _OnEnterToFavorite() = _$_OnEnterToFavorite;
 }
 
 /// @nodoc
@@ -973,10 +670,8 @@ class _$_GetMoreItems implements _GetMoreItems {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() onEnterToMain,
     required TResult Function(String query) onMainSearchChanged,
     required TResult Function(String query) onFavoriteSearchChanged,
-    required TResult Function() onEnterToFavorite,
     required TResult Function(bool isFavorite) getMoreItems,
     required TResult Function(bool isFavorite) refreshList,
   }) {
@@ -986,10 +681,8 @@ class _$_GetMoreItems implements _GetMoreItems {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? onEnterToMain,
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
-    TResult Function()? onEnterToFavorite,
     TResult Function(bool isFavorite)? getMoreItems,
     TResult Function(bool isFavorite)? refreshList,
   }) {
@@ -999,10 +692,8 @@ class _$_GetMoreItems implements _GetMoreItems {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? onEnterToMain,
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
-    TResult Function()? onEnterToFavorite,
     TResult Function(bool isFavorite)? getMoreItems,
     TResult Function(bool isFavorite)? refreshList,
     required TResult orElse(),
@@ -1016,11 +707,9 @@ class _$_GetMoreItems implements _GetMoreItems {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_OnEnterToMain value) onEnterToMain,
     required TResult Function(_MainSearchChanged value) onMainSearchChanged,
     required TResult Function(_FavoriteSearchChanged value)
         onFavoriteSearchChanged,
-    required TResult Function(_OnEnterToFavorite value) onEnterToFavorite,
     required TResult Function(_GetMoreItems value) getMoreItems,
     required TResult Function(_RefreshList value) refreshList,
   }) {
@@ -1030,10 +719,8 @@ class _$_GetMoreItems implements _GetMoreItems {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_OnEnterToMain value)? onEnterToMain,
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
-    TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
     TResult Function(_GetMoreItems value)? getMoreItems,
     TResult Function(_RefreshList value)? refreshList,
   }) {
@@ -1043,10 +730,8 @@ class _$_GetMoreItems implements _GetMoreItems {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OnEnterToMain value)? onEnterToMain,
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
-    TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
     TResult Function(_GetMoreItems value)? getMoreItems,
     TResult Function(_RefreshList value)? refreshList,
     required TResult orElse(),
@@ -1132,10 +817,8 @@ class _$_RefreshList implements _RefreshList {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() onEnterToMain,
     required TResult Function(String query) onMainSearchChanged,
     required TResult Function(String query) onFavoriteSearchChanged,
-    required TResult Function() onEnterToFavorite,
     required TResult Function(bool isFavorite) getMoreItems,
     required TResult Function(bool isFavorite) refreshList,
   }) {
@@ -1145,10 +828,8 @@ class _$_RefreshList implements _RefreshList {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? onEnterToMain,
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
-    TResult Function()? onEnterToFavorite,
     TResult Function(bool isFavorite)? getMoreItems,
     TResult Function(bool isFavorite)? refreshList,
   }) {
@@ -1158,10 +839,8 @@ class _$_RefreshList implements _RefreshList {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? onEnterToMain,
     TResult Function(String query)? onMainSearchChanged,
     TResult Function(String query)? onFavoriteSearchChanged,
-    TResult Function()? onEnterToFavorite,
     TResult Function(bool isFavorite)? getMoreItems,
     TResult Function(bool isFavorite)? refreshList,
     required TResult orElse(),
@@ -1175,11 +854,9 @@ class _$_RefreshList implements _RefreshList {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_OnEnterToMain value) onEnterToMain,
     required TResult Function(_MainSearchChanged value) onMainSearchChanged,
     required TResult Function(_FavoriteSearchChanged value)
         onFavoriteSearchChanged,
-    required TResult Function(_OnEnterToFavorite value) onEnterToFavorite,
     required TResult Function(_GetMoreItems value) getMoreItems,
     required TResult Function(_RefreshList value) refreshList,
   }) {
@@ -1189,10 +866,8 @@ class _$_RefreshList implements _RefreshList {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_OnEnterToMain value)? onEnterToMain,
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
-    TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
     TResult Function(_GetMoreItems value)? getMoreItems,
     TResult Function(_RefreshList value)? refreshList,
   }) {
@@ -1202,10 +877,8 @@ class _$_RefreshList implements _RefreshList {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OnEnterToMain value)? onEnterToMain,
     TResult Function(_MainSearchChanged value)? onMainSearchChanged,
     TResult Function(_FavoriteSearchChanged value)? onFavoriteSearchChanged,
-    TResult Function(_OnEnterToFavorite value)? onEnterToFavorite,
     TResult Function(_GetMoreItems value)? getMoreItems,
     TResult Function(_RefreshList value)? refreshList,
     required TResult orElse(),

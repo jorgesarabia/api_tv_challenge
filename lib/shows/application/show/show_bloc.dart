@@ -13,19 +13,13 @@ part 'show_bloc.freezed.dart';
 @injectable
 class ShowBloc extends Bloc<ShowEvent, ShowState> {
   ShowBloc(this._mainRepositoryFacade) : super(ShowState.initial()) {
-    on<_OnEnterToMain>(_mapOnEnterToMainToState);
     on<_MainSearchChanged>(_mapMainSearchChangedToState);
     on<_FavoriteSearchChanged>(_mapFavoriteSearchChangedToState);
-    on<_OnEnterToFavorite>(_mapOnEnterToFavoriteToState);
     on<_GetMoreItems>(_mapGetMoreItemsToState);
     on<_RefreshList>(_mapRefreshListToState);
   }
 
   final MainRepositoryFacade _mainRepositoryFacade;
-
-  void _mapOnEnterToMainToState(_OnEnterToMain event, Emitter<ShowState> emit) async {
-    await _callNextPage(emit);
-  }
 
   Future<void> _callNextPage(Emitter<ShowState> emit) async {
     emit(state.copyWith(
@@ -84,14 +78,18 @@ class ShowBloc extends Bloc<ShowEvent, ShowState> {
     }
   }
 
-  void _mapOnEnterToFavoriteToState(_OnEnterToFavorite event, Emitter<ShowState> emit) {}
-
   void _mapGetMoreItemsToState(_GetMoreItems event, Emitter<ShowState> emit) async {
-    await _callNextPage(emit);
+    if (event.isFavorite) {
+    } else {
+      await _callNextPage(emit);
+    }
   }
 
   void _mapRefreshListToState(_RefreshList event, Emitter<ShowState> emit) async {
     emit(ShowState.initial());
-    await _callNextPage(emit);
+    if (event.isFavorite) {
+    } else {
+      await _callNextPage(emit);
+    }
   }
 }

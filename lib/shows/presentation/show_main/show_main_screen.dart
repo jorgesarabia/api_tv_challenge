@@ -26,11 +26,7 @@ class _ShowMainScreenState extends State<ShowMainScreen> {
   @override
   void initState() {
     _isFavorite = widget.isFavorite;
-    if (_isFavorite) {
-      BlocProvider.of<ShowBloc>(context).add(const ShowEvent.onEnterToFavorite());
-    } else {
-      BlocProvider.of<ShowBloc>(context).add(const ShowEvent.onEnterToMain());
-    }
+    BlocProvider.of<ShowBloc>(context).add(ShowEvent.refreshList(_isFavorite));
     super.initState();
   }
 

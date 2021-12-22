@@ -21,7 +21,7 @@ class _TabsPageState extends State<TabsScreen> {
           children: [
             const ShowMainScreen(),
             const Icon(Icons.directions_bike),
-            const Icon(Icons.directions_bike),
+            const ShowMainScreen(isFavorite: true),
             AppButton(
               label: 'Logout',
               onPressed: () {

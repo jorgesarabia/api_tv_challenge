@@ -30,6 +30,19 @@ class _MainListState extends State<_MainList> {
   Widget build(BuildContext context) {
     return BlocBuilder<ShowBloc, ShowState>(
       builder: (context, state) {
+        if (state.isLoading) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        if (state.shows.isEmpty) {
+          return const Center(
+            child: Text(
+              'No items',
+              style: TextStyle(color: Colors.white),
+            ),
+          );
+        }
+
         return RefreshIndicator(
           onRefresh: () {
             _showBloc.add(ShowEvent.refreshList(widget.isFavorite));
