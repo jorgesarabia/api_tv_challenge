@@ -63,6 +63,7 @@ class ShowBloc extends Bloc<ShowEvent, ShowState> {
 
     if (result != null) {
       _newShows.addAll(result);
+      _newShows.sortBy((element) => element.name);
     }
 
     emit(state.copyWith(
@@ -72,7 +73,32 @@ class ShowBloc extends Bloc<ShowEvent, ShowState> {
     ));
   }
 
-  void _mapFavoriteSearchChangedToState(_FavoriteSearchChanged event, Emitter<ShowState> emit) async {}
+  void _mapFavoriteSearchChangedToState(_FavoriteSearchChanged event, Emitter<ShowState> emit) async {
+    final _newShows = <Show>[];
+
+    emit(state.copyWith(
+      isLoading: true,
+      favoriteShows: _newShows,
+    ));
+
+    final result = await _mainRepositoryFacade.getMyFavorites();
+
+    if (result != null) {
+      _newShows.addAll(result.where(
+        (favorite) {
+          return favorite.name.toLowerCase().startsWith(event.query.toLowerCase());
+        },
+      ).toList());
+
+      _newShows.sortBy((element) => element.name);
+    }
+
+    emit(state.copyWith(
+      isLoading: false,
+      favoriteShows: _newShows,
+      hasReachedMax: true,
+    ));
+  }
 
   void _mapMainSearchChangedToState(_MainSearchChanged event, Emitter<ShowState> emit) async {
     if (state.isLoading) return;
