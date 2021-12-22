@@ -6,6 +6,7 @@ class PersonState with _$PersonState {
     required bool isLoading,
     People? person,
     PersonInfoResponse? personInfo,
+    Show? show,
   }) = _PersonState;
 
   factory PersonState.initial() {

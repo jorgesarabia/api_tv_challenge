@@ -7,4 +7,5 @@ abstract class MainShowApiFacade {
   Future<ApiResult<List<SearchShowResponse>?>> searchShow(String query);
   Future<ApiResult<List<Episodes>?>> searchEpisodes(String showId);
   Future<ApiResult<List<Show>?>> getShowByPage(String page);
+  Future<ApiResult<Show?>> getShowById(String showId);
 }

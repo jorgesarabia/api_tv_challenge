@@ -47,7 +47,27 @@ class _ListOfShows extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                final bloc = context.read<PersonBloc>();
+                                bloc.add(PersonEvent.getShowDetail(_getShowId(
+                                  links[index].show.href,
+                                )));
+
+                                Navigator.of(context).push<dynamic>(
+                                  MaterialPageRoute<dynamic>(
+                                    builder: (BuildContext context) {
+                                      return BlocProvider.value(
+                                        value: bloc,
+                                        child: const ShowDetailWrapper(
+                                          openInWeb: false,
+                                          // url: links[index].show.href,
+                                          // personBloc: context.read<PersonBloc>(),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                );
+                              },
                               child: const Text('In the app'),
                             ),
                             ElevatedButton(
@@ -67,6 +87,8 @@ class _ListOfShows extends StatelessWidget {
       },
     );
   }
+
+  String _getShowId(String href) => href.split('/').last;
 
   void _launchURL(String url) async {
     if (!await launch(url)) throw 'Could not launch $url';

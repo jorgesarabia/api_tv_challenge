@@ -20,11 +20,13 @@ class _$PersonStateTearOff {
   _PersonState call(
       {required bool isLoading,
       People? person,
-      PersonInfoResponse? personInfo}) {
+      PersonInfoResponse? personInfo,
+      Show? show}) {
     return _PersonState(
       isLoading: isLoading,
       person: person,
       personInfo: personInfo,
+      show: show,
     );
   }
 }
@@ -37,6 +39,7 @@ mixin _$PersonState {
   bool get isLoading => throw _privateConstructorUsedError;
   People? get person => throw _privateConstructorUsedError;
   PersonInfoResponse? get personInfo => throw _privateConstructorUsedError;
+  Show? get show => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PersonStateCopyWith<PersonState> get copyWith =>
@@ -48,10 +51,15 @@ abstract class $PersonStateCopyWith<$Res> {
   factory $PersonStateCopyWith(
           PersonState value, $Res Function(PersonState) then) =
       _$PersonStateCopyWithImpl<$Res>;
-  $Res call({bool isLoading, People? person, PersonInfoResponse? personInfo});
+  $Res call(
+      {bool isLoading,
+      People? person,
+      PersonInfoResponse? personInfo,
+      Show? show});
 
   $PeopleCopyWith<$Res>? get person;
   $PersonInfoResponseCopyWith<$Res>? get personInfo;
+  $ShowCopyWith<$Res>? get show;
 }
 
 /// @nodoc
@@ -67,6 +75,7 @@ class _$PersonStateCopyWithImpl<$Res> implements $PersonStateCopyWith<$Res> {
     Object? isLoading = freezed,
     Object? person = freezed,
     Object? personInfo = freezed,
+    Object? show = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: isLoading == freezed
@@ -81,6 +90,10 @@ class _$PersonStateCopyWithImpl<$Res> implements $PersonStateCopyWith<$Res> {
           ? _value.personInfo
           : personInfo // ignore: cast_nullable_to_non_nullable
               as PersonInfoResponse?,
+      show: show == freezed
+          ? _value.show
+          : show // ignore: cast_nullable_to_non_nullable
+              as Show?,
     ));
   }
 
@@ -105,6 +118,17 @@ class _$PersonStateCopyWithImpl<$Res> implements $PersonStateCopyWith<$Res> {
       return _then(_value.copyWith(personInfo: value));
     });
   }
+
+  @override
+  $ShowCopyWith<$Res>? get show {
+    if (_value.show == null) {
+      return null;
+    }
+
+    return $ShowCopyWith<$Res>(_value.show!, (value) {
+      return _then(_value.copyWith(show: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -114,12 +138,18 @@ abstract class _$PersonStateCopyWith<$Res>
           _PersonState value, $Res Function(_PersonState) then) =
       __$PersonStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isLoading, People? person, PersonInfoResponse? personInfo});
+  $Res call(
+      {bool isLoading,
+      People? person,
+      PersonInfoResponse? personInfo,
+      Show? show});
 
   @override
   $PeopleCopyWith<$Res>? get person;
   @override
   $PersonInfoResponseCopyWith<$Res>? get personInfo;
+  @override
+  $ShowCopyWith<$Res>? get show;
 }
 
 /// @nodoc
@@ -137,6 +167,7 @@ class __$PersonStateCopyWithImpl<$Res> extends _$PersonStateCopyWithImpl<$Res>
     Object? isLoading = freezed,
     Object? person = freezed,
     Object? personInfo = freezed,
+    Object? show = freezed,
   }) {
     return _then(_PersonState(
       isLoading: isLoading == freezed
@@ -151,6 +182,10 @@ class __$PersonStateCopyWithImpl<$Res> extends _$PersonStateCopyWithImpl<$Res>
           ? _value.personInfo
           : personInfo // ignore: cast_nullable_to_non_nullable
               as PersonInfoResponse?,
+      show: show == freezed
+          ? _value.show
+          : show // ignore: cast_nullable_to_non_nullable
+              as Show?,
     ));
   }
 }
@@ -158,7 +193,8 @@ class __$PersonStateCopyWithImpl<$Res> extends _$PersonStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_PersonState implements _PersonState {
-  const _$_PersonState({required this.isLoading, this.person, this.personInfo});
+  const _$_PersonState(
+      {required this.isLoading, this.person, this.personInfo, this.show});
 
   @override
   final bool isLoading;
@@ -166,10 +202,12 @@ class _$_PersonState implements _PersonState {
   final People? person;
   @override
   final PersonInfoResponse? personInfo;
+  @override
+  final Show? show;
 
   @override
   String toString() {
-    return 'PersonState(isLoading: $isLoading, person: $person, personInfo: $personInfo)';
+    return 'PersonState(isLoading: $isLoading, person: $person, personInfo: $personInfo, show: $show)';
   }
 
   @override
@@ -180,7 +218,8 @@ class _$_PersonState implements _PersonState {
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality().equals(other.person, person) &&
             const DeepCollectionEquality()
-                .equals(other.personInfo, personInfo));
+                .equals(other.personInfo, personInfo) &&
+            const DeepCollectionEquality().equals(other.show, show));
   }
 
   @override
@@ -188,7 +227,8 @@ class _$_PersonState implements _PersonState {
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(person),
-      const DeepCollectionEquality().hash(personInfo));
+      const DeepCollectionEquality().hash(personInfo),
+      const DeepCollectionEquality().hash(show));
 
   @JsonKey(ignore: true)
   @override
@@ -200,7 +240,8 @@ abstract class _PersonState implements PersonState {
   const factory _PersonState(
       {required bool isLoading,
       People? person,
-      PersonInfoResponse? personInfo}) = _$_PersonState;
+      PersonInfoResponse? personInfo,
+      Show? show}) = _$_PersonState;
 
   @override
   bool get isLoading;
@@ -208,6 +249,8 @@ abstract class _PersonState implements PersonState {
   People? get person;
   @override
   PersonInfoResponse? get personInfo;
+  @override
+  Show? get show;
   @override
   @JsonKey(ignore: true)
   _$PersonStateCopyWith<_PersonState> get copyWith =>
@@ -223,6 +266,12 @@ class _$PersonEventTearOff {
       person,
     );
   }
+
+  _GetShowDetail getShowDetail(String showID) {
+    return _GetShowDetail(
+      showID,
+    );
+  }
 }
 
 /// @nodoc
@@ -230,43 +279,43 @@ const $PersonEvent = _$PersonEventTearOff();
 
 /// @nodoc
 mixin _$PersonEvent {
-  People get person => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(People person) getPersonDetail,
+    required TResult Function(String showID) getShowDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(People person)? getPersonDetail,
+    TResult Function(String showID)? getShowDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(People person)? getPersonDetail,
+    TResult Function(String showID)? getShowDetail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetPersonDetail value) getPersonDetail,
+    required TResult Function(_GetShowDetail value) getShowDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetPersonDetail value)? getPersonDetail,
+    TResult Function(_GetShowDetail value)? getShowDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetPersonDetail value)? getPersonDetail,
+    TResult Function(_GetShowDetail value)? getShowDetail,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $PersonEventCopyWith<PersonEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -275,9 +324,6 @@ abstract class $PersonEventCopyWith<$Res> {
   factory $PersonEventCopyWith(
           PersonEvent value, $Res Function(PersonEvent) then) =
       _$PersonEventCopyWithImpl<$Res>;
-  $Res call({People person});
-
-  $PeopleCopyWith<$Res> get person;
 }
 
 /// @nodoc
@@ -287,37 +333,15 @@ class _$PersonEventCopyWithImpl<$Res> implements $PersonEventCopyWith<$Res> {
   final PersonEvent _value;
   // ignore: unused_field
   final $Res Function(PersonEvent) _then;
-
-  @override
-  $Res call({
-    Object? person = freezed,
-  }) {
-    return _then(_value.copyWith(
-      person: person == freezed
-          ? _value.person
-          : person // ignore: cast_nullable_to_non_nullable
-              as People,
-    ));
-  }
-
-  @override
-  $PeopleCopyWith<$Res> get person {
-    return $PeopleCopyWith<$Res>(_value.person, (value) {
-      return _then(_value.copyWith(person: value));
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$GetPersonDetailCopyWith<$Res>
-    implements $PersonEventCopyWith<$Res> {
+abstract class _$GetPersonDetailCopyWith<$Res> {
   factory _$GetPersonDetailCopyWith(
           _GetPersonDetail value, $Res Function(_GetPersonDetail) then) =
       __$GetPersonDetailCopyWithImpl<$Res>;
-  @override
   $Res call({People person});
 
-  @override
   $PeopleCopyWith<$Res> get person;
 }
 
@@ -342,6 +366,13 @@ class __$GetPersonDetailCopyWithImpl<$Res>
           : person // ignore: cast_nullable_to_non_nullable
               as People,
     ));
+  }
+
+  @override
+  $PeopleCopyWith<$Res> get person {
+    return $PeopleCopyWith<$Res>(_value.person, (value) {
+      return _then(_value.copyWith(person: value));
+    });
   }
 }
 
@@ -379,6 +410,7 @@ class _$_GetPersonDetail implements _GetPersonDetail {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(People person) getPersonDetail,
+    required TResult Function(String showID) getShowDetail,
   }) {
     return getPersonDetail(person);
   }
@@ -387,6 +419,7 @@ class _$_GetPersonDetail implements _GetPersonDetail {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(People person)? getPersonDetail,
+    TResult Function(String showID)? getShowDetail,
   }) {
     return getPersonDetail?.call(person);
   }
@@ -395,6 +428,7 @@ class _$_GetPersonDetail implements _GetPersonDetail {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(People person)? getPersonDetail,
+    TResult Function(String showID)? getShowDetail,
     required TResult orElse(),
   }) {
     if (getPersonDetail != null) {
@@ -407,6 +441,7 @@ class _$_GetPersonDetail implements _GetPersonDetail {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetPersonDetail value) getPersonDetail,
+    required TResult Function(_GetShowDetail value) getShowDetail,
   }) {
     return getPersonDetail(this);
   }
@@ -415,6 +450,7 @@ class _$_GetPersonDetail implements _GetPersonDetail {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetPersonDetail value)? getPersonDetail,
+    TResult Function(_GetShowDetail value)? getShowDetail,
   }) {
     return getPersonDetail?.call(this);
   }
@@ -423,6 +459,7 @@ class _$_GetPersonDetail implements _GetPersonDetail {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetPersonDetail value)? getPersonDetail,
+    TResult Function(_GetShowDetail value)? getShowDetail,
     required TResult orElse(),
   }) {
     if (getPersonDetail != null) {
@@ -435,10 +472,141 @@ class _$_GetPersonDetail implements _GetPersonDetail {
 abstract class _GetPersonDetail implements PersonEvent {
   const factory _GetPersonDetail(People person) = _$_GetPersonDetail;
 
-  @override
   People get person;
-  @override
   @JsonKey(ignore: true)
   _$GetPersonDetailCopyWith<_GetPersonDetail> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$GetShowDetailCopyWith<$Res> {
+  factory _$GetShowDetailCopyWith(
+          _GetShowDetail value, $Res Function(_GetShowDetail) then) =
+      __$GetShowDetailCopyWithImpl<$Res>;
+  $Res call({String showID});
+}
+
+/// @nodoc
+class __$GetShowDetailCopyWithImpl<$Res> extends _$PersonEventCopyWithImpl<$Res>
+    implements _$GetShowDetailCopyWith<$Res> {
+  __$GetShowDetailCopyWithImpl(
+      _GetShowDetail _value, $Res Function(_GetShowDetail) _then)
+      : super(_value, (v) => _then(v as _GetShowDetail));
+
+  @override
+  _GetShowDetail get _value => super._value as _GetShowDetail;
+
+  @override
+  $Res call({
+    Object? showID = freezed,
+  }) {
+    return _then(_GetShowDetail(
+      showID == freezed
+          ? _value.showID
+          : showID // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_GetShowDetail implements _GetShowDetail {
+  const _$_GetShowDetail(this.showID);
+
+  @override
+  final String showID;
+
+  @override
+  String toString() {
+    return 'PersonEvent.getShowDetail(showID: $showID)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _GetShowDetail &&
+            const DeepCollectionEquality().equals(other.showID, showID));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(showID));
+
+  @JsonKey(ignore: true)
+  @override
+  _$GetShowDetailCopyWith<_GetShowDetail> get copyWith =>
+      __$GetShowDetailCopyWithImpl<_GetShowDetail>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(People person) getPersonDetail,
+    required TResult Function(String showID) getShowDetail,
+  }) {
+    return getShowDetail(showID);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(People person)? getPersonDetail,
+    TResult Function(String showID)? getShowDetail,
+  }) {
+    return getShowDetail?.call(showID);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(People person)? getPersonDetail,
+    TResult Function(String showID)? getShowDetail,
+    required TResult orElse(),
+  }) {
+    if (getShowDetail != null) {
+      return getShowDetail(showID);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetPersonDetail value) getPersonDetail,
+    required TResult Function(_GetShowDetail value) getShowDetail,
+  }) {
+    return getShowDetail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_GetPersonDetail value)? getPersonDetail,
+    TResult Function(_GetShowDetail value)? getShowDetail,
+  }) {
+    return getShowDetail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetPersonDetail value)? getPersonDetail,
+    TResult Function(_GetShowDetail value)? getShowDetail,
+    required TResult orElse(),
+  }) {
+    if (getShowDetail != null) {
+      return getShowDetail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetShowDetail implements PersonEvent {
+  const factory _GetShowDetail(String showID) = _$_GetShowDetail;
+
+  String get showID;
+  @JsonKey(ignore: true)
+  _$GetShowDetailCopyWith<_GetShowDetail> get copyWith =>
       throw _privateConstructorUsedError;
 }

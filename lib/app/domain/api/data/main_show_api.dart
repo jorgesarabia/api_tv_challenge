@@ -39,4 +39,14 @@ class MainShowApi implements MainShowApiFacade {
       (j) => (j as List).map((jsonElement) => Show.fromJson(jsonElement)).toList(),
     );
   }
+
+  @override
+  Future<ApiResult<Show?>> getShowById(String showId) {
+    return request(
+      ApiRequest.get(
+        TvEndpoints.getShowDetail(showId),
+      ),
+      (j) => Show.fromJson(j),
+    );
+  }
 }

@@ -124,4 +124,21 @@ class MainRepository implements MainRepositoryFacade {
 
     return null;
   }
+
+  @override
+  Future<Show?> getShowById(String showId) async {
+    try {
+      final result = await _mainShowApi.getShowById(showId);
+      return result.map(
+        success: (success) {
+          return success.data!;
+        },
+        failure: (failure) {
+          return null;
+        },
+      );
+    } on Exception catch (_) {
+      return null;
+    }
+  }
 }
