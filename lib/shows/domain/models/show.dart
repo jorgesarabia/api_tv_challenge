@@ -1,3 +1,4 @@
+import 'package:api_tv_challenge/app/utils/helper.dart';
 import 'package:api_tv_challenge/shows/domain/models/externals.dart';
 import 'package:api_tv_challenge/shows/domain/models/image.dart';
 import 'package:api_tv_challenge/shows/domain/models/links.dart';
@@ -11,6 +12,8 @@ part 'show.g.dart';
 
 @freezed
 class Show with _$Show {
+  const Show._();
+
   const factory Show({
     required int id,
     String? url,
@@ -38,4 +41,6 @@ class Show with _$Show {
   }) = _Show;
 
   factory Show.fromJson(Map<String, dynamic> json) => _$ShowFromJson(json);
+
+  String get cleanSummary => summary != null ? removeAllHtmlTags(summary!) : 'No detail';
 }

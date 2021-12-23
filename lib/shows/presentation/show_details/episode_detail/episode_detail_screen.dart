@@ -36,7 +36,7 @@ class EpisodeDetailScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Text(
-                  episode.summary ?? '',
+                  episode.cleanSummary,
                   style: const TextStyle(fontSize: 18),
                 ),
               ),

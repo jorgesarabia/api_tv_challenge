@@ -343,7 +343,7 @@ class __$EpisodesCopyWithImpl<$Res> extends _$EpisodesCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Episodes implements _Episodes {
+class _$_Episodes extends _Episodes {
   const _$_Episodes(
       {required this.id,
       required this.url,
@@ -358,7 +358,8 @@ class _$_Episodes implements _Episodes {
       required this.rating,
       this.image,
       this.summary,
-      this.links});
+      this.links})
+      : super._();
 
   factory _$_Episodes.fromJson(Map<String, dynamic> json) =>
       _$$_EpisodesFromJson(json);
@@ -447,7 +448,7 @@ class _$_Episodes implements _Episodes {
   }
 }
 
-abstract class _Episodes implements Episodes {
+abstract class _Episodes extends Episodes {
   const factory _Episodes(
       {required int id,
       required String url,
@@ -463,6 +464,7 @@ abstract class _Episodes implements Episodes {
       Image? image,
       String? summary,
       Links? links}) = _$_Episodes;
+  const _Episodes._() : super._();
 
   factory _Episodes.fromJson(Map<String, dynamic> json) = _$_Episodes.fromJson;
 

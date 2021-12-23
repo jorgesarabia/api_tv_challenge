@@ -1,3 +1,4 @@
+import 'package:api_tv_challenge/app/utils/helper.dart';
 import 'package:api_tv_challenge/shows/domain/models/image.dart';
 import 'package:api_tv_challenge/shows/domain/models/links.dart';
 import 'package:api_tv_challenge/shows/domain/models/rating.dart';
@@ -8,6 +9,8 @@ part 'episodes.g.dart';
 
 @freezed
 class Episodes with _$Episodes {
+  const Episodes._();
+
   const factory Episodes({
     required int id,
     required String url,
@@ -26,4 +29,6 @@ class Episodes with _$Episodes {
   }) = _Episodes;
 
   factory Episodes.fromJson(Map<String, dynamic> json) => _$EpisodesFromJson(json);
+
+  String get cleanSummary => summary != null ? removeAllHtmlTags(summary!) : 'No detail';
 }

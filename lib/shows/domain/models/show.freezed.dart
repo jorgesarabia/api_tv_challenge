@@ -512,7 +512,7 @@ class __$ShowCopyWithImpl<$Res> extends _$ShowCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Show implements _Show {
+class _$_Show extends _Show {
   const _$_Show(
       {required this.id,
       this.url,
@@ -536,7 +536,8 @@ class _$_Show implements _Show {
       this.image,
       this.summary,
       required this.updated,
-      @JsonKey(name: '_links') this.links});
+      @JsonKey(name: '_links') this.links})
+      : super._();
 
   factory _$_Show.fromJson(Map<String, dynamic> json) => _$$_ShowFromJson(json);
 
@@ -666,7 +667,7 @@ class _$_Show implements _Show {
   }
 }
 
-abstract class _Show implements Show {
+abstract class _Show extends Show {
   const factory _Show(
       {required int id,
       String? url,
@@ -691,6 +692,7 @@ abstract class _Show implements Show {
       String? summary,
       required int updated,
       @JsonKey(name: '_links') Links? links}) = _$_Show;
+  const _Show._() : super._();
 
   factory _Show.fromJson(Map<String, dynamic> json) = _$_Show.fromJson;
 

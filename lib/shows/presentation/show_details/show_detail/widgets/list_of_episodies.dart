@@ -14,7 +14,7 @@ class _ListOfEpisodies extends StatelessWidget {
       elevation: 1.5,
       child: ListTile(
         title: Text('${episode.number} - ${episode.name}'),
-        subtitle: Text(episode.summary?.substring(0, 50) ?? ''),
+        subtitle: Text(episode.cleanSummary.substring(0, 50)),
       ),
     );
   }
