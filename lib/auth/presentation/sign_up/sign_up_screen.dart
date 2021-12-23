@@ -2,6 +2,7 @@ import 'package:api_tv_challenge/app/domain/injectable/injection.dart';
 import 'package:api_tv_challenge/app/presentation/app_button.dart';
 import 'package:api_tv_challenge/app/presentation/app_snack_bar.dart';
 import 'package:api_tv_challenge/app/presentation/app_text_form.dart';
+import 'package:api_tv_challenge/app/utils/constants.dart';
 import 'package:api_tv_challenge/auth/application/auth/auth_bloc.dart';
 import 'package:api_tv_challenge/auth/application/signup/signup_bloc.dart';
 import 'package:flutter/material.dart';
@@ -27,17 +28,17 @@ class SignUpScreen extends StatelessWidget {
               padding: const EdgeInsets.all(15.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Placeholder(
-                    fallbackWidth: 100,
-                    fallbackHeight: 100,
+                children: [
+                  Image.network(
+                    Constants.defaultImage,
+                    fit: BoxFit.cover,
                   ),
-                  SizedBox(height: 10),
-                  _SignUpForm(),
-                  SizedBox(height: 32.0),
-                  _SignUpButton(),
-                  SizedBox(height: 32.0),
-                  _SignUpToLogin(),
+                  const SizedBox(height: 10),
+                  const _SignUpForm(),
+                  const SizedBox(height: 32.0),
+                  const _SignUpButton(),
+                  const SizedBox(height: 32.0),
+                  const _SignUpToLogin(),
                 ],
               ),
             ),

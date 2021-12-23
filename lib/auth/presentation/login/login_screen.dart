@@ -2,6 +2,7 @@ import 'package:api_tv_challenge/app/domain/injectable/injection.dart';
 import 'package:api_tv_challenge/app/presentation/app_button.dart';
 import 'package:api_tv_challenge/app/presentation/app_snack_bar.dart';
 import 'package:api_tv_challenge/app/presentation/app_text_form.dart';
+import 'package:api_tv_challenge/app/utils/constants.dart';
 import 'package:api_tv_challenge/auth/application/auth/auth_bloc.dart';
 import 'package:api_tv_challenge/auth/application/login/login_bloc.dart';
 import 'package:api_tv_challenge/auth/presentation/sign_up/sign_up_screen.dart';
@@ -28,17 +29,17 @@ class LoginScreen extends StatelessWidget {
             padding: const EdgeInsets.all(15.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Placeholder(
-                  fallbackWidth: 100,
-                  fallbackHeight: 100,
+              children: [
+                Image.network(
+                  Constants.defaultImage,
+                  fit: BoxFit.cover,
                 ),
-                SizedBox(height: 10),
-                _LoginForm(),
-                SizedBox(height: 32.0),
-                _LoginButton(),
-                SizedBox(height: 32.0),
-                _LoginToCreate(),
+                const SizedBox(height: 10),
+                const _LoginForm(),
+                const SizedBox(height: 32.0),
+                const _LoginButton(),
+                const SizedBox(height: 32.0),
+                const _LoginToCreate(),
               ],
             ),
           ),
