@@ -1,6 +1,6 @@
 # Series app :blue_heart:
 
-This is a [Flutter](https://flutter.dev/) sample application of how to use the [TVMaze](https://www.tvmaze.com/api) API.
+This is a [Flutter](https://flutter.dev/) sample application on how to use the [TVMaze](https://www.tvmaze.com/api) API.
 
 ## How to install this project
 
