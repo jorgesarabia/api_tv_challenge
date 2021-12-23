@@ -1,4 +1,4 @@
-# Movie app :blue_heart:
+# Series app :blue_heart:
 
 This is a [Flutter](https://flutter.dev/) sample application of how to use the [TVMaze](https://www.tvmaze.com/api) API.
 
