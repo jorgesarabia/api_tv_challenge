@@ -18,6 +18,23 @@ class _ListOfShows extends StatelessWidget {
           links.addAll(state.personInfo!.embedded.crewcredits.map((e) => e.links));
         }
 
+        if (links.isEmpty) {
+          return Column(children: [
+            _PersonHeader(person: person),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0),
+              child: Text(
+                'No shows were found where they participated',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ]);
+        }
+
         return ListView.builder(
           itemCount: links.length,
           itemBuilder: (context, index) {

@@ -8,7 +8,7 @@ part 'credit_links.g.dart';
 class CreditLinks with _$CreditLinks {
   factory CreditLinks({
     required PreviousEpisode show,
-    required PreviousEpisode character,
+    PreviousEpisode? character,
   }) = _CastCreditLinks;
 
   factory CreditLinks.fromJson(Map<String, dynamic> json) => _$CreditLinksFromJson(json);

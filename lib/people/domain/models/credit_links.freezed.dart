@@ -22,7 +22,7 @@ class _$CreditLinksTearOff {
   const _$CreditLinksTearOff();
 
   _CastCreditLinks call(
-      {required PreviousEpisode show, required PreviousEpisode character}) {
+      {required PreviousEpisode show, PreviousEpisode? character}) {
     return _CastCreditLinks(
       show: show,
       character: character,
@@ -40,7 +40,7 @@ const $CreditLinks = _$CreditLinksTearOff();
 /// @nodoc
 mixin _$CreditLinks {
   PreviousEpisode get show => throw _privateConstructorUsedError;
-  PreviousEpisode get character => throw _privateConstructorUsedError;
+  PreviousEpisode? get character => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,10 +53,10 @@ abstract class $CreditLinksCopyWith<$Res> {
   factory $CreditLinksCopyWith(
           CreditLinks value, $Res Function(CreditLinks) then) =
       _$CreditLinksCopyWithImpl<$Res>;
-  $Res call({PreviousEpisode show, PreviousEpisode character});
+  $Res call({PreviousEpisode show, PreviousEpisode? character});
 
   $PreviousEpisodeCopyWith<$Res> get show;
-  $PreviousEpisodeCopyWith<$Res> get character;
+  $PreviousEpisodeCopyWith<$Res>? get character;
 }
 
 /// @nodoc
@@ -80,7 +80,7 @@ class _$CreditLinksCopyWithImpl<$Res> implements $CreditLinksCopyWith<$Res> {
       character: character == freezed
           ? _value.character
           : character // ignore: cast_nullable_to_non_nullable
-              as PreviousEpisode,
+              as PreviousEpisode?,
     ));
   }
 
@@ -92,8 +92,12 @@ class _$CreditLinksCopyWithImpl<$Res> implements $CreditLinksCopyWith<$Res> {
   }
 
   @override
-  $PreviousEpisodeCopyWith<$Res> get character {
-    return $PreviousEpisodeCopyWith<$Res>(_value.character, (value) {
+  $PreviousEpisodeCopyWith<$Res>? get character {
+    if (_value.character == null) {
+      return null;
+    }
+
+    return $PreviousEpisodeCopyWith<$Res>(_value.character!, (value) {
       return _then(_value.copyWith(character: value));
     });
   }
@@ -106,12 +110,12 @@ abstract class _$CastCreditLinksCopyWith<$Res>
           _CastCreditLinks value, $Res Function(_CastCreditLinks) then) =
       __$CastCreditLinksCopyWithImpl<$Res>;
   @override
-  $Res call({PreviousEpisode show, PreviousEpisode character});
+  $Res call({PreviousEpisode show, PreviousEpisode? character});
 
   @override
   $PreviousEpisodeCopyWith<$Res> get show;
   @override
-  $PreviousEpisodeCopyWith<$Res> get character;
+  $PreviousEpisodeCopyWith<$Res>? get character;
 }
 
 /// @nodoc
@@ -138,7 +142,7 @@ class __$CastCreditLinksCopyWithImpl<$Res>
       character: character == freezed
           ? _value.character
           : character // ignore: cast_nullable_to_non_nullable
-              as PreviousEpisode,
+              as PreviousEpisode?,
     ));
   }
 }
@@ -146,7 +150,7 @@ class __$CastCreditLinksCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_CastCreditLinks implements _CastCreditLinks {
-  _$_CastCreditLinks({required this.show, required this.character});
+  _$_CastCreditLinks({required this.show, this.character});
 
   factory _$_CastCreditLinks.fromJson(Map<String, dynamic> json) =>
       _$$_CastCreditLinksFromJson(json);
@@ -154,7 +158,7 @@ class _$_CastCreditLinks implements _CastCreditLinks {
   @override
   final PreviousEpisode show;
   @override
-  final PreviousEpisode character;
+  final PreviousEpisode? character;
 
   @override
   String toString() {
@@ -190,7 +194,7 @@ class _$_CastCreditLinks implements _CastCreditLinks {
 abstract class _CastCreditLinks implements CreditLinks {
   factory _CastCreditLinks(
       {required PreviousEpisode show,
-      required PreviousEpisode character}) = _$_CastCreditLinks;
+      PreviousEpisode? character}) = _$_CastCreditLinks;
 
   factory _CastCreditLinks.fromJson(Map<String, dynamic> json) =
       _$_CastCreditLinks.fromJson;
@@ -198,7 +202,7 @@ abstract class _CastCreditLinks implements CreditLinks {
   @override
   PreviousEpisode get show;
   @override
-  PreviousEpisode get character;
+  PreviousEpisode? get character;
   @override
   @JsonKey(ignore: true)
   _$CastCreditLinksCopyWith<_CastCreditLinks> get copyWith =>
