@@ -53,3 +53,16 @@ This was a weekend project so there are some features that I was unable to add a
 # Screenshots
 
 <img src="https://user-images.githubusercontent.com/6399992/147171228-a815c7a0-1979-454a-8b78-7c2e0d4f08b5.png" width="200">
+
+![Screenshot_1640219756](https://user-images.githubusercontent.com/6399992/147171360-b77235ea-0e24-472e-89d7-6119fcccb254.png)
+![Screenshot_1640219777](https://user-images.githubusercontent.com/6399992/147171366-6758798e-80a1-46f3-846d-9dcf932cadd8.png)
+![Screenshot_1640219801](https://user-images.githubusercontent.com/6399992/147171370-0f548ec6-0978-453d-9d66-6b4d828c9623.png)
+![Screenshot_1640219855](https://user-images.githubusercontent.com/6399992/147171374-584c5d05-e40a-469b-9a26-44467af53dd8.png)
+![Screenshot_1640219843](https://user-images.githubusercontent.com/6399992/147171379-ff862297-60b9-49d0-a947-6b5368b46d3a.png)
+![Screenshot_1640219835](https://user-images.githubusercontent.com/6399992/147171381-1bb28a67-33c8-4609-a4c9-f68da3f20a72.png)
+![Screenshot_1640219824](https://user-images.githubusercontent.com/6399992/147171382-ca164cef-ca15-4102-8e6e-541360d53bec.png)
+![Screenshot_1640220085](https://user-images.githubusercontent.com/6399992/147171387-1955dc32-3919-4229-85be-e09c75e595dc.png)
+![Screenshot_1640220077](https://user-images.githubusercontent.com/6399992/147171394-039c4839-9fd9-4fc3-baf5-69b9505ec268.png)
+![Screenshot_1640219807](https://user-images.githubusercontent.com/6399992/147171397-d97c0c1a-3e89-456f-9029-c030d7e5cc4b.png)
+![Screenshot_1640219811](https://user-images.githubusercontent.com/6399992/147171399-6e2ca07a-6d29-4efa-a93f-a4c3a2e65401.png)
+
