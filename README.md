@@ -20,7 +20,7 @@ The application requires that you create an account. Then you are able to:
 - Search series by name
 - After clicking on a series, you can see a detail screen that shows the episodes listed by season
 - You can select a serie as favorite tapping over the heart icon in the serie detail screen
-- You can search persons and see the they have participated in
+- You can search persons and see the series they have participated in
 - You can log out of the app
 
 # Technical aspects
